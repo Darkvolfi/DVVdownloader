@@ -1,0 +1,24 @@
+# Local agent plans, session logs and private work records
+/agents/
+
+# Build artifacts and caches
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.idea/
+.gradle/
+build/
+app/build/
+*.apk
+*.aab
+
+# Release outputs (published via GitHub Releases, too large for git)
+/dist/
+
+# Bundled third-party binaries (yt-dlp, FFmpeg) - see tools/README.md
+src/windows/DVVdownloader/tools/*.exe
+
+# Machine-specific Android SDK path
+local.properties

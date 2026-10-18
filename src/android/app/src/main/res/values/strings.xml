@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DVVdownloader</string>
+    <string name="tab_home">Ana Sayfa</string>
+    <string name="tab_queue">Kuyruk</string>
+    <string name="tab_completed">Tamamlananlar</string>
+    <string name="tab_settings">Ayarlar</string>
+    <string name="url_input_hint">Medya bağlantısını buraya yapıştırın...</string>
+    <string name="btn_analyze">Analiz Et</string>
+    <string name="btn_paste">Yapıştır</string>
+    <string name="analyzing_title">Medya Analiz Ediliyor...</string>
+    <string name="analyzing_desc">Formatlar ve akış bilgileri alınıyor, lütfen bekleyin</string>
+    <string name="format_select_title">Format ve Kalite Seçimi</string>
+    <string name="btn_download">İndir</string>
+    <string name="queue_title">Aktif İndirmeler</string>
+    <string name="queue_empty">Şu anda aktif bir indirme işlemi yok</string>
+    <string name="completed_title">Tamamlanan İndirmeler</string>
+    <string name="completed_empty">Henüz tamamlanan indirme bulunmuyor</string>
+    <string name="settings_title">Uygulama Ayarları</string>
+    <string name="settings_save_dir">İndirme Konumu</string>
+    <string name="settings_concurrent">Eşzamanlı İndirme Sayısı</string>
+    <string name="settings_default_quality">Varsayılan Kalite</string>
+    <string name="notification_channel_name">Medya İndirmeleri</string>
+    <string name="notification_channel_desc">Aktif medya indirme işlemlerinin ilerleme bildirimleri</string>
+    <string name="license_title">Açık Kaynak Lisansı</string>
+    <string name="license_badge">GNU GPL v3.0</string>
+    <string name="license_desc">DVVdownloader, GNU Genel Kamu Lisansı Sürüm 3 altında lisanslanmış özgür ve açık kaynaklı bir yazılımdır.</string>
+    <string name="license_btn_view">Lisans Detayları</string>
+</resources>

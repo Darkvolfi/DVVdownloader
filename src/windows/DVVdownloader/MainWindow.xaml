@@ -1,0 +1,845 @@
+<Window x:Class="DVVdownloader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:conv="clr-namespace:DVVdownloader.Converters"
+        xmlns:vm="clr-namespace:DVVdownloader.ViewModels"
+        mc:Ignorable="d"
+        Title="DVVdownloader — Yerel Medya İndirici"
+        Icon="app.ico"
+        Height="780" Width="1180"
+        MinHeight="600" MinWidth="900"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="False"
+        Background="{StaticResource BrushBackground}">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="40"
+                      ResizeBorderThickness="6"
+                      CornerRadius="0"
+                      GlassFrameThickness="0"
+                      UseAeroCaptionButtons="False" />
+    </WindowChrome.WindowChrome>
+
+    <Window.Resources>
+        <conv:TabToVisibilityConverter x:Key="TabToVis" />
+        <conv:TabToBooleanConverter x:Key="TabToBool" />
+        <conv:BooleanToVisibilityConverter x:Key="BoolToVis" />
+        <conv:InverseBooleanToVisibilityConverter x:Key="InvBoolToVis" />
+        <conv:InverseBooleanConverter x:Key="InvBool" />
+        <conv:StatusToBrushConverter x:Key="StatusToBrush" />
+    </Window.Resources>
+
+    <!-- Ana Pencere Çerçevesi -->
+    <Border BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40" />
+                <!-- Özel Başlık Çubuğu -->
+                <RowDefinition Height="*" />
+                <!-- Ana İçerik -->
+            </Grid.RowDefinitions>
+
+            <!-- 1. ÖZEL BAŞLIK ÇUBUĞU (Custom TitleBar) -->
+            <Grid Grid.Row="0" Background="{StaticResource BrushSidebar}"
+                  MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Logo & Uygulama Başlığı -->
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="16,0,0,0">
+                    <Image Source="/Assets/logo.png" Width="26" Height="26" Margin="0,0,10,0"
+                           RenderOptions.BitmapScalingMode="HighQuality" />
+                    <TextBlock Text="DVVdownloader" FontWeight="Bold" FontSize="14" Foreground="{StaticResource BrushTextPrimary}" VerticalAlignment="Center" />
+                    <Border Background="{StaticResource BrushCardSurface}" CornerRadius="4" Padding="6,2" Margin="10,0,0,0">
+                        <TextBlock Text="v1.1 Yerel" FontSize="10" Foreground="{StaticResource BrushPrimaryAccent}" FontWeight="SemiBold" />
+                    </Border>
+                </StackPanel>
+
+                <!-- Sağ Pencere Kontrolleri -->
+                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Style="{StaticResource WindowControlButtonStyle}" Click="Minimize_Click" Content="—" ToolTip="Simge Durumuna Küçült" />
+                    <Button Style="{StaticResource WindowControlButtonStyle}" Click="MaximizeRestore_Click" Content="⬜" ToolTip="Ekranı Kapla / Geri Yükle" />
+                    <Button Style="{StaticResource WindowCloseButtonStyle}" Click="Close_Click" Content="✕" ToolTip="Kapat" />
+                </StackPanel>
+            </Grid>
+
+            <!-- 2. ANA DÜZEN (Sol Menü + Sağ İçerik) -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220" />
+                    <!-- Sol Yan Menü -->
+                    <ColumnDefinition Width="*" />
+                    <!-- Sağ Dinamik İçerik -->
+                </Grid.ColumnDefinitions>
+
+                <!-- SOL YAN MENÜ -->
+                <Border Grid.Column="0" Background="{StaticResource BrushSidebar}" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="0,0,1,0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Navigasyon Butonları -->
+                        <StackPanel Grid.Row="0" Margin="8,16,8,0">
+                            <!-- [0] Ana Sayfa & Analiz -->
+                            <RadioButton Style="{StaticResource NavButtonStyle}"
+                                         GroupName="SidebarNav"
+                                         IsChecked="{Binding SelectedTab, Mode=TwoWay, Converter={StaticResource TabToBool}, ConverterParameter=0}"
+                                         Command="{Binding SelectTabCommand}" CommandParameter="0">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="🔍" Margin="0,0,10,0" FontSize="14" />
+                                    <TextBlock Text="Medya İndir" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </RadioButton>
+
+                            <!-- [1] İndirme Kuyruğu -->
+                            <RadioButton Style="{StaticResource NavButtonStyle}"
+                                         GroupName="SidebarNav"
+                                         IsChecked="{Binding SelectedTab, Mode=TwoWay, Converter={StaticResource TabToBool}, ConverterParameter=1}"
+                                         Command="{Binding SelectTabCommand}" CommandParameter="1">
+                                <!-- Sabit genişlik menüden geniş olduğu için rozet kırpılıyordu; buton genişliğine yayılır -->
+                                <Grid>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                        <TextBlock Text="⏳" Margin="0,0,10,0" FontSize="14" />
+                                        <TextBlock Text="Kuyruk" VerticalAlignment="Center" />
+                                    </StackPanel>
+                                    <!-- Sayaç Rozeti -->
+                                    <Border HorizontalAlignment="Right" VerticalAlignment="Center" Background="{StaticResource BrushPrimaryAccentDark}"
+                                            CornerRadius="10" Padding="7,1" MinWidth="22"
+                                            Visibility="{Binding ActiveDownloadsCount, Converter={StaticResource BoolToVis}}">
+                                        <TextBlock Text="{Binding ActiveDownloadsCount}" FontSize="11" Foreground="{StaticResource BrushPrimaryAccent}" FontWeight="Bold" HorizontalAlignment="Center" />
+                                    </Border>
+                                </Grid>
+                            </RadioButton>
+
+                            <!-- [2] Tamamlananlar (Geçmiş) -->
+                            <RadioButton Style="{StaticResource NavButtonStyle}"
+                                         GroupName="SidebarNav"
+                                         IsChecked="{Binding SelectedTab, Mode=TwoWay, Converter={StaticResource TabToBool}, ConverterParameter=2}"
+                                         Command="{Binding SelectTabCommand}" CommandParameter="2">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="📁" Margin="0,0,10,0" FontSize="14" />
+                                    <TextBlock Text="Tamamlananlar" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </RadioButton>
+
+                            <!-- [3] Ayarlar -->
+                            <RadioButton Style="{StaticResource NavButtonStyle}"
+                                         GroupName="SidebarNav"
+                                         IsChecked="{Binding SelectedTab, Mode=TwoWay, Converter={StaticResource TabToBool}, ConverterParameter=3}"
+                                         Command="{Binding SelectTabCommand}" CommandParameter="3">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="⚙️" Margin="0,0,10,0" FontSize="14" />
+                                    <TextBlock Text="Ayarlar" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </RadioButton>
+
+                            <!-- [4] İşlem Günlüğü -->
+                            <RadioButton Style="{StaticResource NavButtonStyle}"
+                                         GroupName="SidebarNav"
+                                         IsChecked="{Binding SelectedTab, Mode=TwoWay, Converter={StaticResource TabToBool}, ConverterParameter=4}"
+                                         Command="{Binding SelectTabCommand}" CommandParameter="4">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="📜" Margin="0,0,10,0" FontSize="14" />
+                                    <TextBlock Text="İşlem Günlüğü" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </RadioButton>
+                        </StackPanel>
+
+                        <!-- Sol Alt Bilgi Kartı -->
+                        <Border Grid.Row="2" Background="{StaticResource BrushCardSurface}" CornerRadius="10" Margin="12,0,12,16" Padding="12">
+                            <StackPanel>
+                                <TextBlock Text="MOTOR DURUMU" FontSize="10" Foreground="{StaticResource BrushTextMuted}" FontWeight="Bold" Margin="0,0,0,6" />
+                                <StackPanel Orientation="Horizontal" Margin="0,2">
+                                    <Ellipse Width="8" Height="8" Fill="{StaticResource BrushSuccess}" Margin="0,0,6,0" VerticalAlignment="Center" />
+                                    <TextBlock Text="yt-dlp:" FontSize="11" Foreground="{StaticResource BrushTextSecondary}" />
+                                    <TextBlock Text="{Binding YtDlpStatus}" FontSize="11" Foreground="{StaticResource BrushTextPrimary}" Margin="4,0,0,0" FontWeight="SemiBold" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="0,2">
+                                    <Ellipse Width="8" Height="8" Fill="{StaticResource BrushSuccess}" Margin="0,0,6,0" VerticalAlignment="Center" />
+                                    <TextBlock Text="FFmpeg:" FontSize="11" Foreground="{StaticResource BrushTextSecondary}" />
+                                    <TextBlock Text="{Binding FfmpegStatus}" FontSize="11" Foreground="{StaticResource BrushTextPrimary}" Margin="4,0,0,0" FontWeight="SemiBold" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <!-- SAĞ İÇERİK ALANI -->
+                <Grid Grid.Column="1" Background="{StaticResource BrushBackground}">
+
+                    <!-- ========================================== -->
+                    <!-- EKRAN 0: MEDYA İNDİR & ANALİZ & ÖNİZLEME   -->
+                    <!-- ========================================== -->
+                    <ScrollViewer Visibility="{Binding SelectedTab, Converter={StaticResource TabToVis}, ConverterParameter=0}"
+                                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                                  Padding="28,16,28,60">
+                        <StackPanel MaxWidth="900" HorizontalAlignment="Stretch">
+
+                            <!-- Başlık Alanı -->
+                            <TextBlock Text="Hızlı ve Yerel Medya İndirme" FontSize="24" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" />
+                            <TextBlock Text="YouTube, TikTok, Instagram, Twitter/X ve doğrudan video bağlantılarını tek tıkla indirin"
+                                       FontSize="13" Foreground="{StaticResource BrushTextSecondary}" Margin="0,4,0,20" />
+
+                            <!-- URL Giriş Kartı -->
+                            <Border Background="{StaticResource BrushCardSurface}" CornerRadius="12" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" Padding="18" Margin="0,0,0,20">
+                                <StackPanel>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- URL Input Kutusu -->
+                                        <TextBox Grid.Column="0" Text="{Binding UrlInput, UpdateSourceTrigger=PropertyChanged}"
+                                                 Style="{StaticResource ModernTextBoxStyle}"
+                                                 Tag="Medya bağlantısını buraya yapıştırın (https://...)"
+                                                 Margin="0,0,10,0" />
+
+                                        <!-- Yapıştır Butonu -->
+                                        <Button Grid.Column="1" Style="{StaticResource SecondaryButtonStyle}"
+                                                Command="{Binding PasteFromClipboardCommand}"
+                                                Margin="0,0,10,0" ToolTip="Panodaki adresi yapıştır ve tara">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="📋" Margin="0,0,6,0" />
+                                                <TextBlock Text="Yapıştır" />
+                                            </StackPanel>
+                                        </Button>
+
+                                        <!-- Analiz Et Butonu -->
+                                        <Button Grid.Column="2" Style="{StaticResource PrimaryButtonStyle}"
+                                                Command="{Binding AnalyzeUrlCommand}"
+                                                IsEnabled="{Binding IsAnalyzing, Converter={StaticResource InvBool}}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="🔍" Margin="0,0,6,0" />
+                                                <TextBlock Text="Analiz Et" />
+                                            </StackPanel>
+                                        </Button>
+                                    </Grid>
+
+                                    <!-- Algılanan Platform ve Temizle -->
+                                    <Grid Margin="4,12,4,0">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                            <TextBlock Text="Algılanan Kaynak: " FontSize="12" Foreground="{StaticResource BrushTextMuted}" />
+                                            <Border Background="{StaticResource BrushCardSurfaceHover}" CornerRadius="4" Padding="6,2" Margin="6,0,0,0">
+                                                <TextBlock Text="{Binding DetectedPlatform}" FontSize="12" Foreground="{StaticResource BrushPrimaryAccent}" FontWeight="SemiBold" />
+                                            </Border>
+                                        </StackPanel>
+
+                                        <Button HorizontalAlignment="Right" Background="Transparent" BorderThickness="0"
+                                                Foreground="{StaticResource BrushTextMuted}" FontSize="11" Cursor="Hand"
+                                                Content="Girdiyi Temizle" Command="{Binding ClearUrlCommand}" />
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Yükleniyor / Analiz Ediliyor Durumu -->
+                            <Border Background="{StaticResource BrushCardSurface}" CornerRadius="12" Padding="24" Margin="0,0,0,20"
+                                    Visibility="{Binding IsAnalyzing, Converter={StaticResource BoolToVis}}">
+                                <StackPanel HorizontalAlignment="Center">
+                                    <ProgressBar Style="{StaticResource ModernProgressBarStyle}" Width="300" IsIndeterminate="True" Height="6" Margin="0,0,0,14" />
+                                    <TextBlock Text="{Binding AnalysisStatusText}" FontSize="14" Foreground="{StaticResource BrushTextPrimary}" HorizontalAlignment="Center" FontWeight="Medium" />
+                                    <TextBlock Text="Bu işlem medya kaynağına bağlı olarak birkaç saniye sürebilir." FontSize="12" Foreground="{StaticResource BrushTextMuted}" HorizontalAlignment="Center" Margin="0,4,0,0" />
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Hata Durumu Bildirimi -->
+                            <Border Background="#2D151B" BorderBrush="{StaticResource BrushError}" BorderThickness="1" CornerRadius="10" Padding="16" Margin="0,0,0,20"
+                                    Visibility="{Binding HasAnalysisError, Converter={StaticResource BoolToVis}}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="⚠️" FontSize="18" Margin="0,0,12,0" VerticalAlignment="Center" />
+                                    <StackPanel VerticalAlignment="Center">
+                                        <TextBlock Text="Medya Bilgileri Alınamadı" FontSize="14" FontWeight="Bold" Foreground="{StaticResource BrushError}" />
+                                        <TextBlock Text="{Binding AnalysisErrorMessage}" FontSize="12" Foreground="{StaticResource BrushTextPrimary}" TextWrapping="Wrap" Margin="0,2,0,0" />
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- ============================================== -->
+                            <!-- MEDYA ÖNİZLEME VE FORMAT SEÇİM KARTI           -->
+                            <!-- ============================================== -->
+                            <Border Background="{StaticResource BrushCardSurface}" CornerRadius="14" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" Padding="20"
+                                    Visibility="{Binding HasPreview, Converter={StaticResource BoolToVis}}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- 1. Üst Kısım: Thumbnail, Başlık, Yükleyici, Süre -->
+                                    <Grid Grid.Row="0" Margin="0,0,0,20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="220" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <!-- Thumbnail Görseli -->
+                                        <Border Grid.Column="0" CornerRadius="8" ClipToBounds="True" Background="#05060A" Height="130" Margin="0,0,18,0">
+                                            <Grid>
+                                                <Image Source="{Binding CurrentMetadata.ThumbnailUrl}" Stretch="UniformToFill" />
+                                                <!-- Süre Rozeti -->
+                                                <Border Background="#CC000000" CornerRadius="4" Padding="6,2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="8">
+                                                    <TextBlock Text="{Binding CurrentMetadata.FormattedDuration}" FontSize="11" Foreground="White" FontWeight="Bold" />
+                                                </Border>
+                                            </Grid>
+                                        </Border>
+
+                                        <!-- Medya Detayları -->
+                                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                            <Border Background="{StaticResource BrushPrimaryAccentDark}" CornerRadius="4" Padding="6,2" HorizontalAlignment="Left" Margin="0,0,0,6">
+                                                <TextBlock Text="{Binding CurrentMetadata.Platform}" FontSize="11" Foreground="{StaticResource BrushPrimaryAccent}" FontWeight="Bold" />
+                                            </Border>
+                                            <TextBlock Text="{Binding CurrentMetadata.Title}" FontSize="18" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" TextWrapping="Wrap" MaxHeight="52" TextTrimming="CharacterEllipsis" />
+                                            <TextBlock Text="{Binding CurrentMetadata.Uploader}" FontSize="13" Foreground="{StaticResource BrushTextSecondary}" Margin="0,6,0,0" />
+                                        </StackPanel>
+                                    </Grid>
+
+                                    <!-- 2. İndirme Türü Seçimi (Video vs Ses) -->
+                                    <Border Grid.Row="1" Background="{StaticResource BrushSidebar}" CornerRadius="8" Padding="6" Margin="0,0,0,16">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <RadioButton Grid.Column="0" Content="🎬 Video Olarak İndir (MP4)"
+                                                         GroupName="DownloadTypeSelection"
+                                                         IsChecked="{Binding IsAudioMode, Mode=TwoWay, Converter={StaticResource InvBool}}"
+                                                         Style="{StaticResource NavButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+                                            <RadioButton Grid.Column="1" Content="🎵 Yalnızca Ses Olarak İndir (MP3)"
+                                                         GroupName="DownloadTypeSelection"
+                                                         IsChecked="{Binding IsAudioMode, Mode=TwoWay}"
+                                                         Style="{StaticResource NavButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" />
+                                        </Grid>
+                                    </Border>
+
+                                    <!-- 3. Format Seçim Listesi ve İndir Butonu -->
+                                    <Grid Grid.Row="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <!-- Format Listesi (Video Modu) -->
+                                        <StackPanel Grid.Row="0" Visibility="{Binding IsAudioMode, Converter={StaticResource InvBoolToVis}}">
+                                            <TextBlock Text="Kullanılabilir Çözünürlükler:" FontSize="13" FontWeight="SemiBold" Foreground="{StaticResource BrushTextSecondary}" Margin="0,0,0,8" />
+                                            <ListBox ItemsSource="{Binding AvailableVideoFormats}"
+                                                     SelectedItem="{Binding SelectedFormat, Mode=TwoWay}"
+                                                     Background="Transparent" BorderThickness="0" MaxHeight="220" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                                <ListBox.ItemContainerStyle>
+                                                    <Style TargetType="ListBoxItem">
+                                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                                        <Setter Property="Background" Value="Transparent" />
+                                                        <Setter Property="BorderThickness" Value="0" />
+                                                        <Setter Property="Padding" Value="0" />
+                                                        <Setter Property="Margin" Value="0,3" />
+                                                        <Setter Property="Cursor" Value="Hand" />
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="ListBoxItem">
+                                                                    <Border x:Name="Bd" Background="{StaticResource BrushSidebar}"
+                                                                            CornerRadius="8" BorderBrush="{StaticResource BrushCardBorder}"
+                                                                            BorderThickness="1" Padding="12,10">
+                                                                        <ContentPresenter />
+                                                                    </Border>
+                                                                    <ControlTemplate.Triggers>
+                                                                        <Trigger Property="IsSelected" Value="True">
+                                                                            <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource BrushPrimaryAccent}" />
+                                                                            <Setter TargetName="Bd" Property="Background" Value="#252042" />
+                                                                        </Trigger>
+                                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                                            <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource BrushPrimaryAccentDark}" />
+                                                                        </Trigger>
+                                                                    </ControlTemplate.Triggers>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                </ListBox.ItemContainerStyle>
+                                                <ListBox.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto" />
+                                                                <ColumnDefinition Width="Auto" />
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="Auto" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <!-- Özel Radyo / Seçim Göstergesi -->
+                                                            <Border Grid.Column="0" Width="20" Height="20" CornerRadius="10"
+                                                                    BorderThickness="2" BorderBrush="{StaticResource BrushPrimaryAccent}"
+                                                                    Background="#161928" VerticalAlignment="Center" Margin="0,0,12,0">
+                                                                <Ellipse Width="10" Height="10" Fill="{StaticResource BrushPrimaryAccent}"
+                                                                         Visibility="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}, Converter={StaticResource BoolToVis}}" />
+                                                            </Border>
+                                                            <Border Grid.Column="1" Background="{StaticResource BrushPrimaryAccentDark}" CornerRadius="4" Padding="8,3" Margin="0,0,12,0" VerticalAlignment="Center">
+                                                                <TextBlock Text="{Binding QualityLabel}" FontWeight="Bold" Foreground="{StaticResource BrushPrimaryAccent}" FontSize="12" />
+                                                            </Border>
+                                                            <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                                                                <TextBlock Text="{Binding FormattedSize}" FontSize="12" Foreground="{StaticResource BrushTextPrimary}" FontWeight="SemiBold" />
+                                                                <TextBlock Text="{Binding Ext, StringFormat='Format: {0}'}" FontSize="11" Foreground="{StaticResource BrushTextMuted}" />
+                                                            </StackPanel>
+                                                            <!-- Seç / Seçildi Rozeti -->
+                                                            <Border Grid.Column="3" VerticalAlignment="Center" CornerRadius="6" Padding="12,5" Margin="0,0,8,0">
+                                                                <Border.Style>
+                                                                    <Style TargetType="Border">
+                                                                        <Setter Property="Background" Value="{StaticResource BrushPrimaryAccentDark}" />
+                                                                        <Style.Triggers>
+                                                                            <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
+                                                                                <Setter Property="Background" Value="{StaticResource BrushPrimaryAccent}" />
+                                                                            </DataTrigger>
+                                                                        </Style.Triggers>
+                                                                    </Style>
+                                                                </Border.Style>
+                                                                <TextBlock FontWeight="Bold" FontSize="11">
+                                                                    <TextBlock.Style>
+                                                                        <Style TargetType="TextBlock">
+                                                                            <Setter Property="Text" Value="Seç" />
+                                                                            <Setter Property="Foreground" Value="{StaticResource BrushPrimaryAccent}" />
+                                                                            <Style.Triggers>
+                                                                                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
+                                                                                    <Setter Property="Text" Value="✓ Seçildi" />
+                                                                                    <Setter Property="Foreground" Value="White" />
+                                                                                </DataTrigger>
+                                                                            </Style.Triggers>
+                                                                        </Style>
+                                                                    </TextBlock.Style>
+                                                                </TextBlock>
+                                                            </Border>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ListBox.ItemTemplate>
+                                            </ListBox>
+                                        </StackPanel>
+
+                                        <!-- Format Listesi (Ses Modu) -->
+                                        <StackPanel Grid.Row="0" Visibility="{Binding IsAudioMode, Converter={StaticResource BoolToVis}}">
+                                            <TextBlock Text="Ses Kalitesi ve Formatı:" FontSize="13" FontWeight="SemiBold" Foreground="{StaticResource BrushTextSecondary}" Margin="0,0,0,8" />
+                                            <Border Background="{StaticResource BrushSidebar}" CornerRadius="8" Padding="14">
+                                                <StackPanel>
+                                                    <TextBlock Text="Yüksek Kalite MP3 (320kbps / Orijinal Akış)" FontSize="14" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" />
+                                                    <TextBlock Text="FFmpeg motoru ile kayıpsız ses ayıklaması ve MP3 etiketleme uygulanır." FontSize="12" Foreground="{StaticResource BrushTextSecondary}" Margin="0,4,0,0" />
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+
+                                        <!-- Alt İndir Butonu Paneli -->
+                                        <Grid Grid.Row="1" Margin="0,20,0,0">
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                <TextBlock Text="Kaydedilecek Klasör: " FontSize="12" Foreground="{StaticResource BrushTextMuted}" />
+                                                <TextBlock Text="{Binding Settings.DownloadDirectory}" FontSize="12" Foreground="{StaticResource BrushTextSecondary}" TextTrimming="CharacterEllipsis" MaxWidth="400" />
+                                            </StackPanel>
+
+                                            <Button HorizontalAlignment="Right" Style="{StaticResource PrimaryButtonStyle}"
+                                                    Command="{Binding StartDownloadCommand}" Width="160">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <TextBlock Text="📥" Margin="0,0,8,0" />
+                                                    <TextBlock Text="Hemen İndir" FontSize="14" FontWeight="Bold" />
+                                                </StackPanel>
+                                            </Button>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <!-- ========================================== -->
+                    <!-- EKRAN 1: İNDİRME KUYRUĞU                   -->
+                    <!-- ========================================== -->
+                    <Grid Visibility="{Binding SelectedTab, Converter={StaticResource TabToVis}, ConverterParameter=1}" Margin="28,24">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Başlık -->
+                        <Grid Grid.Row="0" Margin="0,0,0,16">
+                            <StackPanel>
+                                <TextBlock Text="Aktif İndirme Kuyruğu" FontSize="24" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" />
+                                <TextBlock Text="Devam eden ve sıradaki medya indirmeleri" FontSize="13" Foreground="{StaticResource BrushTextSecondary}" Margin="0,4,0,0" />
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- Boş Kuyruk Mesajı -->
+                        <Border Grid.Row="1" Background="{StaticResource BrushCardSurface}" CornerRadius="12" Padding="32"
+                                Visibility="{Binding ActiveDownloads.Count, Converter={StaticResource InvBoolToVis}}">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Image Source="/Assets/logo.png" Width="72" Height="72" HorizontalAlignment="Center" Margin="0,0,0,12"
+                                       RenderOptions.BitmapScalingMode="HighQuality" />
+                                <TextBlock Text="Şu anda kuyrukta bekleyen bir indirme yok." FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource BrushTextPrimary}" HorizontalAlignment="Center" />
+                                <TextBlock Text="Ana sayfadan bir medya URL'si girip indirmeyi başlatabilirsiniz." FontSize="13" Foreground="{StaticResource BrushTextSecondary}" HorizontalAlignment="Center" Margin="0,4,0,16" />
+                                <Button Style="{StaticResource PrimaryButtonStyle}" HorizontalAlignment="Center" Command="{Binding SelectTabCommand}" CommandParameter="0" Content="Medya İndirmeye Git" />
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Kuyruk Listesi -->
+                        <ListBox Grid.Row="1" ItemsSource="{Binding ActiveDownloads}" Background="Transparent" BorderThickness="0"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="{StaticResource BrushCardSurface}" CornerRadius="12" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" Padding="16" Margin="0,4">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <!-- 1. Üst Başlık & Durum Rozeti -->
+                                            <Grid Grid.Row="0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <StackPanel Grid.Column="0">
+                                                    <TextBlock Text="{Binding Title}" FontSize="15" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" TextTrimming="CharacterEllipsis" />
+                                                    <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                                        <TextBlock Text="{Binding Platform}" FontSize="12" Foreground="{StaticResource BrushPrimaryAccent}" FontWeight="SemiBold" />
+                                                        <TextBlock Text=" • " FontSize="12" Foreground="{StaticResource BrushTextMuted}" />
+                                                        <TextBlock Text="{Binding SelectedQuality}" FontSize="12" Foreground="{StaticResource BrushTextSecondary}" />
+                                                    </StackPanel>
+                                                </StackPanel>
+
+                                                <!-- Durum Rozeti -->
+                                                <Border Grid.Column="1" Background="{StaticResource BrushSidebar}" CornerRadius="6" Padding="8,4" VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding StatusText}" FontSize="12" FontWeight="Bold" Foreground="{Binding Status, Converter={StaticResource StatusToBrush}}" />
+                                                </Border>
+                                            </Grid>
+
+                                            <!-- 2. İlerleme Çubuğu -->
+                                            <ProgressBar Grid.Row="1" Style="{StaticResource ModernProgressBarStyle}" Value="{Binding ProgressPercentage}" Maximum="100" Margin="0,12" />
+
+                                            <!-- 3. İstatistikler (Hız, Yüzde, ETA) ve Aksiyon Butonları -->
+                                            <Grid Grid.Row="2">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                                                    <TextBlock Text="{Binding ProgressPercentage, StringFormat='{}{0:F1}%'}" FontSize="13" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" />
+                                                    <TextBlock Text="  |  Hız: " FontSize="12" Foreground="{StaticResource BrushTextMuted}" />
+                                                    <TextBlock Text="{Binding DownloadSpeed}" FontSize="12" Foreground="{StaticResource BrushTextSecondary}" FontWeight="Medium" />
+                                                    <TextBlock Text="  |  Kalan: " FontSize="12" Foreground="{StaticResource BrushTextMuted}" />
+                                                    <TextBlock Text="{Binding Eta}" FontSize="12" Foreground="{StaticResource BrushTextSecondary}" FontWeight="Medium" />
+                                                </StackPanel>
+
+                                                <!-- Butonlar (Ayrı sütunda, ASLA metinle çakışmaz) -->
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                                    <Button Style="{StaticResource SecondaryButtonStyle}" Padding="10,4" Margin="6,0,0,0"
+                                                            Content="İptal Et"
+                                                            Visibility="{Binding CanCancel, Converter={StaticResource BoolToVis}}"
+                                                            Command="{Binding DataContext.CancelDownloadCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                            CommandParameter="{Binding}" />
+                                                    <Button Style="{StaticResource SecondaryButtonStyle}" Padding="10,4" Margin="6,0,0,0"
+                                                            Content="Yeniden Dene"
+                                                            Visibility="{Binding CanRetry, Converter={StaticResource BoolToVis}}"
+                                                            Command="{Binding DataContext.RetryDownloadCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                            CommandParameter="{Binding}" />
+                                                    <Button Style="{StaticResource SecondaryButtonStyle}" Padding="10,4" Margin="6,0,0,0"
+                                                            Content="Kaldır"
+                                                            Visibility="{Binding CanRemove, Converter={StaticResource BoolToVis}}"
+                                                            Command="{Binding DataContext.RemoveDownloadCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                            CommandParameter="{Binding}" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+
+                    <!-- ========================================== -->
+                    <!-- EKRAN 2: TAMAMLANANLAR (GEÇMİŞ LİSTESİ)    -->
+                    <!-- ========================================== -->
+                    <Grid Visibility="{Binding SelectedTab, Converter={StaticResource TabToVis}, ConverterParameter=2}" Margin="28,24">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Başlık & Temizle Butonu -->
+                        <Grid Grid.Row="0" Margin="0,0,0,16">
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock Text="Tamamlanan İndirmeler" FontSize="24" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" />
+                                <TextBlock Text="Daha önce başarıyla indirilen medya kayıtları" FontSize="13" Foreground="{StaticResource BrushTextSecondary}" Margin="0,4,0,0" />
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <Button Style="{StaticResource SecondaryButtonStyle}" Margin="0,0,10,0"
+                                        Command="{Binding OpenFolderCommand}" Content="İndirme Klasörünü Aç" />
+                                <Button Style="{StaticResource SecondaryButtonStyle}"
+                                        Command="{Binding ClearHistoryCommand}" Content="Geçmişi Temizle" />
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- Boş Geçmiş Bildirimi -->
+                        <Border Grid.Row="1" Background="{StaticResource BrushCardSurface}" CornerRadius="12" Padding="32"
+                                Visibility="{Binding CompletedDownloads.Count, Converter={StaticResource InvBoolToVis}}">
+                            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Image Source="/Assets/logo.png" Width="72" Height="72" HorizontalAlignment="Center" Margin="0,0,0,12"
+                                       RenderOptions.BitmapScalingMode="HighQuality" />
+                                <TextBlock Text="Henüz tamamlanan indirme kaydı yok." FontSize="16" FontWeight="SemiBold" Foreground="{StaticResource BrushTextPrimary}" HorizontalAlignment="Center" />
+                                <TextBlock Text="İndirilen dosyalarınız burada listelenecektir." FontSize="13" Foreground="{StaticResource BrushTextSecondary}" HorizontalAlignment="Center" Margin="0,4,0,0" />
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Geçmiş Tablosu -->
+                        <ListBox Grid.Row="1" ItemsSource="{Binding CompletedDownloads}" Background="Transparent" BorderThickness="0"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Background="{StaticResource BrushCardSurface}" CornerRadius="10" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" Padding="14,12" Margin="0,3">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!-- Medya Başlığı & Detaylar -->
+                                            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                                <TextBlock Text="{Binding Title}" FontSize="14" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" TextTrimming="CharacterEllipsis" />
+                                                <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                                    <TextBlock Text="{Binding Platform}" FontSize="11" Foreground="{StaticResource BrushPrimaryAccent}" FontWeight="SemiBold" />
+                                                    <TextBlock Text=" • " FontSize="11" Foreground="{StaticResource BrushTextMuted}" />
+                                                    <TextBlock Text="{Binding FileSizeFormatted}" FontSize="11" Foreground="{StaticResource BrushTextSecondary}" />
+                                                    <TextBlock Text=" • " FontSize="11" Foreground="{StaticResource BrushTextMuted}" />
+                                                    <TextBlock Text="{Binding CompletedAt, StringFormat='{}{0:dd.MM.yyyy HH:mm}'}" FontSize="11" Foreground="{StaticResource BrushTextMuted}" />
+                                                </StackPanel>
+                                            </StackPanel>
+
+                                            <!-- Dosya Durumu Rozeti -->
+                                            <Border Grid.Column="1" Background="{StaticResource BrushSidebar}" CornerRadius="4" Padding="6,2" VerticalAlignment="Center" Margin="12,0">
+                                                <TextBlock Text="Kayıtlı" FontSize="11" Foreground="{StaticResource BrushSuccess}" FontWeight="SemiBold" />
+                                            </Border>
+
+                                            <!-- Butonlar -->
+                                            <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                                                <Button Style="{StaticResource PrimaryButtonStyle}" Padding="10,6" Margin="0,0,6,0" Content="▶ Oynat"
+                                                        Command="{Binding DataContext.OpenFileCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                        CommandParameter="{Binding}" />
+                                                <Button Style="{StaticResource SecondaryButtonStyle}" Padding="10,6" Content="📂 Klasörde Göster"
+                                                        Command="{Binding DataContext.OpenFolderCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                        CommandParameter="{Binding}" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+
+                    <!-- ========================================== -->
+                    <!-- EKRAN 3: AYARLAR                           -->
+                    <!-- ========================================== -->
+                    <ScrollViewer Visibility="{Binding SelectedTab, Converter={StaticResource TabToVis}, ConverterParameter=3}"
+                                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
+                                  Padding="28,24">
+                        <StackPanel MaxWidth="800" HorizontalAlignment="Stretch">
+                            <TextBlock Text="Uygulama Ayarları" FontSize="24" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" />
+                            <TextBlock Text="İndirme konumu, motor yolları ve davranış yapılandırması" FontSize="13" Foreground="{StaticResource BrushTextSecondary}" Margin="0,4,0,20" />
+
+                            <!-- İndirme Konumu Kartı -->
+                            <Border Background="{StaticResource BrushCardSurface}" CornerRadius="12" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" Padding="18" Margin="0,0,0,16">
+                                <StackPanel>
+                                    <TextBlock Text="İndirme Konumu" FontSize="15" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" />
+                                    <TextBlock Text="Medya dosyalarının kaydedileceği yerel klasör" FontSize="12" Foreground="{StaticResource BrushTextSecondary}" Margin="0,2,0,10" />
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox Grid.Column="0" Text="{Binding Settings.DownloadDirectory, UpdateSourceTrigger=PropertyChanged}"
+                                                 Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,10,0" IsReadOnly="True" />
+                                        <Button Grid.Column="1" Style="{StaticResource SecondaryButtonStyle}"
+                                                Command="{Binding BrowseDownloadFolderCommand}" Content="Klasör Seç..." />
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Medya Motorları Yapılandırması -->
+                            <Border Background="{StaticResource BrushCardSurface}" CornerRadius="12" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" Padding="18" Margin="0,0,0,16">
+                                <StackPanel>
+                                    <TextBlock Text="Yerel Medya Motorları" FontSize="15" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" />
+                                    <TextBlock Text="yt-dlp ve FFmpeg yerel yürütülebilir dosyaları" FontSize="12" Foreground="{StaticResource BrushTextSecondary}" Margin="0,2,0,14" />
+
+                                    <!-- yt-dlp yolu -->
+                                    <TextBlock Text="Özel yt-dlp Yolu (İsteğe Bağlı):" FontSize="12" Foreground="{StaticResource BrushTextSecondary}" Margin="0,0,0,4" />
+                                    <TextBox Text="{Binding Settings.CustomYtDlpPath, UpdateSourceTrigger=PropertyChanged}"
+                                             Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,0,12" />
+
+                                    <!-- ffmpeg yolu -->
+                                    <TextBlock Text="Özel FFmpeg Yolu (İsteğe Bağlı):" FontSize="12" Foreground="{StaticResource BrushTextSecondary}" Margin="0,0,0,4" />
+                                    <TextBox Text="{Binding Settings.CustomFfmpegPath, UpdateSourceTrigger=PropertyChanged}"
+                                             Style="{StaticResource ModernTextBoxStyle}" Margin="0,0,0,16" />
+
+                                    <Button Style="{StaticResource PrimaryButtonStyle}" HorizontalAlignment="Left"
+                                            Command="{Binding SaveSettingsCommand}" Content="Ayarları Kaydet" />
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Davranış Ayarları -->
+                            <Border Background="{StaticResource BrushCardSurface}" CornerRadius="12" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" Padding="18">
+                                <StackPanel>
+                                    <TextBlock Text="Davranış ve Bildirimler" FontSize="15" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" />
+                                    <TextBlock Text="İndirme tamamlandığında yapılacak işlemler" FontSize="12" Foreground="{StaticResource BrushTextSecondary}" Margin="0,2,0,12" />
+
+                                    <CheckBox Content="İndirme tamamlandığında hedef klasörü otomatik olarak aç"
+                                              IsChecked="{Binding Settings.AutoOpenFolderAfterDownload}"
+                                              Foreground="{StaticResource BrushTextPrimary}" FontSize="13" Margin="0,4" />
+                                    <CheckBox Content="Bildirim sesi çal"
+                                              IsChecked="{Binding Settings.PlayNotificationSound}"
+                                              Foreground="{StaticResource BrushTextPrimary}" FontSize="13" Margin="0,4" />
+                                </StackPanel>
+                            </Border>
+
+                            <!-- ========================================== -->
+                            <!-- Lisans ve Açık Kaynak Bilgisi (GPL 3.0)    -->
+                            <!-- ========================================== -->
+                            <Border Background="{StaticResource BrushCardSurface}" CornerRadius="12" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" Padding="18" Margin="0,16,0,24">
+                                <StackPanel>
+                                    <Grid Margin="0,0,0,12">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                            <Border Background="#1E1B4B" CornerRadius="6" Padding="8,4" Margin="0,0,10,0">
+                                                <TextBlock Text="GNU GPL v3.0" FontSize="11" FontWeight="Bold" Foreground="#A5B4FC" />
+                                            </Border>
+                                            <TextBlock Text="Açık Kaynak Lisansı ve Yasal Bilgiler" FontSize="15" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" VerticalAlignment="Center" />
+                                        </StackPanel>
+
+                                        <Button HorizontalAlignment="Right" Style="{StaticResource SecondaryButtonStyle}"
+                                                Command="{Binding OpenLicenseModalCommand}" Content="Lisans Metnini Görüntüle" />
+                                    </Grid>
+
+                                    <TextBlock Text="DVVdownloader, GNU Genel Kamu Lisansı Sürüm 3 (GPL-3.0) altında lisanslanmış %100 özgür ve açık kaynaklı bir yazılımdır."
+                                               FontSize="13" Foreground="{StaticResource BrushTextPrimary}" TextWrapping="Wrap" Margin="0,0,0,6" />
+                                    <TextBlock Text="Bu yazılımı özgürce kullanabilir, kaynak kodlarını inceleyebilir, ihtiyaçlarınıza göre değiştirebilir ve GPL-3.0 şartlarına bağlı kalarak yeniden dağıtabilirsiniz. Yazılım hiçbir gizli telemetri, izleme veya ticari kısıtlama içermez."
+                                               FontSize="12" Foreground="{StaticResource BrushTextSecondary}" TextWrapping="Wrap" Margin="0,0,0,14" />
+
+                                    <Border Background="#10131E" CornerRadius="8" Padding="12" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1">
+                                        <StackPanel>
+                                            <TextBlock Text="Kullanılan Üçüncü Taraf Açık Kaynak Bileşenler:" FontSize="12" FontWeight="SemiBold" Foreground="{StaticResource BrushTextPrimary}" Margin="0,0,0,6" />
+                                            <TextBlock Text="• yt-dlp: The Unlicense (Kamu Malı / Özgür Yazılım)" FontSize="11" Foreground="{StaticResource BrushTextSecondary}" Margin="0,2" />
+                                            <TextBlock Text="• FFmpeg: GNU LGPL v2.1+ / GPL v3 (GyanFFmpeg yerel derlemesi)" FontSize="11" Foreground="{StaticResource BrushTextSecondary}" Margin="0,2" />
+                                            <TextBlock Text="• .NET 10 / WPF: MIT Lisansı (Microsoft Corporation)" FontSize="11" Foreground="{StaticResource BrushTextSecondary}" Margin="0,2" />
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+
+                    <!-- ========================================== -->
+                    <!-- EKRAN 4: İŞLEM VE HATA GÜNLÜĞÜ (CANLI LOG)  -->
+                    <!-- ========================================== -->
+                    <Grid Visibility="{Binding SelectedTab, Converter={StaticResource TabToVis}, ConverterParameter=4}" Margin="28,24">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Başlık & Log Temizle Butonu -->
+                        <Grid Grid.Row="0" Margin="0,0,0,16">
+                            <StackPanel>
+                                <TextBlock Text="İşlem ve Hata Günlüğü" FontSize="24" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" />
+                                <TextBlock Text="Canlı terminal ve motor çalışma detayları" FontSize="13" Foreground="{StaticResource BrushTextSecondary}" Margin="0,4,0,0" />
+                            </StackPanel>
+
+                            <Button HorizontalAlignment="Right" Style="{StaticResource SecondaryButtonStyle}"
+                                    Command="{Binding ClearLogsCommand}" Content="Günlüğü Temizle" />
+                        </Grid>
+
+                        <!-- Konsol Kartı -->
+                        <Border Grid.Row="1" Background="#06070B" CornerRadius="10" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" Padding="14">
+                            <ListBox ItemsSource="{Binding Logs}" Background="Transparent" BorderThickness="0"
+                                     FontFamily="Consolas, Cascadia Code, Courier New" FontSize="12"
+                                     ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Margin="0,2">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="90" />
+                                                <ColumnDefinition Width="70" />
+                                                <ColumnDefinition Width="100" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding FormattedTime}" Foreground="{StaticResource BrushTextMuted}" />
+                                            <TextBlock Grid.Column="1" Text="{Binding LevelBadge}" Foreground="{StaticResource BrushPrimaryAccent}" FontWeight="Bold" />
+                                            <TextBlock Grid.Column="2" Text="{Binding Source, StringFormat='[{0}]'}" Foreground="{StaticResource BrushTextSecondary}" />
+                                            <TextBlock Grid.Column="3" Text="{Binding Message}" Foreground="{StaticResource BrushTextPrimary}" TextWrapping="Wrap" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </Border>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+
+            <!-- ========================================== -->
+            <!-- LİSANS DETAY MODAL DİYALOĞU                -->
+            <!-- ========================================== -->
+            <Grid Grid.RowSpan="2" Panel.ZIndex="1000"
+                  Visibility="{Binding IsLicenseModalOpen, Converter={StaticResource BoolToVis}}"
+                  Background="#CC06070B" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Border Background="#10131E" CornerRadius="14"
+                        BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1"
+                        MaxWidth="720" MaxHeight="560" Margin="40"
+                        VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Başlık -->
+                        <Border Grid.Row="0" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="0,0,0,1" Padding="20,16">
+                            <Grid>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <Border Background="#1E1B4B" CornerRadius="6" Padding="8,4" Margin="0,0,10,0">
+                                        <TextBlock Text="GNU GPL v3.0" FontSize="11" FontWeight="Bold" Foreground="#A5B4FC" />
+                                    </Border>
+                                    <TextBlock Text="GNU General Public License Sürüm 3" FontSize="16" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" VerticalAlignment="Center" />
+                                </StackPanel>
+                                <Button HorizontalAlignment="Right" Style="{StaticResource WindowControlButtonStyle}"
+                                        Command="{Binding CloseLicenseModalCommand}" Content="✕" Width="32" Height="32" />
+                            </Grid>
+                        </Border>
+
+                        <!-- Lisans Metni Gövdesi -->
+                        <ScrollViewer Grid.Row="1" Padding="18" VerticalScrollBarVisibility="Auto">
+                            <TextBox Text="{Binding FullGplLicenseText, Mode=OneWay}"
+                                     IsReadOnly="True" TextWrapping="Wrap" Background="Transparent"
+                                     Foreground="{StaticResource BrushTextSecondary}" BorderThickness="0"
+                                     FontFamily="Consolas, Cascadia Code, Courier New" FontSize="11.5" />
+                        </ScrollViewer>
+
+                        <!-- Alt Kısım / Kapat Butonu -->
+                        <Border Grid.Row="2" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="0,1,0,0" Padding="20,14" Background="{StaticResource BrushCardSurface}">
+                            <Grid>
+                                <TextBlock Text="Özgür Yazılım Vakfı (FSF) — Telif Hakkı (C) 2007 - 2026 DVVdownloader"
+                                           FontSize="11" Foreground="{StaticResource BrushTextMuted}" VerticalAlignment="Center" />
+                                <Button HorizontalAlignment="Right" Style="{StaticResource PrimaryButtonStyle}"
+                                        Command="{Binding CloseLicenseModalCommand}" Content="Kapat" Padding="20,8" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
