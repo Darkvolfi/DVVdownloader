@@ -1,7 +1,16 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
+
+// Release imza anahtarı depo dışında tutulur (~/.android-keys/dvvdownloader/keystore.properties).
+// DVV_KEYSTORE_PROPS ortam değişkeniyle başka bir konum verilebilir; dosya yoksa release imzasız derlenir.
+val releaseKeystoreProps = file(
+    System.getenv("DVV_KEYSTORE_PROPS")
+        ?: "${System.getProperty("user.home")}/.android-keys/dvvdownloader/keystore.properties"
+).takeIf { it.exists() }?.let { f -> Properties().apply { f.inputStream().use { load(it) } } }
 
 android {
     namespace = "com.dvv.downloader"
@@ -34,8 +43,20 @@ android {
         }
     }
 
+    signingConfigs {
+        if (releaseKeystoreProps != null) {
+            create("release") {
+                storeFile = file(releaseKeystoreProps.getProperty("storeFile"))
+                storePassword = releaseKeystoreProps.getProperty("storePassword")
+                keyAlias = releaseKeystoreProps.getProperty("keyAlias")
+                keyPassword = releaseKeystoreProps.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig = signingConfigs.findByName("release")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
