@@ -118,4 +118,7 @@
     <string name="err_engine_not_started">The download engine wasn\'t started.</string>
     <string name="err_engine_init">Couldn\'t start the download engine (yt-dlp): %1$s</string>
     <string name="err_unknown_download">Unknown download error</string>
+    <string name="support_email" translatable="false">support@darkvolfi.com</string>
+    <string name="support_title">Support &amp; contact</string>
+    <string name="support_desc">Questions, bug reports or copyright concerns? Email us:</string>
 </resources>

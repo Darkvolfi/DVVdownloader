@@ -5,7 +5,7 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="WindowTitle" xml:space="preserve"><value>DVVdownloader — أداة تنزيل الوسائط محليًا</value></data>
-  <data name="VersionBadge" xml:space="preserve"><value>v1.1 محلي</value></data>
+  <data name="VersionBadge" xml:space="preserve"><value>v1.2 محلي</value></data>
   <data name="TipMinimize" xml:space="preserve"><value>تصغير</value></data>
   <data name="TipMaximize" xml:space="preserve"><value>تكبير / استعادة</value></data>
   <data name="Close" xml:space="preserve"><value>إغلاق</value></data>
@@ -125,4 +125,6 @@
   <data name="FileMissingTitle" xml:space="preserve"><value>تعذّر فتح الملف</value></data>
   <data name="ChooseDownloadFolder" xml:space="preserve"><value>اختر مجلد التنزيلات</value></data>
   <data name="ClearHistoryConfirm" xml:space="preserve"><value>هل تريد بالتأكيد مسح سجل التنزيلات؟ (لن تُحذف ملفاتك المنزّلة.)</value></data>
+  <data name="SupportTitle" xml:space="preserve"><value>الدعم والتواصل</value></data>
+  <data name="SupportDesc" xml:space="preserve"><value>لديك سؤال أو بلاغ عن خطأ أو شكوى تتعلق بحقوق النشر؟ راسلنا على:</value></data>
 </root>

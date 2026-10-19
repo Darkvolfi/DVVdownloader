@@ -20,6 +20,7 @@
 - Download history
 - **Android:** share a link from any app (YouTube, Pinterest, browser…) straight into DVVdownloader
 - **Android:** the embedded yt-dlp updates itself on launch, so site changes are picked up without a new app release
+- Available in 12 languages — English, Türkçe, Deutsch, Español, Français, Português, Русский, العربية, Bahasa Indonesia, हिन्दी, 日本語, 简体中文 — and follows your device language automatically (falls back to English)
 - No accounts, no ads, no telemetry
 
 ## Supported sites
@@ -117,6 +118,12 @@ tests/DVVdownloader.Tests/   xUnit tests for the Windows app
 DVVdownloader is intended for downloading content you have the right to download — your own uploads,
 content under a permissive license, or content the owner allows to be saved. Respect the terms of service
 of the sites you use and the copyright of the creators.
+
+## Support & contact
+
+Questions, bug reports, or copyright and takedown requests: **[support@darkvolfi.com](mailto:support@darkvolfi.com)**
+
+Bug reports and feature requests are also welcome on the [Issues](../../issues) page.
 
 ## License
 

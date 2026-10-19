@@ -5,7 +5,7 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="WindowTitle" xml:space="preserve"><value>DVVdownloader — Pengunduh Media Lokal</value></data>
-  <data name="VersionBadge" xml:space="preserve"><value>v1.1 Lokal</value></data>
+  <data name="VersionBadge" xml:space="preserve"><value>v1.2 Lokal</value></data>
   <data name="TipMinimize" xml:space="preserve"><value>Perkecil</value></data>
   <data name="TipMaximize" xml:space="preserve"><value>Perbesar / Pulihkan</value></data>
   <data name="Close" xml:space="preserve"><value>Tutup</value></data>
@@ -125,4 +125,6 @@
   <data name="FileMissingTitle" xml:space="preserve"><value>Tidak dapat membuka file</value></data>
   <data name="ChooseDownloadFolder" xml:space="preserve"><value>Pilih folder unduhan</value></data>
   <data name="ClearHistoryConfirm" xml:space="preserve"><value>Yakin ingin menghapus riwayat unduhan? (File yang sudah diunduh tidak akan dihapus.)</value></data>
+  <data name="SupportTitle" xml:space="preserve"><value>Dukungan &amp; kontak</value></data>
+  <data name="SupportDesc" xml:space="preserve"><value>Ada pertanyaan, laporan bug, atau keluhan hak cipta? Kirim email ke:</value></data>
 </root>

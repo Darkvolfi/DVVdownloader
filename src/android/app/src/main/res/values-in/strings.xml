@@ -106,4 +106,6 @@
     <string name="err_engine_not_started">Mesin unduhan belum dijalankan.</string>
     <string name="err_engine_init">Tidak dapat menjalankan mesin unduhan (yt-dlp): %1$s</string>
     <string name="err_unknown_download">Kesalahan unduhan yang tidak diketahui</string>
+    <string name="support_title">Dukungan &amp; kontak</string>
+    <string name="support_desc">Ada pertanyaan, laporan bug, atau keluhan hak cipta? Kirim email ke:</string>
 </resources>

@@ -105,4 +105,6 @@
     <string name="err_engine_not_started">Die Download-Engine wurde nicht gestartet.</string>
     <string name="err_engine_init">Die Download-Engine (yt-dlp) konnte nicht gestartet werden: %1$s</string>
     <string name="err_unknown_download">Unbekannter Downloadfehler</string>
+    <string name="support_title">Support &amp; Kontakt</string>
+    <string name="support_desc">Fragen, Fehlermeldungen oder Urheberrechtsanliegen? Schreib uns:</string>
 </resources>

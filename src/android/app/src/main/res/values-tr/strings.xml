@@ -114,4 +114,6 @@
     <string name="err_engine_not_started">İndirme motoru başlatılmadı.</string>
     <string name="err_engine_init">İndirme motoru (yt-dlp) başlatılamadı: %1$s</string>
     <string name="err_unknown_download">Bilinmeyen indirme hatası</string>
+    <string name="support_title">Destek ve İletişim</string>
+    <string name="support_desc">Soru, hata bildirimi veya telif hakkı talepleriniz için bize yazın:</string>
 </resources>

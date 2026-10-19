@@ -5,7 +5,7 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="WindowTitle" xml:space="preserve"><value>DVVdownloader — Lokaler Mediendownloader</value></data>
-  <data name="VersionBadge" xml:space="preserve"><value>v1.1 Lokal</value></data>
+  <data name="VersionBadge" xml:space="preserve"><value>v1.2 Lokal</value></data>
   <data name="TipMinimize" xml:space="preserve"><value>Minimieren</value></data>
   <data name="TipMaximize" xml:space="preserve"><value>Maximieren / Wiederherstellen</value></data>
   <data name="Close" xml:space="preserve"><value>Schließen</value></data>
@@ -125,4 +125,6 @@
   <data name="FileMissingTitle" xml:space="preserve"><value>Datei kann nicht geöffnet werden</value></data>
   <data name="ChooseDownloadFolder" xml:space="preserve"><value>Downloadordner wählen</value></data>
   <data name="ClearHistoryConfirm" xml:space="preserve"><value>Möchtest du den Downloadverlauf wirklich löschen? (Deine heruntergeladenen Dateien werden nicht gelöscht.)</value></data>
+  <data name="SupportTitle" xml:space="preserve"><value>Support &amp; Kontakt</value></data>
+  <data name="SupportDesc" xml:space="preserve"><value>Fragen, Fehlermeldungen oder Urheberrechtsanliegen? Schreib uns:</value></data>
 </root>

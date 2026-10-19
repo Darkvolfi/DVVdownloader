@@ -105,4 +105,6 @@
     <string name="err_engine_not_started">डाउनलोड इंजन शुरू नहीं हुआ।</string>
     <string name="err_engine_init">डाउनलोड इंजन (yt-dlp) शुरू नहीं हो सका: %1$s</string>
     <string name="err_unknown_download">डाउनलोड में अज्ञात गड़बड़ी</string>
+    <string name="support_title">सहायता और संपर्क</string>
+    <string name="support_desc">सवाल, गड़बड़ी की रिपोर्ट या कॉपीराइट से जुड़ी शिकायत? हमें लिखें:</string>
 </resources>

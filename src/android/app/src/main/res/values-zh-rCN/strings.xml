@@ -105,4 +105,6 @@
     <string name="err_engine_not_started">下载引擎未启动。</string>
     <string name="err_engine_init">无法启动下载引擎（yt-dlp）：%1$s</string>
     <string name="err_unknown_download">未知的下载错误</string>
+    <string name="support_title">支持与联系</string>
+    <string name="support_desc">如有问题、错误反馈或版权相关事宜，请发邮件至：</string>
 </resources>

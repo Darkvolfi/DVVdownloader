@@ -105,4 +105,6 @@
     <string name="err_engine_not_started">Le moteur de téléchargement n\'a pas été démarré.</string>
     <string name="err_engine_init">Impossible de démarrer le moteur de téléchargement (yt-dlp) : %1$s</string>
     <string name="err_unknown_download">Erreur de téléchargement inconnue</string>
+    <string name="support_title">Assistance et contact</string>
+    <string name="support_desc">Questions, bugs ou réclamations de droits d\'auteur ? Écrivez-nous :</string>
 </resources>

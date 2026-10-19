@@ -105,4 +105,6 @@
     <string name="err_engine_not_started">لم يتم تشغيل محرّك التنزيل.</string>
     <string name="err_engine_init">تعذّر تشغيل محرّك التنزيل (yt-dlp): %1$s</string>
     <string name="err_unknown_download">خطأ غير معروف في التنزيل</string>
+    <string name="support_title">الدعم والتواصل</string>
+    <string name="support_desc">لديك سؤال أو بلاغ عن خطأ أو شكوى تتعلق بحقوق النشر؟ راسلنا على:</string>
 </resources>

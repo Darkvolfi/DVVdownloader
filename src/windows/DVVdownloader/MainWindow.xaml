@@ -724,6 +724,18 @@
                                 </StackPanel>
                             </Border>
 
+                            <!-- Destek ve İletişim -->
+                            <Border Background="{StaticResource BrushCardSurface}" CornerRadius="12" BorderBrush="{StaticResource BrushCardBorder}" BorderThickness="1" Padding="18" Margin="0,16,0,0">
+                                <StackPanel>
+                                    <TextBlock Text="{l:Loc SupportTitle}" FontSize="15" FontWeight="Bold" Foreground="{StaticResource BrushTextPrimary}" />
+                                    <TextBlock Text="{l:Loc SupportDesc}" FontSize="12" Foreground="{StaticResource BrushTextSecondary}" Margin="0,2,0,8" TextWrapping="Wrap" />
+                                    <TextBlock FontSize="14" FontWeight="SemiBold">
+                                        <Hyperlink NavigateUri="mailto:support@darkvolfi.com" RequestNavigate="Hyperlink_RequestNavigate"
+                                                   Foreground="{StaticResource BrushPrimaryAccent}">support@darkvolfi.com</Hyperlink>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
+
                             <!-- ========================================== -->
                             <!-- Lisans ve Açık Kaynak Bilgisi (GPL 3.0)    -->
                             <!-- ========================================== -->
