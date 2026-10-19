@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="WindowTitle" xml:space="preserve"><value>DVVdownloader — локальный загрузчик медиа</value></data>
+  <data name="VersionBadge" xml:space="preserve"><value>v1.1 Локально</value></data>
+  <data name="TipMinimize" xml:space="preserve"><value>Свернуть</value></data>
+  <data name="TipMaximize" xml:space="preserve"><value>Развернуть / Восстановить</value></data>
+  <data name="Close" xml:space="preserve"><value>Закрыть</value></data>
+  <data name="NavDownload" xml:space="preserve"><value>Скачать медиа</value></data>
+  <data name="NavQueue" xml:space="preserve"><value>Очередь</value></data>
+  <data name="NavCompleted" xml:space="preserve"><value>Готово</value></data>
+  <data name="NavSettings" xml:space="preserve"><value>Настройки</value></data>
+  <data name="NavLog" xml:space="preserve"><value>Журнал</value></data>
+  <data name="EngineStatus" xml:space="preserve"><value>СОСТОЯНИЕ ДВИЖКА</value></data>
+  <data name="HomeTitle" xml:space="preserve"><value>Быстрые локальные загрузки</value></data>
+  <data name="HomeSubtitle" xml:space="preserve"><value>Скачивайте с YouTube, Pinterest и многих других сайтов или по прямой ссылке на видео</value></data>
+  <data name="UrlPlaceholder" xml:space="preserve"><value>Вставьте ссылку сюда (https://...)</value></data>
+  <data name="TipPaste" xml:space="preserve"><value>Вставить ссылку из буфера обмена и проанализировать</value></data>
+  <data name="Paste" xml:space="preserve"><value>Вставить</value></data>
+  <data name="Analyze" xml:space="preserve"><value>Анализ</value></data>
+  <data name="DetectedSource" xml:space="preserve"><value>Источник: </value></data>
+  <data name="ClearInput" xml:space="preserve"><value>Очистить</value></data>
+  <data name="AnalyzingHint" xml:space="preserve"><value>В зависимости от источника это может занять несколько секунд.</value></data>
+  <data name="AnalysisFailedTitle" xml:space="preserve"><value>Не удалось получить данные</value></data>
+  <data name="ModeVideo" xml:space="preserve"><value>🎬 Скачать как видео (MP4)</value></data>
+  <data name="ModeAudio" xml:space="preserve"><value>🎵 Скачать только звук (MP3)</value></data>
+  <data name="AvailableResolutions" xml:space="preserve"><value>Доступные разрешения:</value></data>
+  <data name="AudioQualityFormat" xml:space="preserve"><value>Качество и формат звука:</value></data>
+  <data name="AudioMp3High" xml:space="preserve"><value>MP3 высокого качества (лучшее доступное)</value></data>
+  <data name="AudioMp3Desc" xml:space="preserve"><value>Звук извлекается и конвертируется в MP3 с помощью FFmpeg.</value></data>
+  <data name="SaveFolder" xml:space="preserve"><value>Сохранить в: </value></data>
+  <data name="DownloadNow" xml:space="preserve"><value>Скачать</value></data>
+  <data name="QueueTitle" xml:space="preserve"><value>Очередь загрузок</value></data>
+  <data name="QueueSubtitle" xml:space="preserve"><value>Текущие и ожидающие загрузки</value></data>
+  <data name="QueueEmptyTitle" xml:space="preserve"><value>Сейчас очередь пуста.</value></data>
+  <data name="QueueEmptyHint" xml:space="preserve"><value>Вставьте ссылку на главной странице, чтобы начать загрузку.</value></data>
+  <data name="GoToDownload" xml:space="preserve"><value>Перейти к загрузке</value></data>
+  <data name="SpeedPrefix" xml:space="preserve"><value>  |  Скорость: </value></data>
+  <data name="EtaPrefix" xml:space="preserve"><value>  |  Осталось: </value></data>
+  <data name="Cancel" xml:space="preserve"><value>Отмена</value></data>
+  <data name="Retry" xml:space="preserve"><value>Повторить</value></data>
+  <data name="Remove" xml:space="preserve"><value>Убрать</value></data>
+  <data name="CompletedTitle" xml:space="preserve"><value>Завершённые загрузки</value></data>
+  <data name="CompletedSubtitle" xml:space="preserve"><value>Медиа, которые вы уже скачали</value></data>
+  <data name="OpenDownloadFolder" xml:space="preserve"><value>Открыть папку загрузок</value></data>
+  <data name="ClearHistory" xml:space="preserve"><value>Очистить историю</value></data>
+  <data name="CompletedEmptyTitle" xml:space="preserve"><value>Завершённых загрузок пока нет.</value></data>
+  <data name="CompletedEmptyHint" xml:space="preserve"><value>Здесь появятся скачанные файлы.</value></data>
+  <data name="Saved" xml:space="preserve"><value>Сохранено</value></data>
+  <data name="Play" xml:space="preserve"><value>▶ Открыть</value></data>
+  <data name="ShowInFolder" xml:space="preserve"><value>📂 Показать в папке</value></data>
+  <data name="SettingsTitle" xml:space="preserve"><value>Настройки</value></data>
+  <data name="SettingsSubtitle" xml:space="preserve"><value>Язык, папка загрузок, пути к движкам и поведение</value></data>
+  <data name="LanguageTitle" xml:space="preserve"><value>Язык</value></data>
+  <data name="LanguageDesc" xml:space="preserve"><value>Приложение автоматически использует язык Windows. Если язык не поддерживается, используется английский.</value></data>
+  <data name="LanguageSystem" xml:space="preserve"><value>Язык системы</value></data>
+  <data name="LanguageRestartMessage" xml:space="preserve"><value>Новый язык будет применён после перезапуска DVVdownloader. Перезапустить сейчас?</value></data>
+  <data name="LanguageRestartTitle" xml:space="preserve"><value>Язык изменён</value></data>
+  <data name="DownloadLocation" xml:space="preserve"><value>Папка загрузок</value></data>
+  <data name="DownloadLocationDesc" xml:space="preserve"><value>Папка, в которую сохраняются файлы</value></data>
+  <data name="ChooseFolder" xml:space="preserve"><value>Выбрать папку…</value></data>
+  <data name="EnginesTitle" xml:space="preserve"><value>Медиадвижки</value></data>
+  <data name="EnginesDesc" xml:space="preserve"><value>Локальные программы yt-dlp и FFmpeg</value></data>
+  <data name="CustomYtDlpPath" xml:space="preserve"><value>Свой путь к yt-dlp (необязательно):</value></data>
+  <data name="CustomFfmpegPath" xml:space="preserve"><value>Свой путь к FFmpeg (необязательно):</value></data>
+  <data name="SaveSettings" xml:space="preserve"><value>Сохранить настройки</value></data>
+  <data name="BehaviorTitle" xml:space="preserve"><value>Поведение и уведомления</value></data>
+  <data name="BehaviorDesc" xml:space="preserve"><value>Что происходит после завершения загрузки</value></data>
+  <data name="AutoOpenFolder" xml:space="preserve"><value>Открывать папку загрузок после завершения</value></data>
+  <data name="PlaySound" xml:space="preserve"><value>Воспроизводить звук уведомления</value></data>
+  <data name="LicenseTitle" xml:space="preserve"><value>Лицензия и правовая информация</value></data>
+  <data name="ViewLicense" xml:space="preserve"><value>Показать текст лицензии</value></data>
+  <data name="LicenseSummary" xml:space="preserve"><value>DVVdownloader — свободная программа с открытым исходным кодом под лицензией GNU General Public License версии 3 (GPL-3.0).</value></data>
+  <data name="LicenseDetail" xml:space="preserve"><value>Вы можете свободно использовать её, изучать исходный код, изменять под свои нужды и распространять на условиях GPL-3.0. Программа не содержит скрытой телеметрии, слежки или коммерческих ограничений.</value></data>
+  <data name="ThirdParty" xml:space="preserve"><value>Сторонние компоненты с открытым кодом:</value></data>
+  <data name="ThirdPartyYtDlp" xml:space="preserve"><value>• yt-dlp: The Unlicense (общественное достояние)</value></data>
+  <data name="ThirdPartyFfmpeg" xml:space="preserve"><value>• FFmpeg: GNU LGPL v2.1+ / GPL v3 (сборка gyan.dev)</value></data>
+  <data name="ThirdPartyDotnet" xml:space="preserve"><value>• .NET 10 / WPF: лицензия MIT (Microsoft Corporation)</value></data>
+  <data name="LogTitle" xml:space="preserve"><value>Журнал действий и ошибок</value></data>
+  <data name="LogSubtitle" xml:space="preserve"><value>Вывод движка в реальном времени</value></data>
+  <data name="ClearLog" xml:space="preserve"><value>Очистить журнал</value></data>
+  <data name="GplTitle" xml:space="preserve"><value>GNU General Public License версии 3</value></data>
+  <data name="GplFooter" xml:space="preserve"><value>Free Software Foundation (FSF) — Copyright (C) 2007-2026 DVVdownloader</value></data>
+  <data name="StatusQueued" xml:space="preserve"><value>В очереди</value></data>
+  <data name="StatusAnalyzing" xml:space="preserve"><value>Анализ…</value></data>
+  <data name="StatusDownloading" xml:space="preserve"><value>Загрузка</value></data>
+  <data name="StatusProcessing" xml:space="preserve"><value>Обработка (FFmpeg)…</value></data>
+  <data name="StatusCompleted" xml:space="preserve"><value>Готово</value></data>
+  <data name="StatusError" xml:space="preserve"><value>Ошибка</value></data>
+  <data name="StatusCancelled" xml:space="preserve"><value>Отменено</value></data>
+  <data name="StatusPaused" xml:space="preserve"><value>Пауза</value></data>
+  <data name="WaitingForLink" xml:space="preserve"><value>Ожидание ссылки</value></data>
+  <data name="PlatformUnknown" xml:space="preserve"><value>Неизвестно</value></data>
+  <data name="PlatformInvalid" xml:space="preserve"><value>Неверная ссылка</value></data>
+  <data name="PlatformDirect" xml:space="preserve"><value>Прямой файл</value></data>
+  <data name="PlatformWeb" xml:space="preserve"><value>Веб-медиа</value></data>
+  <data name="EngineAvailable" xml:space="preserve"><value>Доступен</value></data>
+  <data name="YtDlpMissing" xml:space="preserve"><value>Не найден (проверьте папку tools)</value></data>
+  <data name="FfmpegMissing" xml:space="preserve"><value>Не найден (необязательно)</value></data>
+  <data name="ErrYtDlpNotFound" xml:space="preserve"><value>Движок загрузки (yt-dlp.exe) не найден. Убедитесь, что yt-dlp.exe находится в папке «tools», или укажите путь к нему в настройках.</value></data>
+  <data name="ErrYtDlpNotFoundShort" xml:space="preserve"><value>Движок загрузки (yt-dlp.exe) не найден. Проверьте папку «tools».</value></data>
+  <data name="ErrEngineStart" xml:space="preserve"><value>Не удалось запустить движок загрузки (yt-dlp): {0}</value></data>
+  <data name="ErrMediaInfo" xml:space="preserve"><value>Не удалось получить данные о медиа.</value></data>
+  <data name="ErrDownloadFailed" xml:space="preserve"><value>Загрузка завершилась с ошибкой.</value></data>
+  <data name="ErrPinterestNoVideo" xml:space="preserve"><value>В этой публикации Pinterest нет видео для загрузки (возможно, это изображение).</value></data>
+  <data name="ErrInstagramNoVideo" xml:space="preserve"><value>В этой публикации Instagram нет видео для загрузки, или она закрыта.</value></data>
+  <data name="QualityBest" xml:space="preserve"><value>Лучшее качество</value></data>
+  <data name="QualityMp3" xml:space="preserve"><value>Аудио MP3</value></data>
+  <data name="QualityMp3Ext" xml:space="preserve"><value>Аудио MP3 ({0})</value></data>
+  <data name="QualityBestShort" xml:space="preserve"><value>Лучшее</value></data>
+  <data name="Quality720Original" xml:space="preserve"><value>720p HD (оригинал)</value></data>
+  <data name="QualityHlsAuto" xml:space="preserve"><value>Поток HLS (авто MP4)</value></data>
+  <data name="QualityAuto" xml:space="preserve"><value>Авто</value></data>
+  <data name="Quality1080Original" xml:space="preserve"><value>Исходное качество (1080p MP4)</value></data>
+  <data name="QualityOriginal" xml:space="preserve"><value>Исходное качество</value></data>
+  <data name="AudioKbps" xml:space="preserve"><value>Аудио ({0} кбит/с) - {1}</value></data>
+  <data name="AudioExt" xml:space="preserve"><value>Аудио ({0})</value></data>
+  <data name="SizeUnknown" xml:space="preserve"><value>Размер неизвестен</value></data>
+  <data name="AnalyzingStatus" xml:space="preserve"><value>Поиск источников и форматов…</value></data>
+  <data name="AnalysisFailed" xml:space="preserve"><value>Ошибка анализа: {0}</value></data>
+  <data name="FileMissingMessage" xml:space="preserve"><value>Файл не найден или был перемещён.</value></data>
+  <data name="FileMissingTitle" xml:space="preserve"><value>Не удалось открыть файл</value></data>
+  <data name="ChooseDownloadFolder" xml:space="preserve"><value>Выберите папку загрузок</value></data>
+  <data name="ClearHistoryConfirm" xml:space="preserve"><value>Очистить историю загрузок? (Скачанные файлы не будут удалены.)</value></data>
+</root>

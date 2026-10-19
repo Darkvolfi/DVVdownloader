@@ -28,7 +28,7 @@
             style="@style/Widget.Material3.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Temizle"
+            android:text="@string/btn_clear"
             android:textColor="@color/text_muted"
             android:textSize="12sp" />
     </LinearLayout>

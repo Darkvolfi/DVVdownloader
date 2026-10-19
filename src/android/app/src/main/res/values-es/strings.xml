@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tab_home">Inicio</string>
+    <string name="tab_queue">Cola</string>
+    <string name="tab_completed">Completadas</string>
+    <string name="tab_settings">Ajustes</string>
+    <string name="badge_local">LOCAL</string>
+
+    <string name="home_title">Descargar medios</string>
+    <string name="home_subtitle">Enlaces de YouTube, Pinterest, TikTok, Instagram y vídeos directos</string>
+    <string name="url_input_hint">Pega aquí un enlace…</string>
+    <string name="label_source">Fuente: </string>
+    <string name="source_waiting">Esperando un enlace</string>
+    <string name="btn_analyze">Analizar</string>
+    <string name="btn_paste">Pegar</string>
+    <string name="analyzing_title">Analizando…</string>
+    <string name="analyzing_desc">Obteniendo formatos e información del stream, espera un momento</string>
+    <string name="format_select_title">Elige formato y calidad</string>
+    <string name="btn_download">Descargar</string>
+    <string name="format_audio">Audio (%1$s)</string>
+    <string name="format_video">Vídeo (%1$s)</string>
+    <string name="toast_invalid_url">Introduce una URL válida</string>
+    <string name="toast_clipboard_empty">El portapapeles está vacío</string>
+    <string name="toast_analyze_error">Error de análisis: %1$s</string>
+
+    <string name="queue_title">Descargas activas</string>
+    <string name="queue_empty">No hay descargas activas</string>
+    <string name="queue_speed">" • Velocidad: %1$s"</string>
+    <string name="status_queued">En cola</string>
+    <string name="status_downloading">Descargando</string>
+    <string name="status_completed">Completada</string>
+    <string name="status_error">Error</string>
+    <string name="status_cancelled">Cancelada</string>
+    <string name="btn_retry">Reintentar</string>
+    <string name="btn_cancel">Cancelar</string>
+    <string name="btn_remove">Quitar</string>
+
+    <string name="completed_title">Descargas completadas</string>
+    <string name="completed_empty">Todavía no hay descargas completadas</string>
+    <string name="btn_clear">Borrar</string>
+    <string name="btn_share">Compartir</string>
+    <string name="btn_play">Reproducir</string>
+    <string name="share_chooser">Compartir archivo</string>
+    <string name="toast_file_missing">Archivo no encontrado o eliminado</string>
+    <string name="toast_file_not_found">Archivo no encontrado</string>
+    <string name="toast_no_app">No hay ninguna app para abrir este archivo</string>
+    <string name="toast_share_error">Error al compartir: %1$s</string>
+
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_language">Idioma</string>
+    <string name="language_system">Idioma del sistema</string>
+    <string name="settings_save_dir">Ubicación de descarga</string>
+    <string name="settings_concurrent">Descargas simultáneas</string>
+    <string name="settings_default_quality">Calidad predeterminada</string>
+    <string name="settings_app_info">Información de la app</string>
+    <string name="settings_version">DVVdownloader v%1$s</string>
+    <string name="settings_app_desc">Una app nativa en Kotlin. Las descargas usan yt-dlp y FFmpeg.</string>
+    <string name="license_title">Licencia de código abierto</string>
+    <string name="license_desc">DVVdownloader es software libre y de código abierto bajo la Licencia Pública General de GNU versión 3.</string>
+    <string name="license_btn_view">Detalles de la licencia</string>
+    <string name="license_dialog_message">DVVdownloader — GNU GPL v3.0\n\nEste programa es software libre: puedes redistribuirlo y/o modificarlo bajo los términos de la Licencia Pública General de GNU versión 3, publicada por la Free Software Foundation.\n\nEste programa se distribuye con la esperanza de que sea útil, pero SIN NINGUNA GARANTÍA, ni siquiera la garantía implícita de COMERCIABILIDAD o IDONEIDAD PARA UN PROPÓSITO PARTICULAR.\n\nCopyright (C) 2026 colaboradores de DVVdownloader.</string>
+    <string name="btn_close">Cerrar</string>
+
+    <string name="notification_channel_name">Descargas de medios</string>
+    <string name="notification_channel_desc">Progreso de las descargas activas</string>
+    <string name="notif_service_active">El servicio de descargas está activo</string>
+
+    <string name="platform_unknown">Desconocido</string>
+    <string name="platform_invalid">URL no válida</string>
+    <string name="platform_direct">Archivo directo</string>
+    <string name="platform_web">Medio web</string>
+
+    <string name="quality_best">Mejor calidad</string>
+    <string name="quality_highest">Máxima calidad</string>
+    <string name="quality_mp3">Audio MP3</string>
+    <string name="quality_tiktok_hd">Vídeo HD (sin marca de agua)</string>
+    <string name="quality_original_audio">Audio original (MP3)</string>
+    <string name="quality_direct_audio">Audio directo</string>
+    <string name="quality_direct_video">Vídeo directo</string>
+    <string name="quality_720_original">720p HD (original)</string>
+    <string name="quality_1080_original">1080p HD (MP4 original)</string>
+    <string name="size_unknown">Desconocido</string>
+    <string name="size_audio_file">Archivo de audio</string>
+    <string name="size_original">Tamaño original</string>
+    <string name="size_original_quality">Calidad original</string>
+    <string name="size_source_stream">Stream de origen</string>
+    <string name="media_fallback_title">Medio de %1$s</string>
+    <string name="media_file">Archivo multimedia</string>
+    <string name="uploader_direct">Descarga directa</string>
+
+    <string name="err_invalid_youtube">Enlace de YouTube no válido o no se encontró el ID del vídeo.</string>
+    <string name="err_media_info">No se pudo obtener la información del medio.</string>
+    <string name="err_file_missing_after">La descarga terminó, pero no se encontró el archivo.</string>
+    <string name="err_tiktok_connect">No se pudo conectar con TikTok: HTTP %1$d</string>
+    <string name="err_tiktok_not_found">Vídeo de TikTok no encontrado o privado.</string>
+    <string name="err_pinterest_page">No se pudo abrir la página de Pinterest: HTTP %1$d</string>
+    <string name="err_pinterest_no_video">No hay vídeo en esta publicación de Pinterest (puede ser solo una imagen).</string>
+    <string name="err_instagram_page">No se pudo abrir la página de Instagram: HTTP %1$d</string>
+    <string name="err_instagram_no_video">Vídeo de Instagram no encontrado o la publicación es privada.</string>
+    <string name="err_page_unreachable">No se pudo acceder a la página de %1$s: HTTP %2$d</string>
+    <string name="err_no_stream">No se encontró ningún medio descargable en esta página de %1$s. Prueba con un enlace directo o de YouTube.</string>
+    <string name="err_server">Error del servidor de medios: HTTP %1$d (%2$s)</string>
+    <string name="err_html_instead">El servidor devolvió una página web en lugar de un archivo. Puede que el enlace esté restringido o caducado.</string>
+    <string name="err_empty_body">La respuesta del servidor estaba vacía.</string>
+    <string name="err_engine_not_started">El motor de descargas no se inició.</string>
+    <string name="err_engine_init">No se pudo iniciar el motor de descargas (yt-dlp): %1$s</string>
+    <string name="err_unknown_download">Error de descarga desconocido</string>
+</resources>

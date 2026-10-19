@@ -1,6 +1,8 @@
 package com.dvv.downloader.repository
 
 import android.content.Context
+import com.dvv.downloader.L10n
+import com.dvv.downloader.R
 import com.yausername.ffmpeg.FFmpeg
 import com.yausername.youtubedl_android.YoutubeDL
 import kotlinx.coroutines.CoroutineScope
@@ -44,11 +46,11 @@ object YtDlpRuntime {
     }
 
     suspend fun awaitReady() {
-        val init = initJob ?: throw IllegalStateException("İndirme motoru başlatılmadı.")
+        val init = initJob ?: throw IllegalStateException(L10n.s(R.string.err_engine_not_started))
         try {
             init.await()
         } catch (e: Exception) {
-            throw IllegalStateException("İndirme motoru (yt-dlp) başlatılamadı: ${e.message}")
+            throw IllegalStateException(L10n.s(R.string.err_engine_init, e.message ?: ""))
         }
         withTimeoutOrNull(UPDATE_WAIT_MS) { updateJob?.await() }
     }

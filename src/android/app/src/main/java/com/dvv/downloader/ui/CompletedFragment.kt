@@ -11,6 +11,7 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dvv.downloader.MainActivity
+import com.dvv.downloader.R
 import com.dvv.downloader.adapter.HistoryAdapter
 import com.dvv.downloader.databinding.FragmentCompletedBinding
 import com.dvv.downloader.models.HistoryItem
@@ -58,7 +59,7 @@ class CompletedFragment : Fragment() {
     private fun openFile(item: HistoryItem) {
         val file = File(item.filePath)
         if (!file.exists()) {
-            Toast.makeText(requireContext(), "Dosya bulunamadı veya silinmiş", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.toast_file_missing), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -75,14 +76,14 @@ class CompletedFragment : Fragment() {
             }
             startActivity(intent)
         } catch (_: Exception) {
-            Toast.makeText(requireContext(), "Bu dosyayı açabilecek bir uygulama bulunamadı", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.toast_no_app), Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun shareFile(item: HistoryItem) {
         val file = File(item.filePath)
         if (!file.exists()) {
-            Toast.makeText(requireContext(), "Dosya bulunamadı", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.toast_file_not_found), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -98,9 +99,9 @@ class CompletedFragment : Fragment() {
                 putExtra(Intent.EXTRA_STREAM, uri)
                 addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             }
-            startActivity(Intent.createChooser(intent, "Medya Paylaş"))
+            startActivity(Intent.createChooser(intent, getString(R.string.share_chooser)))
         } catch (e: Exception) {
-            Toast.makeText(requireContext(), "Paylaşım hatası: ${e.message}", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.toast_share_error, e.message ?: ""), Toast.LENGTH_SHORT).show()
         }
     }
 

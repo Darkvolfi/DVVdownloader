@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_dark"
@@ -19,6 +20,45 @@
             android:textSize="22sp"
             android:textStyle="bold"
             android:layout_marginBottom="16dp" />
+
+        <!-- Dil seçimi: varsayılan sistem dili, isteğe bağlı elle seçim -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/card_surface"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/divider_color"
+            app:strokeWidth="1dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/settings_language"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvLanguage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary_accent"
+                    android:textSize="14sp"
+                    tools:text="System default" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -47,7 +87,7 @@
                     android:id="@+id/tvDownloadPath"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="/storage/emulated/0/Download/DVVdownloader"
+                    tools:text="/storage/emulated/0/Android/data/com.dvv.downloader/files"
                     android:textColor="@color/text_secondary"
                     android:textSize="12sp"
                     android:layout_marginTop="4dp" />
@@ -72,15 +112,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Uygulama Bilgisi"
+                    android:text="@string/settings_app_info"
                     android:textColor="@color/text_primary"
                     android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvAppVersion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="DVVdownloader v1.0.0 (Tam Yerel Android SDK)"
+                    tools:text="DVVdownloader v1.1.0"
                     android:textColor="@color/text_secondary"
                     android:textSize="12sp"
                     android:layout_marginTop="4dp" />
@@ -88,7 +129,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kesinlikle WebView veya HTML barındırmaz; %100 yerel Kotlin ve Android bileşenleriyle çalışır."
+                    android:text="@string/settings_app_desc"
                     android:textColor="@color/text_muted"
                     android:textSize="11sp"
                     android:layout_marginTop="2dp" />

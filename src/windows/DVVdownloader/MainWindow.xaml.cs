@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Interop;
+using DVVdownloader.Localization;
 using DVVdownloader.ViewModels;
 
 namespace DVVdownloader
@@ -21,6 +22,8 @@ namespace DVVdownloader
         public MainWindow()
         {
             InitializeComponent();
+            // Arapça gibi sağdan sola yazılan dillerde düzen aynalanır
+            FlowDirection = Loc.IsRightToLeft ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
             ViewModel = new MainViewModel();
             DataContext = ViewModel;
         }

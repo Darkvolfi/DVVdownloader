@@ -7,6 +7,7 @@ class DvvApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        L10n.init(this)
         YtDlpRuntime.start(this)
     }
 }

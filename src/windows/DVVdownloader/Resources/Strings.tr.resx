@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="WindowTitle" xml:space="preserve"><value>DVVdownloader — Yerel Medya İndirici</value></data>
+  <data name="VersionBadge" xml:space="preserve"><value>v1.1 Yerel</value></data>
+  <data name="TipMinimize" xml:space="preserve"><value>Simge Durumuna Küçült</value></data>
+  <data name="TipMaximize" xml:space="preserve"><value>Ekranı Kapla / Geri Yükle</value></data>
+  <data name="Close" xml:space="preserve"><value>Kapat</value></data>
+  <data name="NavDownload" xml:space="preserve"><value>Medya İndir</value></data>
+  <data name="NavQueue" xml:space="preserve"><value>Kuyruk</value></data>
+  <data name="NavCompleted" xml:space="preserve"><value>Tamamlananlar</value></data>
+  <data name="NavSettings" xml:space="preserve"><value>Ayarlar</value></data>
+  <data name="NavLog" xml:space="preserve"><value>İşlem Günlüğü</value></data>
+  <data name="EngineStatus" xml:space="preserve"><value>MOTOR DURUMU</value></data>
+  <data name="HomeTitle" xml:space="preserve"><value>Hızlı ve Yerel Medya İndirme</value></data>
+  <data name="HomeSubtitle" xml:space="preserve"><value>YouTube, Pinterest ve birçok siteden ya da doğrudan video bağlantılarından tek tıkla indirin</value></data>
+  <data name="UrlPlaceholder" xml:space="preserve"><value>Medya bağlantısını buraya yapıştırın (https://...)</value></data>
+  <data name="TipPaste" xml:space="preserve"><value>Panodaki adresi yapıştır ve tara</value></data>
+  <data name="Paste" xml:space="preserve"><value>Yapıştır</value></data>
+  <data name="Analyze" xml:space="preserve"><value>Analiz Et</value></data>
+  <data name="DetectedSource" xml:space="preserve"><value>Algılanan Kaynak: </value></data>
+  <data name="ClearInput" xml:space="preserve"><value>Girdiyi Temizle</value></data>
+  <data name="AnalyzingHint" xml:space="preserve"><value>Bu işlem medya kaynağına bağlı olarak birkaç saniye sürebilir.</value></data>
+  <data name="AnalysisFailedTitle" xml:space="preserve"><value>Medya Bilgileri Alınamadı</value></data>
+  <data name="ModeVideo" xml:space="preserve"><value>🎬 Video Olarak İndir (MP4)</value></data>
+  <data name="ModeAudio" xml:space="preserve"><value>🎵 Yalnızca Ses Olarak İndir (MP3)</value></data>
+  <data name="AvailableResolutions" xml:space="preserve"><value>Kullanılabilir Çözünürlükler:</value></data>
+  <data name="AudioQualityFormat" xml:space="preserve"><value>Ses Kalitesi ve Formatı:</value></data>
+  <data name="AudioMp3High" xml:space="preserve"><value>Yüksek Kalite MP3 (mevcut en iyi kalite)</value></data>
+  <data name="AudioMp3Desc" xml:space="preserve"><value>Ses FFmpeg ile ayıklanır ve MP3'e dönüştürülür.</value></data>
+  <data name="SaveFolder" xml:space="preserve"><value>Kaydedilecek Klasör: </value></data>
+  <data name="DownloadNow" xml:space="preserve"><value>Hemen İndir</value></data>
+  <data name="QueueTitle" xml:space="preserve"><value>Aktif İndirme Kuyruğu</value></data>
+  <data name="QueueSubtitle" xml:space="preserve"><value>Devam eden ve sıradaki medya indirmeleri</value></data>
+  <data name="QueueEmptyTitle" xml:space="preserve"><value>Şu anda kuyrukta bekleyen bir indirme yok.</value></data>
+  <data name="QueueEmptyHint" xml:space="preserve"><value>Ana sayfadan bir medya URL'si girip indirmeyi başlatabilirsiniz.</value></data>
+  <data name="GoToDownload" xml:space="preserve"><value>Medya İndirmeye Git</value></data>
+  <data name="SpeedPrefix" xml:space="preserve"><value>  |  Hız: </value></data>
+  <data name="EtaPrefix" xml:space="preserve"><value>  |  Kalan: </value></data>
+  <data name="Cancel" xml:space="preserve"><value>İptal Et</value></data>
+  <data name="Retry" xml:space="preserve"><value>Yeniden Dene</value></data>
+  <data name="Remove" xml:space="preserve"><value>Kaldır</value></data>
+  <data name="CompletedTitle" xml:space="preserve"><value>Tamamlanan İndirmeler</value></data>
+  <data name="CompletedSubtitle" xml:space="preserve"><value>Daha önce başarıyla indirilen medya kayıtları</value></data>
+  <data name="OpenDownloadFolder" xml:space="preserve"><value>İndirme Klasörünü Aç</value></data>
+  <data name="ClearHistory" xml:space="preserve"><value>Geçmişi Temizle</value></data>
+  <data name="CompletedEmptyTitle" xml:space="preserve"><value>Henüz tamamlanan indirme kaydı yok.</value></data>
+  <data name="CompletedEmptyHint" xml:space="preserve"><value>İndirilen dosyalarınız burada listelenecektir.</value></data>
+  <data name="Saved" xml:space="preserve"><value>Kayıtlı</value></data>
+  <data name="Play" xml:space="preserve"><value>▶ Oynat</value></data>
+  <data name="ShowInFolder" xml:space="preserve"><value>📂 Klasörde Göster</value></data>
+  <data name="SettingsTitle" xml:space="preserve"><value>Uygulama Ayarları</value></data>
+  <data name="SettingsSubtitle" xml:space="preserve"><value>Dil, indirme konumu, motor yolları ve davranış yapılandırması</value></data>
+  <data name="LanguageTitle" xml:space="preserve"><value>Dil</value></data>
+  <data name="LanguageDesc" xml:space="preserve"><value>Uygulama otomatik olarak Windows dilinizi kullanır. Desteklenmeyen dillerde İngilizce açılır.</value></data>
+  <data name="LanguageSystem" xml:space="preserve"><value>Sistem dili</value></data>
+  <data name="LanguageRestartMessage" xml:space="preserve"><value>Yeni dil DVVdownloader yeniden başlatıldığında uygulanacak. Şimdi yeniden başlatılsın mı?</value></data>
+  <data name="LanguageRestartTitle" xml:space="preserve"><value>Dil değiştirildi</value></data>
+  <data name="DownloadLocation" xml:space="preserve"><value>İndirme Konumu</value></data>
+  <data name="DownloadLocationDesc" xml:space="preserve"><value>Medya dosyalarının kaydedileceği yerel klasör</value></data>
+  <data name="ChooseFolder" xml:space="preserve"><value>Klasör Seç...</value></data>
+  <data name="EnginesTitle" xml:space="preserve"><value>Yerel Medya Motorları</value></data>
+  <data name="EnginesDesc" xml:space="preserve"><value>yt-dlp ve FFmpeg yerel yürütülebilir dosyaları</value></data>
+  <data name="CustomYtDlpPath" xml:space="preserve"><value>Özel yt-dlp Yolu (İsteğe Bağlı):</value></data>
+  <data name="CustomFfmpegPath" xml:space="preserve"><value>Özel FFmpeg Yolu (İsteğe Bağlı):</value></data>
+  <data name="SaveSettings" xml:space="preserve"><value>Ayarları Kaydet</value></data>
+  <data name="BehaviorTitle" xml:space="preserve"><value>Davranış ve Bildirimler</value></data>
+  <data name="BehaviorDesc" xml:space="preserve"><value>İndirme tamamlandığında yapılacak işlemler</value></data>
+  <data name="AutoOpenFolder" xml:space="preserve"><value>İndirme tamamlandığında hedef klasörü otomatik olarak aç</value></data>
+  <data name="PlaySound" xml:space="preserve"><value>Bildirim sesi çal</value></data>
+  <data name="LicenseTitle" xml:space="preserve"><value>Açık Kaynak Lisansı ve Yasal Bilgiler</value></data>
+  <data name="ViewLicense" xml:space="preserve"><value>Lisans Metnini Görüntüle</value></data>
+  <data name="LicenseSummary" xml:space="preserve"><value>DVVdownloader, GNU Genel Kamu Lisansı Sürüm 3 (GPL-3.0) altında lisanslanmış özgür ve açık kaynaklı bir yazılımdır.</value></data>
+  <data name="LicenseDetail" xml:space="preserve"><value>Bu yazılımı özgürce kullanabilir, kaynak kodlarını inceleyebilir, ihtiyaçlarınıza göre değiştirebilir ve GPL-3.0 şartlarına bağlı kalarak yeniden dağıtabilirsiniz. Yazılım hiçbir gizli telemetri, izleme veya ticari kısıtlama içermez.</value></data>
+  <data name="ThirdParty" xml:space="preserve"><value>Kullanılan Üçüncü Taraf Açık Kaynak Bileşenler:</value></data>
+  <data name="ThirdPartyYtDlp" xml:space="preserve"><value>• yt-dlp: The Unlicense (Kamu Malı)</value></data>
+  <data name="ThirdPartyFfmpeg" xml:space="preserve"><value>• FFmpeg: GNU LGPL v2.1+ / GPL v3 (gyan.dev derlemesi)</value></data>
+  <data name="ThirdPartyDotnet" xml:space="preserve"><value>• .NET 10 / WPF: MIT Lisansı (Microsoft Corporation)</value></data>
+  <data name="LogTitle" xml:space="preserve"><value>İşlem ve Hata Günlüğü</value></data>
+  <data name="LogSubtitle" xml:space="preserve"><value>Canlı terminal ve motor çalışma detayları</value></data>
+  <data name="ClearLog" xml:space="preserve"><value>Günlüğü Temizle</value></data>
+  <data name="GplTitle" xml:space="preserve"><value>GNU General Public License Sürüm 3</value></data>
+  <data name="GplFooter" xml:space="preserve"><value>Özgür Yazılım Vakfı (FSF) — Telif Hakkı (C) 2007 - 2026 DVVdownloader</value></data>
+  <data name="StatusQueued" xml:space="preserve"><value>Kuyrukta</value></data>
+  <data name="StatusAnalyzing" xml:space="preserve"><value>Analiz ediliyor...</value></data>
+  <data name="StatusDownloading" xml:space="preserve"><value>İndiriliyor</value></data>
+  <data name="StatusProcessing" xml:space="preserve"><value>İşleniyor (FFmpeg)...</value></data>
+  <data name="StatusCompleted" xml:space="preserve"><value>Tamamlandı</value></data>
+  <data name="StatusError" xml:space="preserve"><value>Hata oluştu</value></data>
+  <data name="StatusCancelled" xml:space="preserve"><value>İptal edildi</value></data>
+  <data name="StatusPaused" xml:space="preserve"><value>Duraklatıldı</value></data>
+  <data name="WaitingForLink" xml:space="preserve"><value>Bağlantı bekleniyor</value></data>
+  <data name="PlatformUnknown" xml:space="preserve"><value>Bilinmiyor</value></data>
+  <data name="PlatformInvalid" xml:space="preserve"><value>Geçersiz URL</value></data>
+  <data name="PlatformDirect" xml:space="preserve"><value>Doğrudan Medya</value></data>
+  <data name="PlatformWeb" xml:space="preserve"><value>Web Medyası</value></data>
+  <data name="EngineAvailable" xml:space="preserve"><value>Kullanılabilir</value></data>
+  <data name="YtDlpMissing" xml:space="preserve"><value>Bulunamadı (tools klasörünü kontrol edin)</value></data>
+  <data name="FfmpegMissing" xml:space="preserve"><value>Bulunamadı (İsteğe bağlı)</value></data>
+  <data name="ErrYtDlpNotFound" xml:space="preserve"><value>İndirme motoru (yt-dlp.exe) bulunamadı. Lütfen 'tools' klasöründe yt-dlp.exe bulunduğundan emin olun veya Ayarlar menüsünden dosya konumunu belirleyin.</value></data>
+  <data name="ErrYtDlpNotFoundShort" xml:space="preserve"><value>İndirme motoru (yt-dlp.exe) bulunamadı. Lütfen 'tools' klasörünü kontrol edin.</value></data>
+  <data name="ErrEngineStart" xml:space="preserve"><value>İndirme motoru (yt-dlp) çalıştırılamadı: {0}</value></data>
+  <data name="ErrMediaInfo" xml:space="preserve"><value>Medya bilgileri alınamadı.</value></data>
+  <data name="ErrDownloadFailed" xml:space="preserve"><value>İndirme işlemi hata ile sonlandı.</value></data>
+  <data name="ErrPinterestNoVideo" xml:space="preserve"><value>Pinterest gönderisinde indirilebilir bir video akışı bulunamadı (gönderi sadece resim olabilir).</value></data>
+  <data name="ErrInstagramNoVideo" xml:space="preserve"><value>Instagram gönderisinde indirilebilir video bulunamadı veya gönderi gizli.</value></data>
+  <data name="QualityBest" xml:space="preserve"><value>En İyi Kalite</value></data>
+  <data name="QualityMp3" xml:space="preserve"><value>MP3 Ses</value></data>
+  <data name="QualityMp3Ext" xml:space="preserve"><value>MP3 Ses ({0})</value></data>
+  <data name="QualityBestShort" xml:space="preserve"><value>En İyi</value></data>
+  <data name="Quality720Original" xml:space="preserve"><value>720p HD (Orijinal)</value></data>
+  <data name="QualityHlsAuto" xml:space="preserve"><value>HLS Akışı (Otomatik MP4)</value></data>
+  <data name="QualityAuto" xml:space="preserve"><value>Otomatik</value></data>
+  <data name="Quality1080Original" xml:space="preserve"><value>Orijinal Kalite (1080p MP4)</value></data>
+  <data name="QualityOriginal" xml:space="preserve"><value>Orijinal Kalite</value></data>
+  <data name="AudioKbps" xml:space="preserve"><value>Ses ({0} kbps) - {1}</value></data>
+  <data name="AudioExt" xml:space="preserve"><value>Ses ({0})</value></data>
+  <data name="SizeUnknown" xml:space="preserve"><value>Tahmini boyut bilinmiyor</value></data>
+  <data name="AnalyzingStatus" xml:space="preserve"><value>Medya kaynakları ve formatları taranıyor...</value></data>
+  <data name="AnalysisFailed" xml:space="preserve"><value>Medya analizi başarısız oldu: {0}</value></data>
+  <data name="FileMissingMessage" xml:space="preserve"><value>Hedef dosya bulunamadı veya taşınmış olabilir.</value></data>
+  <data name="FileMissingTitle" xml:space="preserve"><value>Dosya Açılamadı</value></data>
+  <data name="ChooseDownloadFolder" xml:space="preserve"><value>İndirme Klasörünü Seçin</value></data>
+  <data name="ClearHistoryConfirm" xml:space="preserve"><value>İndirme geçmişini temizlemek istediğinizden emin misiniz? (İndirilen dosyalarınız silinmez)</value></data>
+</root>

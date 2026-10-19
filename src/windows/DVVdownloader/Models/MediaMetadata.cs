@@ -12,7 +12,7 @@ namespace DVVdownloader.Models
         public double Duration { get; set; }
         public string ThumbnailUrl { get; set; } = string.Empty;
         public string WebpageUrl { get; set; } = string.Empty;
-        public string Platform { get; set; } = "Genel";
+        public string Platform { get; set; } = string.Empty;
         public List<MediaFormatItem> Formats { get; set; } = new();
 
         public string FormattedDuration

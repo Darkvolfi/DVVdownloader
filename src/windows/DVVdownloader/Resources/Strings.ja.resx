@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="WindowTitle" xml:space="preserve"><value>DVVdownloader — ローカルメディアダウンローダー</value></data>
+  <data name="VersionBadge" xml:space="preserve"><value>v1.1 ローカル</value></data>
+  <data name="TipMinimize" xml:space="preserve"><value>最小化</value></data>
+  <data name="TipMaximize" xml:space="preserve"><value>最大化 / 元に戻す</value></data>
+  <data name="Close" xml:space="preserve"><value>閉じる</value></data>
+  <data name="NavDownload" xml:space="preserve"><value>ダウンロード</value></data>
+  <data name="NavQueue" xml:space="preserve"><value>キュー</value></data>
+  <data name="NavCompleted" xml:space="preserve"><value>完了</value></data>
+  <data name="NavSettings" xml:space="preserve"><value>設定</value></data>
+  <data name="NavLog" xml:space="preserve"><value>ログ</value></data>
+  <data name="EngineStatus" xml:space="preserve"><value>エンジンの状態</value></data>
+  <data name="HomeTitle" xml:space="preserve"><value>すばやく、ローカルでダウンロード</value></data>
+  <data name="HomeSubtitle" xml:space="preserve"><value>YouTube や Pinterest など多くのサイト、または動画の直接リンクからダウンロードできます</value></data>
+  <data name="UrlPlaceholder" xml:space="preserve"><value>ここにメディアのリンクを貼り付け (https://...)</value></data>
+  <data name="TipPaste" xml:space="preserve"><value>クリップボードのリンクを貼り付けて解析</value></data>
+  <data name="Paste" xml:space="preserve"><value>貼り付け</value></data>
+  <data name="Analyze" xml:space="preserve"><value>解析</value></data>
+  <data name="DetectedSource" xml:space="preserve"><value>検出したソース： </value></data>
+  <data name="ClearInput" xml:space="preserve"><value>クリア</value></data>
+  <data name="AnalyzingHint" xml:space="preserve"><value>ソースによっては数秒かかる場合があります。</value></data>
+  <data name="AnalysisFailedTitle" xml:space="preserve"><value>メディア情報を取得できませんでした</value></data>
+  <data name="ModeVideo" xml:space="preserve"><value>🎬 動画としてダウンロード (MP4)</value></data>
+  <data name="ModeAudio" xml:space="preserve"><value>🎵 音声のみダウンロード (MP3)</value></data>
+  <data name="AvailableResolutions" xml:space="preserve"><value>利用できる解像度：</value></data>
+  <data name="AudioQualityFormat" xml:space="preserve"><value>音質と形式：</value></data>
+  <data name="AudioMp3High" xml:space="preserve"><value>高音質 MP3（利用可能な最高音質）</value></data>
+  <data name="AudioMp3Desc" xml:space="preserve"><value>FFmpeg で音声を抽出し、MP3 に変換します。</value></data>
+  <data name="SaveFolder" xml:space="preserve"><value>保存先： </value></data>
+  <data name="DownloadNow" xml:space="preserve"><value>今すぐダウンロード</value></data>
+  <data name="QueueTitle" xml:space="preserve"><value>ダウンロードキュー</value></data>
+  <data name="QueueSubtitle" xml:space="preserve"><value>ダウンロード中および待機中のファイル</value></data>
+  <data name="QueueEmptyTitle" xml:space="preserve"><value>キューは現在空です。</value></data>
+  <data name="QueueEmptyHint" xml:space="preserve"><value>ホーム画面でリンクを貼り付けるとダウンロードを開始できます。</value></data>
+  <data name="GoToDownload" xml:space="preserve"><value>ダウンロード画面へ</value></data>
+  <data name="SpeedPrefix" xml:space="preserve"><value>  |  速度： </value></data>
+  <data name="EtaPrefix" xml:space="preserve"><value>  |  残り： </value></data>
+  <data name="Cancel" xml:space="preserve"><value>キャンセル</value></data>
+  <data name="Retry" xml:space="preserve"><value>再試行</value></data>
+  <data name="Remove" xml:space="preserve"><value>削除</value></data>
+  <data name="CompletedTitle" xml:space="preserve"><value>完了したダウンロード</value></data>
+  <data name="CompletedSubtitle" xml:space="preserve"><value>これまでにダウンロードしたメディア</value></data>
+  <data name="OpenDownloadFolder" xml:space="preserve"><value>保存先フォルダーを開く</value></data>
+  <data name="ClearHistory" xml:space="preserve"><value>履歴を消去</value></data>
+  <data name="CompletedEmptyTitle" xml:space="preserve"><value>完了したダウンロードはまだありません。</value></data>
+  <data name="CompletedEmptyHint" xml:space="preserve"><value>ダウンロードしたファイルはここに表示されます。</value></data>
+  <data name="Saved" xml:space="preserve"><value>保存済み</value></data>
+  <data name="Play" xml:space="preserve"><value>▶ 再生</value></data>
+  <data name="ShowInFolder" xml:space="preserve"><value>📂 フォルダーで表示</value></data>
+  <data name="SettingsTitle" xml:space="preserve"><value>設定</value></data>
+  <data name="SettingsSubtitle" xml:space="preserve"><value>言語、保存先、エンジンのパス、動作</value></data>
+  <data name="LanguageTitle" xml:space="preserve"><value>言語</value></data>
+  <data name="LanguageDesc" xml:space="preserve"><value>アプリは Windows の言語を自動的に使用します。対応していない言語の場合は英語で表示されます。</value></data>
+  <data name="LanguageSystem" xml:space="preserve"><value>システムの言語</value></data>
+  <data name="LanguageRestartMessage" xml:space="preserve"><value>新しい言語は DVVdownloader の再起動後に適用されます。今すぐ再起動しますか？</value></data>
+  <data name="LanguageRestartTitle" xml:space="preserve"><value>言語を変更しました</value></data>
+  <data name="DownloadLocation" xml:space="preserve"><value>保存先</value></data>
+  <data name="DownloadLocationDesc" xml:space="preserve"><value>メディアファイルを保存するフォルダー</value></data>
+  <data name="ChooseFolder" xml:space="preserve"><value>フォルダーを選択…</value></data>
+  <data name="EnginesTitle" xml:space="preserve"><value>メディアエンジン</value></data>
+  <data name="EnginesDesc" xml:space="preserve"><value>ローカルの yt-dlp と FFmpeg の実行ファイル</value></data>
+  <data name="CustomYtDlpPath" xml:space="preserve"><value>yt-dlp のパス（任意）：</value></data>
+  <data name="CustomFfmpegPath" xml:space="preserve"><value>FFmpeg のパス（任意）：</value></data>
+  <data name="SaveSettings" xml:space="preserve"><value>設定を保存</value></data>
+  <data name="BehaviorTitle" xml:space="preserve"><value>動作と通知</value></data>
+  <data name="BehaviorDesc" xml:space="preserve"><value>ダウンロード完了時の動作</value></data>
+  <data name="AutoOpenFolder" xml:space="preserve"><value>ダウンロード完了時に保存先フォルダーを開く</value></data>
+  <data name="PlaySound" xml:space="preserve"><value>通知音を鳴らす</value></data>
+  <data name="LicenseTitle" xml:space="preserve"><value>オープンソースライセンスと法的情報</value></data>
+  <data name="ViewLicense" xml:space="preserve"><value>ライセンス全文を表示</value></data>
+  <data name="LicenseSummary" xml:space="preserve"><value>DVVdownloader は GNU 一般公衆利用許諾書 第3版（GPL-3.0）のもとで公開されている、自由でオープンソースのソフトウェアです。</value></data>
+  <data name="LicenseDetail" xml:space="preserve"><value>GPL-3.0 の条件のもとで、自由に使用し、ソースコードを調べ、必要に応じて改変し、再頒布することができます。隠れたテレメトリー、トラッキング、商用上の制限は一切ありません。</value></data>
+  <data name="ThirdParty" xml:space="preserve"><value>使用しているサードパーティのオープンソースコンポーネント：</value></data>
+  <data name="ThirdPartyYtDlp" xml:space="preserve"><value>• yt-dlp: The Unlicense（パブリックドメイン）</value></data>
+  <data name="ThirdPartyFfmpeg" xml:space="preserve"><value>• FFmpeg: GNU LGPL v2.1+ / GPL v3（gyan.dev ビルド）</value></data>
+  <data name="ThirdPartyDotnet" xml:space="preserve"><value>• .NET 10 / WPF: MIT ライセンス（Microsoft Corporation）</value></data>
+  <data name="LogTitle" xml:space="preserve"><value>アクティビティとエラーのログ</value></data>
+  <data name="LogSubtitle" xml:space="preserve"><value>エンジンのリアルタイム出力と詳細</value></data>
+  <data name="ClearLog" xml:space="preserve"><value>ログを消去</value></data>
+  <data name="GplTitle" xml:space="preserve"><value>GNU 一般公衆利用許諾書 第3版</value></data>
+  <data name="GplFooter" xml:space="preserve"><value>Free Software Foundation (FSF) — Copyright (C) 2007-2026 DVVdownloader</value></data>
+  <data name="StatusQueued" xml:space="preserve"><value>待機中</value></data>
+  <data name="StatusAnalyzing" xml:space="preserve"><value>解析中…</value></data>
+  <data name="StatusDownloading" xml:space="preserve"><value>ダウンロード中</value></data>
+  <data name="StatusProcessing" xml:space="preserve"><value>処理中 (FFmpeg)…</value></data>
+  <data name="StatusCompleted" xml:space="preserve"><value>完了</value></data>
+  <data name="StatusError" xml:space="preserve"><value>エラー</value></data>
+  <data name="StatusCancelled" xml:space="preserve"><value>キャンセル済み</value></data>
+  <data name="StatusPaused" xml:space="preserve"><value>一時停止中</value></data>
+  <data name="WaitingForLink" xml:space="preserve"><value>リンクを待っています</value></data>
+  <data name="PlatformUnknown" xml:space="preserve"><value>不明</value></data>
+  <data name="PlatformInvalid" xml:space="preserve"><value>無効なURL</value></data>
+  <data name="PlatformDirect" xml:space="preserve"><value>直接リンク</value></data>
+  <data name="PlatformWeb" xml:space="preserve"><value>Webメディア</value></data>
+  <data name="EngineAvailable" xml:space="preserve"><value>利用可能</value></data>
+  <data name="YtDlpMissing" xml:space="preserve"><value>見つかりません（tools フォルダーを確認してください）</value></data>
+  <data name="FfmpegMissing" xml:space="preserve"><value>見つかりません（任意）</value></data>
+  <data name="ErrYtDlpNotFound" xml:space="preserve"><value>ダウンロードエンジン (yt-dlp.exe) が見つかりません。yt-dlp.exe が「tools」フォルダーにあるか確認するか、設定で場所を指定してください。</value></data>
+  <data name="ErrYtDlpNotFoundShort" xml:space="preserve"><value>ダウンロードエンジン (yt-dlp.exe) が見つかりません。「tools」フォルダーを確認してください。</value></data>
+  <data name="ErrEngineStart" xml:space="preserve"><value>ダウンロードエンジン (yt-dlp) を実行できませんでした：{0}</value></data>
+  <data name="ErrMediaInfo" xml:space="preserve"><value>メディア情報を取得できませんでした。</value></data>
+  <data name="ErrDownloadFailed" xml:space="preserve"><value>ダウンロードがエラーで終了しました。</value></data>
+  <data name="ErrPinterestNoVideo" xml:space="preserve"><value>この Pinterest の投稿にはダウンロードできる動画がありません（画像のみの可能性があります）。</value></data>
+  <data name="ErrInstagramNoVideo" xml:space="preserve"><value>この Instagram の投稿にはダウンロードできる動画がないか、投稿が非公開です。</value></data>
+  <data name="QualityBest" xml:space="preserve"><value>最高画質</value></data>
+  <data name="QualityMp3" xml:space="preserve"><value>MP3 音声</value></data>
+  <data name="QualityMp3Ext" xml:space="preserve"><value>MP3 音声 ({0})</value></data>
+  <data name="QualityBestShort" xml:space="preserve"><value>最高</value></data>
+  <data name="Quality720Original" xml:space="preserve"><value>720p HD（オリジナル）</value></data>
+  <data name="QualityHlsAuto" xml:space="preserve"><value>HLS ストリーム（自動 MP4）</value></data>
+  <data name="QualityAuto" xml:space="preserve"><value>自動</value></data>
+  <data name="Quality1080Original" xml:space="preserve"><value>オリジナル画質（1080p MP4）</value></data>
+  <data name="QualityOriginal" xml:space="preserve"><value>オリジナル画質</value></data>
+  <data name="AudioKbps" xml:space="preserve"><value>音声 ({0} kbps) - {1}</value></data>
+  <data name="AudioExt" xml:space="preserve"><value>音声 ({0})</value></data>
+  <data name="SizeUnknown" xml:space="preserve"><value>サイズ不明</value></data>
+  <data name="AnalyzingStatus" xml:space="preserve"><value>メディアのソースと形式を検索しています…</value></data>
+  <data name="AnalysisFailed" xml:space="preserve"><value>解析に失敗しました：{0}</value></data>
+  <data name="FileMissingMessage" xml:space="preserve"><value>ファイルが見つからないか、移動された可能性があります。</value></data>
+  <data name="FileMissingTitle" xml:space="preserve"><value>ファイルを開けません</value></data>
+  <data name="ChooseDownloadFolder" xml:space="preserve"><value>保存先フォルダーを選択</value></data>
+  <data name="ClearHistoryConfirm" xml:space="preserve"><value>ダウンロード履歴を消去しますか？（ダウンロード済みのファイルは削除されません）</value></data>
+</root>

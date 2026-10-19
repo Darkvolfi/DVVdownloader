@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -20,7 +21,7 @@
             android:id="@+id/tvFormatQuality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1080p Full HD"
+            tools:text="1080p"
             android:textColor="@color/primary_accent"
             android:textStyle="bold"
             android:textSize="14sp"
@@ -39,7 +40,7 @@
                 android:id="@+id/tvFormatExt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="MP4 Video"
+                tools:text="Video (MP4)"
                 android:textColor="@color/text_primary"
                 android:textSize="13sp" />
 
@@ -47,7 +48,7 @@
                 android:id="@+id/tvFormatSize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="~24 MB"
+                tools:text="24 MB"
                 android:textColor="@color/text_secondary"
                 android:textSize="11sp" />
         </LinearLayout>

@@ -1,5 +1,7 @@
 using System;
 
+using DVVdownloader.Localization;
+
 namespace DVVdownloader.Models
 {
     public class MediaFormatItem
@@ -54,8 +56,8 @@ namespace DVVdownloader.Models
 
                 if (IsAudioOnly)
                 {
-                    if (Tbr.HasValue) return $"Ses ({Math.Round(Tbr.Value)} kbps) - {Ext.ToUpper()}";
-                    return $"Ses ({Ext.ToUpper()})";
+                    if (Tbr.HasValue) return Loc.Format("AudioKbps", Math.Round(Tbr.Value), Ext.ToUpper());
+                    return Loc.Format("AudioExt", Ext.ToUpper());
                 }
 
                 if (Height > 0)
@@ -75,7 +77,7 @@ namespace DVVdownloader.Models
                     return $"{Width}w ({Ext.ToUpper()})";
                 }
 
-                return !string.IsNullOrEmpty(Resolution) ? Resolution : "Orijinal Kalite";
+                return !string.IsNullOrEmpty(Resolution) ? Resolution : Loc.Get("QualityOriginal");
             }
         }
 
@@ -84,7 +86,7 @@ namespace DVVdownloader.Models
             get
             {
                 long? size = Filesize ?? FilesizeApprox;
-                if (!size.HasValue || size.Value <= 0) return "Tahmini boyut bilinmiyor";
+                if (!size.HasValue || size.Value <= 0) return Loc.Get("SizeUnknown");
                 double mb = size.Value / (1024.0 * 1024.0);
                 if (mb >= 1024)
                 {

@@ -47,7 +47,7 @@ namespace DVVdownloader.Common
             catch (Exception ex)
             {
                 // Hata uygulamayı çökertmesin, loglansın
-                try { LogService.Instance.Error($"Komut çalıştırılırken hata: {ex.Message}", "AsyncRelayCommand"); } catch { }
+                try { LogService.Instance.Error($"Command failed: {ex.Message}", "AsyncRelayCommand"); } catch { }
             }
             finally
             {

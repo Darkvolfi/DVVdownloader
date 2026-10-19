@@ -10,6 +10,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using DVVdownloader.Models;
 
+using DVVdownloader.Localization;
+
 namespace DVVdownloader.Services
 {
     public class YtDlpEngine
@@ -200,12 +202,12 @@ namespace DVVdownloader.Services
         {
             string ytDlp = ResolveYtDlpPath();
             bool ytDlpOk = File.Exists(ytDlp) || FindExecutableInPath(Path.GetFileName(ytDlp)) != null;
-            ytDlpStatus = ytDlpOk ? "Kullanılabilir" : "Bulunamadı (tools klasörünü kontrol edin)";
+            ytDlpStatus = ytDlpOk ? Loc.Get("EngineAvailable") : Loc.Get("YtDlpMissing");
 
             string ffmpegDir = ResolveFfmpegDirectory();
             bool ffmpegOk = (!string.IsNullOrEmpty(ffmpegDir) && File.Exists(Path.Combine(ffmpegDir, "ffmpeg.exe")))
                 || FindExecutableInPath("ffmpeg.exe") != null;
-            ffmpegStatus = ffmpegOk ? "Kullanılabilir" : "Bulunamadı (İsteğe bağlı)";
+            ffmpegStatus = ffmpegOk ? Loc.Get("EngineAvailable") : Loc.Get("FfmpegMissing");
 
             return ytDlpOk;
         }
@@ -215,11 +217,11 @@ namespace DVVdownloader.Services
             string ytDlpPath = ResolveYtDlpPath();
             if (!File.Exists(ytDlpPath) && FindExecutableInPath(Path.GetFileName(ytDlpPath)) == null)
             {
-                throw new FileNotFoundException("İndirme motoru (yt-dlp.exe) bulunamadı. Lütfen 'tools' klasöründe yt-dlp.exe bulunduğundan emin olun veya Ayarlar menüsünden dosya konumunu belirleyin.");
+                throw new FileNotFoundException(Loc.Get("ErrYtDlpNotFound"));
             }
 
             string normalizedUrl = await PlatformDetector.NormalizeUrlAsync(url, ct);
-            LogService.Instance.Info($"Medya analiz ediliyor: {normalizedUrl}", "YtDlpEngine");
+            LogService.Instance.Info($"Analyzing media: {normalizedUrl}", "YtDlpEngine");
 
             var psi = new ProcessStartInfo
             {
@@ -276,8 +278,8 @@ namespace DVVdownloader.Services
             }
             catch (Exception ex)
             {
-                LogService.Instance.Error($"yt-dlp başlatılamadı ({ytDlpPath}): {ex.Message}", "YtDlpEngine");
-                throw new InvalidOperationException($"İndirme motoru (yt-dlp) çalıştırılamadı: {ex.Message}");
+                LogService.Instance.Error($"Could not start yt-dlp ({ytDlpPath}): {ex.Message}", "YtDlpEngine");
+                throw new InvalidOperationException(Loc.Format("ErrEngineStart", ex.Message));
             }
 
             using var registration = ct.Register(() =>
@@ -291,7 +293,7 @@ namespace DVVdownloader.Services
 
             if (process.ExitCode != 0 || string.IsNullOrWhiteSpace(stdout))
             {
-                LogService.Instance.Warning($"yt-dlp analizi başarısız oldu (Çıkış kodu {process.ExitCode}): {stderr.Trim()}", "YtDlpEngine");
+                LogService.Instance.Warning($"yt-dlp analysis failed (exit code {process.ExitCode}): {stderr.Trim()}", "YtDlpEngine");
 
                 // Pinterest için dahili CDN / HTML fallback
                 if (normalizedUrl.Contains("pinterest.com", StringComparison.OrdinalIgnoreCase) || normalizedUrl.Contains("pin.it", StringComparison.OrdinalIgnoreCase))
@@ -302,7 +304,7 @@ namespace DVVdownloader.Services
                     }
                     catch (Exception pinEx)
                     {
-                        LogService.Instance.Error($"Pinterest yedek analiz başarısız: {pinEx.Message}", "YtDlpEngine");
+                        LogService.Instance.Error($"Pinterest fallback analysis failed: {pinEx.Message}", "YtDlpEngine");
                     }
                 }
 
@@ -315,12 +317,12 @@ namespace DVVdownloader.Services
                     }
                     catch (Exception igEx)
                     {
-                        LogService.Instance.Error($"Instagram yedek analiz başarısız: {igEx.Message}", "YtDlpEngine");
+                        LogService.Instance.Error($"Instagram fallback analysis failed: {igEx.Message}", "YtDlpEngine");
                     }
                 }
 
-                LogService.Instance.Error($"Analiz başarısız oldu. Hata: {stderr}", "YtDlpEngine");
-                throw new InvalidOperationException(!string.IsNullOrWhiteSpace(stderr) ? stderr.Trim() : "Medya bilgileri alınamadı.");
+                LogService.Instance.Error($"Analysis failed. Error: {stderr}", "YtDlpEngine");
+                throw new InvalidOperationException(!string.IsNullOrWhiteSpace(stderr) ? stderr.Trim() : Loc.Get("ErrMediaInfo"));
             }
 
             var meta = ParseMetadataJson(stdout, normalizedUrl);
@@ -393,7 +395,7 @@ namespace DVVdownloader.Services
             var meta = new MediaMetadata
             {
                 Id = GetStringOrDefault(root, "id"),
-                Title = GetStringOrDefault(root, "title", "Medya"),
+                Title = GetStringOrDefault(root, "title", "Media"),
                 Description = GetStringOrDefault(root, "description"),
                 Uploader = GetStringOrDefault(root, "uploader"),
                 Duration = GetDoubleOrDefault(root, "duration", 0),
@@ -619,7 +621,7 @@ namespace DVVdownloader.Services
                     FormatId = "best",
                     Height = 1080,
                     Ext = "mp4",
-                    Note = "En İyi Kalite"
+                    Note = Loc.Get("QualityBest")
                 });
                 meta.Formats.Add(new MediaFormatItem
                 {
@@ -627,7 +629,7 @@ namespace DVVdownloader.Services
                     VCodec = "none",
                     ACodec = "mp3",
                     Ext = "mp3",
-                    Note = "MP3 Ses"
+                    Note = Loc.Get("QualityMp3")
                 });
             }
 
@@ -643,9 +645,9 @@ namespace DVVdownloader.Services
             if (!File.Exists(ytDlpPath) && FindExecutableInPath(Path.GetFileName(ytDlpPath)) == null)
             {
                 task.Status = DownloadStatus.Hata;
-                task.ErrorMessage = "İndirme motoru (yt-dlp.exe) bulunamadı. Lütfen 'tools' klasörünü kontrol edin.";
+                task.ErrorMessage = Loc.Get("ErrYtDlpNotFoundShort");
                 LogService.Instance.Error(task.ErrorMessage, "YtDlpEngine");
-                throw new FileNotFoundException("İndirme motoru (yt-dlp.exe) bulunamadı. Lütfen 'tools' klasöründe yt-dlp.exe bulunduğundan emin olun veya Ayarlar menüsünden dosya konumunu belirleyin.");
+                throw new FileNotFoundException(Loc.Get("ErrYtDlpNotFound"));
             }
             string saveDir = SettingsService.Instance.CurrentSettings.DownloadDirectory;
             Directory.CreateDirectory(saveDir);
@@ -656,7 +658,7 @@ namespace DVVdownloader.Services
                 StringComparer.OrdinalIgnoreCase);
 
             task.Status = DownloadStatus.Indiriliyor;
-            LogService.Instance.Info($"İndirme başlatıldı: {task.Title} ({task.SelectedQuality})", "YtDlpEngine");
+            LogService.Instance.Info($"Download started: {task.Title} ({task.SelectedQuality})", "YtDlpEngine");
 
             var psi = new ProcessStartInfo
             {
@@ -798,7 +800,7 @@ namespace DVVdownloader.Services
             {
                 task.Status = DownloadStatus.Hata;
                 task.ErrorMessage = ex.Message;
-                LogService.Instance.Error($"İndirme süreci başlatılamadı: {ex.Message}", "YtDlpEngine");
+                LogService.Instance.Error($"Could not start the download process: {ex.Message}", "YtDlpEngine");
                 throw;
             }
 
@@ -808,7 +810,7 @@ namespace DVVdownloader.Services
                 {
                     process.Kill(entireProcessTree: true);
                     task.Status = DownloadStatus.IptalEdildi;
-                    LogService.Instance.Warning($"İndirme iptal edildi: {task.Title}", "YtDlpEngine");
+                    LogService.Instance.Warning($"Download cancelled: {task.Title}", "YtDlpEngine");
                 }
                 catch { }
             });
@@ -869,15 +871,15 @@ namespace DVVdownloader.Services
             if (process.ExitCode != 0)
             {
                 task.Status = DownloadStatus.Hata;
-                task.ErrorMessage = !string.IsNullOrWhiteSpace(stderr) ? stderr.Trim() : "İndirme işlemi hata ile sonlandı.";
-                LogService.Instance.Error($"İndirme hatası: {task.ErrorMessage}", "YtDlpEngine");
+                task.ErrorMessage = !string.IsNullOrWhiteSpace(stderr) ? stderr.Trim() : Loc.Get("ErrDownloadFailed");
+                LogService.Instance.Error($"Download error: {task.ErrorMessage}", "YtDlpEngine");
                 throw new InvalidOperationException(task.ErrorMessage);
             }
 
             task.Status = DownloadStatus.Tamamlandi;
             task.ProgressPercentage = 100;
             task.CompletedAt = DateTime.Now;
-            task.DownloadSpeed = "Tamamlandı";
+            task.DownloadSpeed = Loc.Get("StatusCompleted");
             task.Eta = "00:00";
 
             // Dosya yolu doğrulama veya son indirilen dosyayı bulma
@@ -907,7 +909,7 @@ namespace DVVdownloader.Services
                 task.FileSizeFormatted = mb >= 1024 ? $"{mb / 1024.0:F2} GB" : $"{mb:F1} MB";
             }
 
-            LogService.Instance.Info($"İndirme başarıyla tamamlandı: {task.Title}", "YtDlpEngine");
+            LogService.Instance.Info($"Download completed: {task.Title}", "YtDlpEngine");
 
             // Geçmişe ekle
             HistoryService.Instance.AddHistoryItem(new HistoryItem
@@ -926,7 +928,7 @@ namespace DVVdownloader.Services
         #region Yedek (Fallback) Ayrıştırıcılar
         private async Task<MediaMetadata> ExtractPinterestFallbackAsync(string url, CancellationToken ct)
         {
-            LogService.Instance.Info($"Pinterest doğrudan web ayrıştırması başlatılıyor: {url}", "YtDlpEngine");
+            LogService.Instance.Info($"Starting Pinterest page parsing: {url}", "YtDlpEngine");
 
             string targetUrl = url;
             if (targetUrl.Contains("pin.it", StringComparison.OrdinalIgnoreCase))
@@ -1025,7 +1027,7 @@ namespace DVVdownloader.Services
 
             if (string.IsNullOrEmpty(directMp4) && string.IsNullOrEmpty(m3u8Url))
             {
-                throw new InvalidOperationException("Pinterest gönderisinde indirilebilir bir video akışı bulunamadı (gönderi sadece resim olabilir).");
+                throw new InvalidOperationException(Loc.Get("ErrPinterestNoVideo"));
             }
 
             var meta = new MediaMetadata
@@ -1042,7 +1044,7 @@ namespace DVVdownloader.Services
                 meta.Formats.Add(new MediaFormatItem
                 {
                     FormatId = "pinterest_direct",
-                    Note = "720p HD (Orijinal)",
+                    Note = Loc.Get("Quality720Original"),
                     Resolution = "720p",
                     Height = 720,
                     Ext = "mp4",
@@ -1055,8 +1057,8 @@ namespace DVVdownloader.Services
                 meta.Formats.Add(new MediaFormatItem
                 {
                     FormatId = "pinterest_hls",
-                    Note = "HLS Stream (Otomatik MP4)",
-                    Resolution = "Otomatik",
+                    Note = Loc.Get("QualityHlsAuto"),
+                    Resolution = Loc.Get("QualityAuto"),
                     Height = 720,
                     Ext = "mp4",
                     DirectUrl = m3u8Url
@@ -1161,7 +1163,7 @@ namespace DVVdownloader.Services
                     var directItem = new MediaFormatItem
                     {
                         FormatId = "pinterest_direct",
-                        Note = "720p HD (Orijinal)",
+                        Note = Loc.Get("Quality720Original"),
                         Resolution = "720p",
                         Height = 720,
                         Width = 1280,
@@ -1170,18 +1172,18 @@ namespace DVVdownloader.Services
                     };
 
                     meta.Formats.Insert(0, directItem);
-                    LogService.Instance.Info($"Pinterest doğrudan HD video akışı tespit edildi: {bestMp4}", "YtDlpEngine");
+                    LogService.Instance.Info($"Found Pinterest direct HD stream: {bestMp4}", "YtDlpEngine");
                 }
             }
             catch (Exception ex)
             {
-                LogService.Instance.Warning($"Pinterest metadata zenginleştirme atlandı: {ex.Message}", "YtDlpEngine");
+                LogService.Instance.Warning($"Skipped Pinterest metadata enrichment: {ex.Message}", "YtDlpEngine");
             }
         }
 
         private async Task<MediaMetadata> ExtractInstagramFallbackAsync(string url, CancellationToken ct)
         {
-            LogService.Instance.Info($"Instagram doğrudan embed ayrıştırması başlatılıyor: {url}", "YtDlpEngine");
+            LogService.Instance.Info($"Starting Instagram embed parsing: {url}", "YtDlpEngine");
 
             string cleanUrl = await PlatformDetector.NormalizeUrlAsync(url, ct);
             if (!cleanUrl.EndsWith("/")) cleanUrl += "/";
@@ -1215,7 +1217,7 @@ namespace DVVdownloader.Services
 
             if (string.IsNullOrEmpty(videoUrl))
             {
-                throw new InvalidOperationException("Instagram gönderisinde indirilebilir video bulunamadı veya gönderi gizli.");
+                throw new InvalidOperationException(Loc.Get("ErrInstagramNoVideo"));
             }
 
             videoUrl = Regex.Unescape(videoUrl).Replace(@"\/", "/");
@@ -1256,7 +1258,7 @@ namespace DVVdownloader.Services
             meta.Formats.Add(new MediaFormatItem
             {
                 FormatId = "instagram_direct",
-                Note = "Orijinal Kalite (1080p MP4)",
+                Note = Loc.Get("Quality1080Original"),
                 Resolution = "1080p",
                 Height = 1080,
                 Ext = "mp4",

@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
+using DVVdownloader.Localization;
+
 namespace DVVdownloader.Services
 {
     public static class PlatformDetector
@@ -22,11 +24,11 @@ namespace DVVdownloader.Services
 
         public static string DetectPlatform(string url)
         {
-            if (string.IsNullOrWhiteSpace(url)) return "Bilinmiyor";
+            if (string.IsNullOrWhiteSpace(url)) return Loc.Get("PlatformUnknown");
 
             if (!Uri.TryCreate(url, UriKind.Absolute, out var uri))
             {
-                return "Geçersiz URL";
+                return Loc.Get("PlatformInvalid");
             }
 
             string host = uri.Host.ToLowerInvariant();
@@ -67,10 +69,10 @@ namespace DVVdownloader.Services
                 url.EndsWith(".mp3", StringComparison.OrdinalIgnoreCase) ||
                 url.EndsWith(".m4a", StringComparison.OrdinalIgnoreCase))
             {
-                return "Doğrudan Medya";
+                return Loc.Get("PlatformDirect");
             }
 
-            return "Web Medyası";
+            return Loc.Get("PlatformWeb");
         }
 
         public static bool IsSocialPlatform(string url)

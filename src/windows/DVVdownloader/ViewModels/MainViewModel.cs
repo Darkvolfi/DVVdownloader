@@ -11,13 +11,15 @@ using DVVdownloader.Common;
 using DVVdownloader.Models;
 using DVVdownloader.Services;
 
+using DVVdownloader.Localization;
+
 namespace DVVdownloader.ViewModels
 {
     public class MainViewModel : ObservableObject
     {
         private int _selectedTab = 0;
         private string _urlInput = string.Empty;
-        private string _detectedPlatform = "Bağlantı bekleniyor";
+        private string _detectedPlatform = Loc.Get("WaitingForLink");
         private bool _isAnalyzing;
         private string _analysisStatusText = string.Empty;
         private string _analysisErrorMessage = string.Empty;
@@ -76,7 +78,7 @@ namespace DVVdownloader.ViewModels
             RefreshHistory();
             CheckBinaries();
 
-            LogService.Instance.Info("DVVdownloader Windows yerel arayüzü başlatıldı.", "MainViewModel");
+            LogService.Instance.Info("DVVdownloader for Windows started.", "MainViewModel");
         }
 
         public int SelectedTab
@@ -166,6 +168,36 @@ namespace DVVdownloader.ViewModels
         {
             get => _settings;
             set => SetProperty(ref _settings, value);
+        }
+
+        // Dil seçimi: boş kod = sistem dili; diğerleri kendi dilindeki adlarıyla listelenir
+        public System.Collections.Generic.List<LanguageOption> LanguageOptions { get; } =
+            new[] { new LanguageOption(string.Empty, Loc.Get("LanguageSystem")) }
+                .Concat(Loc.SupportedLanguages.Select(l => new LanguageOption(l.Code, l.NativeName)))
+                .ToList();
+
+        public string SelectedLanguageCode
+        {
+            get => Settings.Language ?? string.Empty;
+            set
+            {
+                if (string.Equals(Settings.Language ?? string.Empty, value ?? string.Empty, StringComparison.OrdinalIgnoreCase)) return;
+                Settings.Language = value ?? string.Empty;
+                SettingsService.Instance.SaveSettings(Settings);
+                OnPropertyChanged();
+
+                // XAML metinleri açılışta okunduğu için yeni dil yeniden başlatınca uygulanır
+                if (MessageBox.Show(Loc.Get("LanguageRestartMessage"), Loc.Get("LanguageRestartTitle"),
+                        MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    string? exe = Environment.ProcessPath;
+                    if (!string.IsNullOrEmpty(exe))
+                    {
+                        Process.Start(new ProcessStartInfo(exe) { UseShellExecute = true });
+                        Application.Current.Shutdown();
+                    }
+                }
+            }
         }
 
         public string YtDlpStatus
@@ -272,8 +304,8 @@ namespace DVVdownloader.ViewModels
             " COPYRIGHT HOLDER BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL,\n" +
             " INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE THE PROGRAM.\n\n" +
             " ------------------------------------------------------------\n" +
-            " DVVdownloader — Telif Hakkı (C) 2026 DVVdownloader Geliştiricileri\n" +
-            " Bu yazılım GNU GPL v3.0 lisansına tabidir. Özgürce kullanılabilir ve dağıtılabilir.";
+            " DVVdownloader — Copyright (C) 2026 DVVdownloader contributors\n" +
+            " This software is licensed under the GNU GPL v3.0. You are free to use and redistribute it.";
 
         private void PasteFromClipboard()
         {
@@ -294,7 +326,7 @@ namespace DVVdownloader.ViewModels
             }
             catch (Exception ex)
             {
-                LogService.Instance.Error($"Pano okunamadı: {ex.Message}", "UI");
+                LogService.Instance.Error($"Could not read clipboard: {ex.Message}", "UI");
             }
         }
 
@@ -306,7 +338,7 @@ namespace DVVdownloader.ViewModels
             IsAnalyzing = true;
             HasAnalysisError = false;
             AnalysisErrorMessage = string.Empty;
-            AnalysisStatusText = "Medya kaynakları ve formatları taranıyor...";
+            AnalysisStatusText = Loc.Get("AnalyzingStatus");
             CurrentMetadata = null;
             AvailableVideoFormats.Clear();
             AvailableAudioFormats.Clear();
@@ -334,12 +366,12 @@ namespace DVVdownloader.ViewModels
                 // Varsayılan format seçimi
                 SelectedFormat = AvailableVideoFormats.FirstOrDefault() ?? AvailableAudioFormats.FirstOrDefault();
 
-                LogService.Instance.Info($"Analiz başarılı: {metadata.Title} ({metadata.Formats.Count} format bulundu)", "UI");
+                LogService.Instance.Info($"Analysis succeeded: {metadata.Title} ({metadata.Formats.Count} formats)", "UI");
             }
             catch (Exception ex)
             {
                 HasAnalysisError = true;
-                AnalysisErrorMessage = $"Medya analizi başarısız oldu: {ex.Message}";
+                AnalysisErrorMessage = Loc.Format("AnalysisFailed", ex.Message);
                 LogService.Instance.Error(AnalysisErrorMessage, "UI");
             }
             finally
@@ -363,7 +395,7 @@ namespace DVVdownloader.ViewModels
                 SelectedFormatId = SelectedFormat?.FormatId ?? "best",
                 SelectedHeight = IsAudioMode ? 0 : (SelectedFormat?.Height ?? 1080),
                 DirectUrl = SelectedFormat?.DirectUrl ?? string.Empty,
-                SelectedQuality = IsAudioMode ? $"MP3 Ses ({SelectedAudioFormat.ToUpper()})" : (SelectedFormat?.QualityLabel ?? "En İyi"),
+                SelectedQuality = IsAudioMode ? Loc.Format("QualityMp3Ext", SelectedAudioFormat.ToUpper()) : (SelectedFormat?.QualityLabel ?? Loc.Get("QualityBestShort")),
                 FileSizeFormatted = IsAudioMode ? "" : (SelectedFormat?.FormattedSize ?? ""),
                 Status = DownloadStatus.Kuyrukta,
                 Cts = new CancellationTokenSource()
@@ -497,12 +529,12 @@ namespace DVVdownloader.ViewModels
                 }
                 else
                 {
-                    MessageBox.Show("Hedef dosya bulunamadı veya taşınmış olabilir.", "Dosya Açılamadı", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show(Loc.Get("FileMissingMessage"), Loc.Get("FileMissingTitle"), MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             catch (Exception ex)
             {
-                LogService.Instance.Error($"Dosya açılamadı: {ex.Message}", "UI");
+                LogService.Instance.Error($"Could not open file: {ex.Message}", "UI");
             }
         }
 
@@ -523,7 +555,7 @@ namespace DVVdownloader.ViewModels
             }
             catch (Exception ex)
             {
-                LogService.Instance.Error($"Klasör açılamadı: {ex.Message}", "UI");
+                LogService.Instance.Error($"Could not open folder: {ex.Message}", "UI");
             }
         }
 
@@ -534,7 +566,7 @@ namespace DVVdownloader.ViewModels
                 // .NET 8+ / .NET 10 yerel OpenFolderDialog
                 var dialog = new Microsoft.Win32.OpenFolderDialog
                 {
-                    Title = "İndirme Klasörünü Seçin",
+                    Title = Loc.Get("ChooseDownloadFolder"),
                     InitialDirectory = Settings.DownloadDirectory
                 };
 
@@ -547,7 +579,7 @@ namespace DVVdownloader.ViewModels
             }
             catch (Exception ex)
             {
-                LogService.Instance.Error($"Klasör seçici açılamadı: {ex.Message}", "UI");
+                LogService.Instance.Error($"Could not open folder picker: {ex.Message}", "UI");
             }
         }
 
@@ -559,7 +591,7 @@ namespace DVVdownloader.ViewModels
 
         private void ClearHistory()
         {
-            if (MessageBox.Show("İndirme geçmişini temizlemek istediğinizden emin misiniz? (İndirilen dosyalarınız silinmez)", "Geçmişi Temizle", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show(Loc.Get("ClearHistoryConfirm"), Loc.Get("ClearHistory"), MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 HistoryService.Instance.ClearHistory();
                 RefreshHistory();
@@ -572,5 +604,14 @@ namespace DVVdownloader.ViewModels
             YtDlpStatus = ytStatus;
             FfmpegStatus = ffStatus;
         }
+    }
+}
+
+namespace DVVdownloader.ViewModels
+{
+    public record LanguageOption(string Code, string Name)
+    {
+        // Açılır listenin seçili öğe kutusu ToString() ile gösterir
+        public override string ToString() => Name;
     }
 }

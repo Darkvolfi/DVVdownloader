@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,7 +15,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Medya İndir"
+            android:text="@string/home_title"
             android:textColor="@color/text_primary"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -22,7 +23,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="YouTube, TikTok, Instagram ve doğrudan video bağlantıları"
+            android:text="@string/home_subtitle"
             android:textColor="@color/text_secondary"
             android:textSize="13sp"
             android:layout_marginTop="2dp"
@@ -73,7 +74,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kaynak: "
+                        android:text="@string/label_source"
                         android:textColor="@color/text_muted"
                         android:textSize="12sp" />
 
@@ -81,7 +82,7 @@
                         android:id="@+id/tvDetectedPlatform"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Bağlantı bekleniyor"
+                        android:text="@string/source_waiting"
                         android:textColor="@color/primary_accent"
                         android:textStyle="bold"
                         android:textSize="12sp"
@@ -189,7 +190,7 @@
                     android:id="@+id/tvMediaTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Video Başlığı"
+                    tools:text="Video title"
                     android:textColor="@color/text_primary"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -198,7 +199,7 @@
                     android:id="@+id/tvMediaAuthor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Kanal / Yükleyici"
+                    tools:text="Channel"
                     android:textColor="@color/text_secondary"
                     android:textSize="13sp"
                     android:layout_marginTop="2dp"

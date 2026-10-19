@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="WindowTitle" xml:space="preserve"><value>DVVdownloader — Pengunduh Media Lokal</value></data>
+  <data name="VersionBadge" xml:space="preserve"><value>v1.1 Lokal</value></data>
+  <data name="TipMinimize" xml:space="preserve"><value>Perkecil</value></data>
+  <data name="TipMaximize" xml:space="preserve"><value>Perbesar / Pulihkan</value></data>
+  <data name="Close" xml:space="preserve"><value>Tutup</value></data>
+  <data name="NavDownload" xml:space="preserve"><value>Unduh Media</value></data>
+  <data name="NavQueue" xml:space="preserve"><value>Antrean</value></data>
+  <data name="NavCompleted" xml:space="preserve"><value>Selesai</value></data>
+  <data name="NavSettings" xml:space="preserve"><value>Setelan</value></data>
+  <data name="NavLog" xml:space="preserve"><value>Log Aktivitas</value></data>
+  <data name="EngineStatus" xml:space="preserve"><value>STATUS MESIN</value></data>
+  <data name="HomeTitle" xml:space="preserve"><value>Unduhan Media Cepat dan Lokal</value></data>
+  <data name="HomeSubtitle" xml:space="preserve"><value>Unduh dari YouTube, Pinterest, dan banyak situs lain, atau dari tautan video langsung</value></data>
+  <data name="UrlPlaceholder" xml:space="preserve"><value>Tempel tautan media di sini (https://...)</value></data>
+  <data name="TipPaste" xml:space="preserve"><value>Tempel tautan dari papan klip lalu analisis</value></data>
+  <data name="Paste" xml:space="preserve"><value>Tempel</value></data>
+  <data name="Analyze" xml:space="preserve"><value>Analisis</value></data>
+  <data name="DetectedSource" xml:space="preserve"><value>Sumber terdeteksi: </value></data>
+  <data name="ClearInput" xml:space="preserve"><value>Bersihkan</value></data>
+  <data name="AnalyzingHint" xml:space="preserve"><value>Ini bisa memakan waktu beberapa detik, tergantung sumbernya.</value></data>
+  <data name="AnalysisFailedTitle" xml:space="preserve"><value>Tidak dapat mengambil info media</value></data>
+  <data name="ModeVideo" xml:space="preserve"><value>🎬 Unduh sebagai video (MP4)</value></data>
+  <data name="ModeAudio" xml:space="preserve"><value>🎵 Unduh audio saja (MP3)</value></data>
+  <data name="AvailableResolutions" xml:space="preserve"><value>Resolusi yang tersedia:</value></data>
+  <data name="AudioQualityFormat" xml:space="preserve"><value>Kualitas dan format audio:</value></data>
+  <data name="AudioMp3High" xml:space="preserve"><value>MP3 kualitas tinggi (kualitas terbaik yang tersedia)</value></data>
+  <data name="AudioMp3Desc" xml:space="preserve"><value>Audio diekstrak dan dikonversi ke MP3 dengan FFmpeg.</value></data>
+  <data name="SaveFolder" xml:space="preserve"><value>Simpan ke: </value></data>
+  <data name="DownloadNow" xml:space="preserve"><value>Unduh sekarang</value></data>
+  <data name="QueueTitle" xml:space="preserve"><value>Antrean Unduhan</value></data>
+  <data name="QueueSubtitle" xml:space="preserve"><value>Unduhan yang sedang berjalan dan menunggu</value></data>
+  <data name="QueueEmptyTitle" xml:space="preserve"><value>Antrean sedang kosong.</value></data>
+  <data name="QueueEmptyHint" xml:space="preserve"><value>Tempel tautan media di beranda untuk mulai mengunduh.</value></data>
+  <data name="GoToDownload" xml:space="preserve"><value>Buka Unduh Media</value></data>
+  <data name="SpeedPrefix" xml:space="preserve"><value>  |  Kecepatan: </value></data>
+  <data name="EtaPrefix" xml:space="preserve"><value>  |  Sisa: </value></data>
+  <data name="Cancel" xml:space="preserve"><value>Batal</value></data>
+  <data name="Retry" xml:space="preserve"><value>Coba lagi</value></data>
+  <data name="Remove" xml:space="preserve"><value>Hapus</value></data>
+  <data name="CompletedTitle" xml:space="preserve"><value>Unduhan Selesai</value></data>
+  <data name="CompletedSubtitle" xml:space="preserve"><value>Media yang sudah Anda unduh sebelumnya</value></data>
+  <data name="OpenDownloadFolder" xml:space="preserve"><value>Buka folder unduhan</value></data>
+  <data name="ClearHistory" xml:space="preserve"><value>Hapus riwayat</value></data>
+  <data name="CompletedEmptyTitle" xml:space="preserve"><value>Belum ada unduhan yang selesai.</value></data>
+  <data name="CompletedEmptyHint" xml:space="preserve"><value>File yang Anda unduh akan muncul di sini.</value></data>
+  <data name="Saved" xml:space="preserve"><value>Tersimpan</value></data>
+  <data name="Play" xml:space="preserve"><value>▶ Putar</value></data>
+  <data name="ShowInFolder" xml:space="preserve"><value>📂 Tampilkan di folder</value></data>
+  <data name="SettingsTitle" xml:space="preserve"><value>Setelan</value></data>
+  <data name="SettingsSubtitle" xml:space="preserve"><value>Bahasa, lokasi unduhan, jalur mesin, dan perilaku</value></data>
+  <data name="LanguageTitle" xml:space="preserve"><value>Bahasa</value></data>
+  <data name="LanguageDesc" xml:space="preserve"><value>Aplikasi otomatis memakai bahasa Windows Anda. Jika bahasanya tidak didukung, bahasa Inggris yang dipakai.</value></data>
+  <data name="LanguageSystem" xml:space="preserve"><value>Bahasa sistem</value></data>
+  <data name="LanguageRestartMessage" xml:space="preserve"><value>Bahasa baru akan diterapkan setelah DVVdownloader dimulai ulang. Mulai ulang sekarang?</value></data>
+  <data name="LanguageRestartTitle" xml:space="preserve"><value>Bahasa diubah</value></data>
+  <data name="DownloadLocation" xml:space="preserve"><value>Lokasi unduhan</value></data>
+  <data name="DownloadLocationDesc" xml:space="preserve"><value>Folder tempat file media disimpan</value></data>
+  <data name="ChooseFolder" xml:space="preserve"><value>Pilih folder…</value></data>
+  <data name="EnginesTitle" xml:space="preserve"><value>Mesin media</value></data>
+  <data name="EnginesDesc" xml:space="preserve"><value>File yt-dlp dan FFmpeg lokal</value></data>
+  <data name="CustomYtDlpPath" xml:space="preserve"><value>Jalur yt-dlp kustom (opsional):</value></data>
+  <data name="CustomFfmpegPath" xml:space="preserve"><value>Jalur FFmpeg kustom (opsional):</value></data>
+  <data name="SaveSettings" xml:space="preserve"><value>Simpan setelan</value></data>
+  <data name="BehaviorTitle" xml:space="preserve"><value>Perilaku dan notifikasi</value></data>
+  <data name="BehaviorDesc" xml:space="preserve"><value>Yang terjadi saat unduhan selesai</value></data>
+  <data name="AutoOpenFolder" xml:space="preserve"><value>Buka folder unduhan saat unduhan selesai</value></data>
+  <data name="PlaySound" xml:space="preserve"><value>Putar suara notifikasi</value></data>
+  <data name="LicenseTitle" xml:space="preserve"><value>Lisensi sumber terbuka dan info hukum</value></data>
+  <data name="ViewLicense" xml:space="preserve"><value>Lihat teks lisensi</value></data>
+  <data name="LicenseSummary" xml:space="preserve"><value>DVVdownloader adalah perangkat lunak bebas dan sumber terbuka di bawah GNU General Public License versi 3 (GPL-3.0).</value></data>
+  <data name="LicenseDetail" xml:space="preserve"><value>Anda bebas memakainya, mempelajari kode sumbernya, mengubahnya sesuai kebutuhan, dan mendistribusikannya ulang berdasarkan ketentuan GPL-3.0. Tidak ada telemetri tersembunyi, pelacakan, atau batasan komersial.</value></data>
+  <data name="ThirdParty" xml:space="preserve"><value>Komponen sumber terbuka pihak ketiga:</value></data>
+  <data name="ThirdPartyYtDlp" xml:space="preserve"><value>• yt-dlp: The Unlicense (domain publik)</value></data>
+  <data name="ThirdPartyFfmpeg" xml:space="preserve"><value>• FFmpeg: GNU LGPL v2.1+ / GPL v3 (build gyan.dev)</value></data>
+  <data name="ThirdPartyDotnet" xml:space="preserve"><value>• .NET 10 / WPF: Lisensi MIT (Microsoft Corporation)</value></data>
+  <data name="LogTitle" xml:space="preserve"><value>Log Aktivitas dan Kesalahan</value></data>
+  <data name="LogSubtitle" xml:space="preserve"><value>Keluaran dan detail mesin secara langsung</value></data>
+  <data name="ClearLog" xml:space="preserve"><value>Hapus log</value></data>
+  <data name="GplTitle" xml:space="preserve"><value>GNU General Public License versi 3</value></data>
+  <data name="GplFooter" xml:space="preserve"><value>Free Software Foundation (FSF) — Copyright (C) 2007-2026 DVVdownloader</value></data>
+  <data name="StatusQueued" xml:space="preserve"><value>Dalam antrean</value></data>
+  <data name="StatusAnalyzing" xml:space="preserve"><value>Menganalisis…</value></data>
+  <data name="StatusDownloading" xml:space="preserve"><value>Mengunduh</value></data>
+  <data name="StatusProcessing" xml:space="preserve"><value>Memproses (FFmpeg)…</value></data>
+  <data name="StatusCompleted" xml:space="preserve"><value>Selesai</value></data>
+  <data name="StatusError" xml:space="preserve"><value>Gagal</value></data>
+  <data name="StatusCancelled" xml:space="preserve"><value>Dibatalkan</value></data>
+  <data name="StatusPaused" xml:space="preserve"><value>Dijeda</value></data>
+  <data name="WaitingForLink" xml:space="preserve"><value>Menunggu tautan</value></data>
+  <data name="PlatformUnknown" xml:space="preserve"><value>Tidak diketahui</value></data>
+  <data name="PlatformInvalid" xml:space="preserve"><value>URL tidak valid</value></data>
+  <data name="PlatformDirect" xml:space="preserve"><value>Media langsung</value></data>
+  <data name="PlatformWeb" xml:space="preserve"><value>Media web</value></data>
+  <data name="EngineAvailable" xml:space="preserve"><value>Tersedia</value></data>
+  <data name="YtDlpMissing" xml:space="preserve"><value>Tidak ditemukan (periksa folder tools)</value></data>
+  <data name="FfmpegMissing" xml:space="preserve"><value>Tidak ditemukan (opsional)</value></data>
+  <data name="ErrYtDlpNotFound" xml:space="preserve"><value>Mesin unduhan (yt-dlp.exe) tidak ditemukan. Pastikan yt-dlp.exe ada di folder "tools", atau atur lokasinya di Setelan.</value></data>
+  <data name="ErrYtDlpNotFoundShort" xml:space="preserve"><value>Mesin unduhan (yt-dlp.exe) tidak ditemukan. Periksa folder "tools".</value></data>
+  <data name="ErrEngineStart" xml:space="preserve"><value>Tidak dapat menjalankan mesin unduhan (yt-dlp): {0}</value></data>
+  <data name="ErrMediaInfo" xml:space="preserve"><value>Tidak dapat mengambil info media.</value></data>
+  <data name="ErrDownloadFailed" xml:space="preserve"><value>Unduhan berakhir dengan kesalahan.</value></data>
+  <data name="ErrPinterestNoVideo" xml:space="preserve"><value>Tidak ada video yang bisa diunduh di postingan Pinterest ini (mungkin hanya gambar).</value></data>
+  <data name="ErrInstagramNoVideo" xml:space="preserve"><value>Tidak ada video yang bisa diunduh di postingan Instagram ini, atau postingannya bersifat pribadi.</value></data>
+  <data name="QualityBest" xml:space="preserve"><value>Kualitas terbaik</value></data>
+  <data name="QualityMp3" xml:space="preserve"><value>Audio MP3</value></data>
+  <data name="QualityMp3Ext" xml:space="preserve"><value>Audio MP3 ({0})</value></data>
+  <data name="QualityBestShort" xml:space="preserve"><value>Terbaik</value></data>
+  <data name="Quality720Original" xml:space="preserve"><value>720p HD (asli)</value></data>
+  <data name="QualityHlsAuto" xml:space="preserve"><value>Stream HLS (MP4 otomatis)</value></data>
+  <data name="QualityAuto" xml:space="preserve"><value>Otomatis</value></data>
+  <data name="Quality1080Original" xml:space="preserve"><value>Kualitas asli (1080p MP4)</value></data>
+  <data name="QualityOriginal" xml:space="preserve"><value>Kualitas asli</value></data>
+  <data name="AudioKbps" xml:space="preserve"><value>Audio ({0} kbps) - {1}</value></data>
+  <data name="AudioExt" xml:space="preserve"><value>Audio ({0})</value></data>
+  <data name="SizeUnknown" xml:space="preserve"><value>Ukuran tidak diketahui</value></data>
+  <data name="AnalyzingStatus" xml:space="preserve"><value>Mencari sumber dan format media…</value></data>
+  <data name="AnalysisFailed" xml:space="preserve"><value>Analisis gagal: {0}</value></data>
+  <data name="FileMissingMessage" xml:space="preserve"><value>File tidak ditemukan atau mungkin sudah dipindahkan.</value></data>
+  <data name="FileMissingTitle" xml:space="preserve"><value>Tidak dapat membuka file</value></data>
+  <data name="ChooseDownloadFolder" xml:space="preserve"><value>Pilih folder unduhan</value></data>
+  <data name="ClearHistoryConfirm" xml:space="preserve"><value>Yakin ingin menghapus riwayat unduhan? (File yang sudah diunduh tidak akan dihapus.)</value></data>
+</root>

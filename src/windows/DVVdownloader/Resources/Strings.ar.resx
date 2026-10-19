@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="WindowTitle" xml:space="preserve"><value>DVVdownloader — أداة تنزيل الوسائط محليًا</value></data>
+  <data name="VersionBadge" xml:space="preserve"><value>v1.1 محلي</value></data>
+  <data name="TipMinimize" xml:space="preserve"><value>تصغير</value></data>
+  <data name="TipMaximize" xml:space="preserve"><value>تكبير / استعادة</value></data>
+  <data name="Close" xml:space="preserve"><value>إغلاق</value></data>
+  <data name="NavDownload" xml:space="preserve"><value>تنزيل الوسائط</value></data>
+  <data name="NavQueue" xml:space="preserve"><value>قائمة الانتظار</value></data>
+  <data name="NavCompleted" xml:space="preserve"><value>المكتملة</value></data>
+  <data name="NavSettings" xml:space="preserve"><value>الإعدادات</value></data>
+  <data name="NavLog" xml:space="preserve"><value>السجل</value></data>
+  <data name="EngineStatus" xml:space="preserve"><value>حالة المحرّك</value></data>
+  <data name="HomeTitle" xml:space="preserve"><value>تنزيل سريع ومحلي للوسائط</value></data>
+  <data name="HomeSubtitle" xml:space="preserve"><value>نزّل من YouTube وPinterest وكثير من المواقع الأخرى، أو من أي رابط فيديو مباشر</value></data>
+  <data name="UrlPlaceholder" xml:space="preserve"><value>الصق رابط الوسائط هنا (https://...)</value></data>
+  <data name="TipPaste" xml:space="preserve"><value>لصق الرابط من الحافظة وتحليله</value></data>
+  <data name="Paste" xml:space="preserve"><value>لصق</value></data>
+  <data name="Analyze" xml:space="preserve"><value>تحليل</value></data>
+  <data name="DetectedSource" xml:space="preserve"><value>المصدر المكتشف: </value></data>
+  <data name="ClearInput" xml:space="preserve"><value>مسح</value></data>
+  <data name="AnalyzingHint" xml:space="preserve"><value>قد يستغرق هذا بضع ثوانٍ حسب المصدر.</value></data>
+  <data name="AnalysisFailedTitle" xml:space="preserve"><value>تعذّر الحصول على معلومات الوسائط</value></data>
+  <data name="ModeVideo" xml:space="preserve"><value>🎬 تنزيل كفيديو (MP4)</value></data>
+  <data name="ModeAudio" xml:space="preserve"><value>🎵 تنزيل الصوت فقط (MP3)</value></data>
+  <data name="AvailableResolutions" xml:space="preserve"><value>الدقّات المتاحة:</value></data>
+  <data name="AudioQualityFormat" xml:space="preserve"><value>جودة الصوت وصيغته:</value></data>
+  <data name="AudioMp3High" xml:space="preserve"><value>MP3 عالي الجودة (أفضل جودة متاحة)</value></data>
+  <data name="AudioMp3Desc" xml:space="preserve"><value>يُستخرج الصوت ويُحوَّل إلى MP3 باستخدام FFmpeg.</value></data>
+  <data name="SaveFolder" xml:space="preserve"><value>الحفظ في: </value></data>
+  <data name="DownloadNow" xml:space="preserve"><value>تنزيل الآن</value></data>
+  <data name="QueueTitle" xml:space="preserve"><value>قائمة التنزيلات</value></data>
+  <data name="QueueSubtitle" xml:space="preserve"><value>التنزيلات الجارية والمنتظرة</value></data>
+  <data name="QueueEmptyTitle" xml:space="preserve"><value>لا يوجد شيء في قائمة الانتظار حاليًا.</value></data>
+  <data name="QueueEmptyHint" xml:space="preserve"><value>الصق رابطًا في الصفحة الرئيسية لبدء التنزيل.</value></data>
+  <data name="GoToDownload" xml:space="preserve"><value>الانتقال إلى تنزيل الوسائط</value></data>
+  <data name="SpeedPrefix" xml:space="preserve"><value>  |  السرعة: </value></data>
+  <data name="EtaPrefix" xml:space="preserve"><value>  |  المتبقي: </value></data>
+  <data name="Cancel" xml:space="preserve"><value>إلغاء</value></data>
+  <data name="Retry" xml:space="preserve"><value>إعادة المحاولة</value></data>
+  <data name="Remove" xml:space="preserve"><value>إزالة</value></data>
+  <data name="CompletedTitle" xml:space="preserve"><value>التنزيلات المكتملة</value></data>
+  <data name="CompletedSubtitle" xml:space="preserve"><value>الوسائط التي نزّلتها من قبل</value></data>
+  <data name="OpenDownloadFolder" xml:space="preserve"><value>فتح مجلد التنزيلات</value></data>
+  <data name="ClearHistory" xml:space="preserve"><value>مسح السجل</value></data>
+  <data name="CompletedEmptyTitle" xml:space="preserve"><value>لا توجد تنزيلات مكتملة بعد.</value></data>
+  <data name="CompletedEmptyHint" xml:space="preserve"><value>ستظهر ملفاتك المنزّلة هنا.</value></data>
+  <data name="Saved" xml:space="preserve"><value>محفوظ</value></data>
+  <data name="Play" xml:space="preserve"><value>▶ تشغيل</value></data>
+  <data name="ShowInFolder" xml:space="preserve"><value>📂 إظهار في المجلد</value></data>
+  <data name="SettingsTitle" xml:space="preserve"><value>الإعدادات</value></data>
+  <data name="SettingsSubtitle" xml:space="preserve"><value>اللغة وموقع التنزيل ومسارات المحرّكات والسلوك</value></data>
+  <data name="LanguageTitle" xml:space="preserve"><value>اللغة</value></data>
+  <data name="LanguageDesc" xml:space="preserve"><value>يستخدم التطبيق لغة Windows تلقائيًا. إذا لم تكن لغتك مدعومة فستُستخدم الإنجليزية.</value></data>
+  <data name="LanguageSystem" xml:space="preserve"><value>لغة النظام</value></data>
+  <data name="LanguageRestartMessage" xml:space="preserve"><value>ستُطبَّق اللغة الجديدة بعد إعادة تشغيل DVVdownloader. هل تريد إعادة التشغيل الآن؟</value></data>
+  <data name="LanguageRestartTitle" xml:space="preserve"><value>تم تغيير اللغة</value></data>
+  <data name="DownloadLocation" xml:space="preserve"><value>موقع التنزيل</value></data>
+  <data name="DownloadLocationDesc" xml:space="preserve"><value>المجلد الذي تُحفظ فيه ملفات الوسائط</value></data>
+  <data name="ChooseFolder" xml:space="preserve"><value>اختيار مجلد…</value></data>
+  <data name="EnginesTitle" xml:space="preserve"><value>محرّكات الوسائط</value></data>
+  <data name="EnginesDesc" xml:space="preserve"><value>ملفات yt-dlp وFFmpeg التنفيذية المحلية</value></data>
+  <data name="CustomYtDlpPath" xml:space="preserve"><value>مسار yt-dlp مخصص (اختياري):</value></data>
+  <data name="CustomFfmpegPath" xml:space="preserve"><value>مسار FFmpeg مخصص (اختياري):</value></data>
+  <data name="SaveSettings" xml:space="preserve"><value>حفظ الإعدادات</value></data>
+  <data name="BehaviorTitle" xml:space="preserve"><value>السلوك والإشعارات</value></data>
+  <data name="BehaviorDesc" xml:space="preserve"><value>ما يحدث عند انتهاء التنزيل</value></data>
+  <data name="AutoOpenFolder" xml:space="preserve"><value>فتح مجلد التنزيلات تلقائيًا عند الانتهاء</value></data>
+  <data name="PlaySound" xml:space="preserve"><value>تشغيل صوت إشعار</value></data>
+  <data name="LicenseTitle" xml:space="preserve"><value>الترخيص مفتوح المصدر والمعلومات القانونية</value></data>
+  <data name="ViewLicense" xml:space="preserve"><value>عرض نص الترخيص</value></data>
+  <data name="LicenseSummary" xml:space="preserve"><value>‏DVVdownloader برنامج حر ومفتوح المصدر مرخّص بموجب رخصة جنو العمومية العامة، الإصدار 3 (GPL-3.0).</value></data>
+  <data name="LicenseDetail" xml:space="preserve"><value>يمكنك استخدامه بحرية، ودراسة الشيفرة المصدرية، وتعديلها حسب احتياجاتك، وإعادة توزيعه وفق شروط GPL-3.0. لا يحتوي على أي قياس عن بُعد مخفي أو تتبّع أو قيود تجارية.</value></data>
+  <data name="ThirdParty" xml:space="preserve"><value>مكوّنات مفتوحة المصدر من جهات خارجية:</value></data>
+  <data name="ThirdPartyYtDlp" xml:space="preserve"><value>• yt-dlp: The Unlicense (ملكية عامة)</value></data>
+  <data name="ThirdPartyFfmpeg" xml:space="preserve"><value>• FFmpeg: GNU LGPL v2.1+ / GPL v3 (إصدار gyan.dev)</value></data>
+  <data name="ThirdPartyDotnet" xml:space="preserve"><value>• .NET 10 / WPF: ترخيص MIT (Microsoft Corporation)</value></data>
+  <data name="LogTitle" xml:space="preserve"><value>سجل النشاط والأخطاء</value></data>
+  <data name="LogSubtitle" xml:space="preserve"><value>مخرجات المحرّك المباشرة وتفاصيله</value></data>
+  <data name="ClearLog" xml:space="preserve"><value>مسح السجل</value></data>
+  <data name="GplTitle" xml:space="preserve"><value>رخصة جنو العمومية العامة، الإصدار 3</value></data>
+  <data name="GplFooter" xml:space="preserve"><value>Free Software Foundation (FSF) — Copyright (C) 2007-2026 DVVdownloader</value></data>
+  <data name="StatusQueued" xml:space="preserve"><value>في الانتظار</value></data>
+  <data name="StatusAnalyzing" xml:space="preserve"><value>جارٍ التحليل…</value></data>
+  <data name="StatusDownloading" xml:space="preserve"><value>جارٍ التنزيل</value></data>
+  <data name="StatusProcessing" xml:space="preserve"><value>جارٍ المعالجة (FFmpeg)…</value></data>
+  <data name="StatusCompleted" xml:space="preserve"><value>اكتمل</value></data>
+  <data name="StatusError" xml:space="preserve"><value>خطأ</value></data>
+  <data name="StatusCancelled" xml:space="preserve"><value>أُلغي</value></data>
+  <data name="StatusPaused" xml:space="preserve"><value>متوقف مؤقتًا</value></data>
+  <data name="WaitingForLink" xml:space="preserve"><value>في انتظار رابط</value></data>
+  <data name="PlatformUnknown" xml:space="preserve"><value>غير معروف</value></data>
+  <data name="PlatformInvalid" xml:space="preserve"><value>رابط غير صالح</value></data>
+  <data name="PlatformDirect" xml:space="preserve"><value>ملف مباشر</value></data>
+  <data name="PlatformWeb" xml:space="preserve"><value>وسائط ويب</value></data>
+  <data name="EngineAvailable" xml:space="preserve"><value>متاح</value></data>
+  <data name="YtDlpMissing" xml:space="preserve"><value>غير موجود (تحقّق من مجلد tools)</value></data>
+  <data name="FfmpegMissing" xml:space="preserve"><value>غير موجود (اختياري)</value></data>
+  <data name="ErrYtDlpNotFound" xml:space="preserve"><value>لم يُعثر على محرّك التنزيل (yt-dlp.exe). تأكّد من وجود yt-dlp.exe في مجلد "tools" أو حدّد موقعه من الإعدادات.</value></data>
+  <data name="ErrYtDlpNotFoundShort" xml:space="preserve"><value>لم يُعثر على محرّك التنزيل (yt-dlp.exe). تحقّق من مجلد "tools".</value></data>
+  <data name="ErrEngineStart" xml:space="preserve"><value>تعذّر تشغيل محرّك التنزيل (yt-dlp): {0}</value></data>
+  <data name="ErrMediaInfo" xml:space="preserve"><value>تعذّر الحصول على معلومات الوسائط.</value></data>
+  <data name="ErrDownloadFailed" xml:space="preserve"><value>انتهى التنزيل بخطأ.</value></data>
+  <data name="ErrPinterestNoVideo" xml:space="preserve"><value>لا يوجد فيديو قابل للتنزيل في منشور Pinterest هذا (قد يكون صورة فقط).</value></data>
+  <data name="ErrInstagramNoVideo" xml:space="preserve"><value>لا يوجد فيديو قابل للتنزيل في منشور Instagram هذا، أو أن المنشور خاص.</value></data>
+  <data name="QualityBest" xml:space="preserve"><value>أفضل جودة</value></data>
+  <data name="QualityMp3" xml:space="preserve"><value>صوت MP3</value></data>
+  <data name="QualityMp3Ext" xml:space="preserve"><value>صوت MP3 ({0})</value></data>
+  <data name="QualityBestShort" xml:space="preserve"><value>الأفضل</value></data>
+  <data name="Quality720Original" xml:space="preserve"><value>720p HD (أصلي)</value></data>
+  <data name="QualityHlsAuto" xml:space="preserve"><value>بث HLS (MP4 تلقائي)</value></data>
+  <data name="QualityAuto" xml:space="preserve"><value>تلقائي</value></data>
+  <data name="Quality1080Original" xml:space="preserve"><value>الجودة الأصلية (1080p MP4)</value></data>
+  <data name="QualityOriginal" xml:space="preserve"><value>الجودة الأصلية</value></data>
+  <data name="AudioKbps" xml:space="preserve"><value>صوت ({0} kbps) - {1}</value></data>
+  <data name="AudioExt" xml:space="preserve"><value>صوت ({0})</value></data>
+  <data name="SizeUnknown" xml:space="preserve"><value>الحجم غير معروف</value></data>
+  <data name="AnalyzingStatus" xml:space="preserve"><value>جارٍ البحث عن المصادر والصيغ…</value></data>
+  <data name="AnalysisFailed" xml:space="preserve"><value>فشل التحليل: {0}</value></data>
+  <data name="FileMissingMessage" xml:space="preserve"><value>لم يُعثر على الملف أو ربما تم نقله.</value></data>
+  <data name="FileMissingTitle" xml:space="preserve"><value>تعذّر فتح الملف</value></data>
+  <data name="ChooseDownloadFolder" xml:space="preserve"><value>اختر مجلد التنزيلات</value></data>
+  <data name="ClearHistoryConfirm" xml:space="preserve"><value>هل تريد بالتأكيد مسح سجل التنزيلات؟ (لن تُحذف ملفاتك المنزّلة.)</value></data>
+</root>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="WindowTitle" xml:space="preserve"><value>DVVdownloader — लोकल मीडिया डाउनलोडर</value></data>
+  <data name="VersionBadge" xml:space="preserve"><value>v1.1 लोकल</value></data>
+  <data name="TipMinimize" xml:space="preserve"><value>छोटा करें</value></data>
+  <data name="TipMaximize" xml:space="preserve"><value>बड़ा करें / वापस लाएँ</value></data>
+  <data name="Close" xml:space="preserve"><value>बंद करें</value></data>
+  <data name="NavDownload" xml:space="preserve"><value>मीडिया डाउनलोड</value></data>
+  <data name="NavQueue" xml:space="preserve"><value>कतार</value></data>
+  <data name="NavCompleted" xml:space="preserve"><value>पूरे हुए</value></data>
+  <data name="NavSettings" xml:space="preserve"><value>सेटिंग्स</value></data>
+  <data name="NavLog" xml:space="preserve"><value>गतिविधि लॉग</value></data>
+  <data name="EngineStatus" xml:space="preserve"><value>इंजन की स्थिति</value></data>
+  <data name="HomeTitle" xml:space="preserve"><value>तेज़ और लोकल मीडिया डाउनलोड</value></data>
+  <data name="HomeSubtitle" xml:space="preserve"><value>YouTube, Pinterest और कई दूसरी साइटों से, या किसी भी सीधे वीडियो लिंक से डाउनलोड करें</value></data>
+  <data name="UrlPlaceholder" xml:space="preserve"><value>मीडिया लिंक यहाँ पेस्ट करें (https://...)</value></data>
+  <data name="TipPaste" xml:space="preserve"><value>क्लिपबोर्ड से लिंक पेस्ट करें और जाँचें</value></data>
+  <data name="Paste" xml:space="preserve"><value>पेस्ट करें</value></data>
+  <data name="Analyze" xml:space="preserve"><value>जाँचें</value></data>
+  <data name="DetectedSource" xml:space="preserve"><value>पहचाना गया स्रोत: </value></data>
+  <data name="ClearInput" xml:space="preserve"><value>साफ़ करें</value></data>
+  <data name="AnalyzingHint" xml:space="preserve"><value>स्रोत के हिसाब से इसमें कुछ सेकंड लग सकते हैं।</value></data>
+  <data name="AnalysisFailedTitle" xml:space="preserve"><value>मीडिया की जानकारी नहीं मिल सकी</value></data>
+  <data name="ModeVideo" xml:space="preserve"><value>🎬 वीडियो के रूप में डाउनलोड करें (MP4)</value></data>
+  <data name="ModeAudio" xml:space="preserve"><value>🎵 सिर्फ़ ऑडियो डाउनलोड करें (MP3)</value></data>
+  <data name="AvailableResolutions" xml:space="preserve"><value>उपलब्ध रिज़ॉल्यूशन:</value></data>
+  <data name="AudioQualityFormat" xml:space="preserve"><value>ऑडियो क्वालिटी और फ़ॉर्मैट:</value></data>
+  <data name="AudioMp3High" xml:space="preserve"><value>हाई क्वालिटी MP3 (सबसे अच्छी उपलब्ध क्वालिटी)</value></data>
+  <data name="AudioMp3Desc" xml:space="preserve"><value>ऑडियो को FFmpeg से अलग करके MP3 में बदला जाता है।</value></data>
+  <data name="SaveFolder" xml:space="preserve"><value>यहाँ सेव करें: </value></data>
+  <data name="DownloadNow" xml:space="preserve"><value>अभी डाउनलोड करें</value></data>
+  <data name="QueueTitle" xml:space="preserve"><value>डाउनलोड कतार</value></data>
+  <data name="QueueSubtitle" xml:space="preserve"><value>चल रहे और इंतज़ार कर रहे डाउनलोड</value></data>
+  <data name="QueueEmptyTitle" xml:space="preserve"><value>अभी कतार खाली है।</value></data>
+  <data name="QueueEmptyHint" xml:space="preserve"><value>डाउनलोड शुरू करने के लिए होम पेज पर मीडिया लिंक पेस्ट करें।</value></data>
+  <data name="GoToDownload" xml:space="preserve"><value>मीडिया डाउनलोड पर जाएँ</value></data>
+  <data name="SpeedPrefix" xml:space="preserve"><value>  |  स्पीड: </value></data>
+  <data name="EtaPrefix" xml:space="preserve"><value>  |  बाकी: </value></data>
+  <data name="Cancel" xml:space="preserve"><value>रद्द करें</value></data>
+  <data name="Retry" xml:space="preserve"><value>फिर कोशिश करें</value></data>
+  <data name="Remove" xml:space="preserve"><value>हटाएँ</value></data>
+  <data name="CompletedTitle" xml:space="preserve"><value>पूरे हुए डाउनलोड</value></data>
+  <data name="CompletedSubtitle" xml:space="preserve"><value>आपके पहले डाउनलोड किए गए मीडिया</value></data>
+  <data name="OpenDownloadFolder" xml:space="preserve"><value>डाउनलोड फ़ोल्डर खोलें</value></data>
+  <data name="ClearHistory" xml:space="preserve"><value>इतिहास साफ़ करें</value></data>
+  <data name="CompletedEmptyTitle" xml:space="preserve"><value>अभी तक कोई डाउनलोड पूरा नहीं हुआ है।</value></data>
+  <data name="CompletedEmptyHint" xml:space="preserve"><value>आपकी डाउनलोड की गई फ़ाइलें यहाँ दिखेंगी।</value></data>
+  <data name="Saved" xml:space="preserve"><value>सेव किया गया</value></data>
+  <data name="Play" xml:space="preserve"><value>▶ चलाएँ</value></data>
+  <data name="ShowInFolder" xml:space="preserve"><value>📂 फ़ोल्डर में दिखाएँ</value></data>
+  <data name="SettingsTitle" xml:space="preserve"><value>सेटिंग्स</value></data>
+  <data name="SettingsSubtitle" xml:space="preserve"><value>भाषा, डाउनलोड की जगह, इंजन के पाथ और व्यवहार</value></data>
+  <data name="LanguageTitle" xml:space="preserve"><value>भाषा</value></data>
+  <data name="LanguageDesc" xml:space="preserve"><value>ऐप अपने-आप आपकी Windows भाषा इस्तेमाल करता है। अगर भाषा उपलब्ध नहीं है, तो अंग्रेज़ी इस्तेमाल होती है।</value></data>
+  <data name="LanguageSystem" xml:space="preserve"><value>सिस्टम की भाषा</value></data>
+  <data name="LanguageRestartMessage" xml:space="preserve"><value>नई भाषा DVVdownloader को दोबारा शुरू करने पर लागू होगी। अभी दोबारा शुरू करें?</value></data>
+  <data name="LanguageRestartTitle" xml:space="preserve"><value>भाषा बदली गई</value></data>
+  <data name="DownloadLocation" xml:space="preserve"><value>डाउनलोड की जगह</value></data>
+  <data name="DownloadLocationDesc" xml:space="preserve"><value>वह फ़ोल्डर जहाँ मीडिया फ़ाइलें सेव होती हैं</value></data>
+  <data name="ChooseFolder" xml:space="preserve"><value>फ़ोल्डर चुनें…</value></data>
+  <data name="EnginesTitle" xml:space="preserve"><value>मीडिया इंजन</value></data>
+  <data name="EnginesDesc" xml:space="preserve"><value>लोकल yt-dlp और FFmpeg प्रोग्राम</value></data>
+  <data name="CustomYtDlpPath" xml:space="preserve"><value>yt-dlp का अपना पाथ (वैकल्पिक):</value></data>
+  <data name="CustomFfmpegPath" xml:space="preserve"><value>FFmpeg का अपना पाथ (वैकल्पिक):</value></data>
+  <data name="SaveSettings" xml:space="preserve"><value>सेटिंग्स सेव करें</value></data>
+  <data name="BehaviorTitle" xml:space="preserve"><value>व्यवहार और सूचनाएँ</value></data>
+  <data name="BehaviorDesc" xml:space="preserve"><value>डाउनलोड पूरा होने पर क्या हो</value></data>
+  <data name="AutoOpenFolder" xml:space="preserve"><value>डाउनलोड पूरा होने पर फ़ोल्डर अपने-आप खोलें</value></data>
+  <data name="PlaySound" xml:space="preserve"><value>सूचना की आवाज़ चलाएँ</value></data>
+  <data name="LicenseTitle" xml:space="preserve"><value>ओपन सोर्स लाइसेंस और कानूनी जानकारी</value></data>
+  <data name="ViewLicense" xml:space="preserve"><value>लाइसेंस का टेक्स्ट देखें</value></data>
+  <data name="LicenseSummary" xml:space="preserve"><value>DVVdownloader एक मुफ़्त और ओपन सोर्स सॉफ़्टवेयर है, जो GNU जनरल पब्लिक लाइसेंस संस्करण 3 (GPL-3.0) के तहत उपलब्ध है।</value></data>
+  <data name="LicenseDetail" xml:space="preserve"><value>आप इसे बिना रोक-टोक इस्तेमाल कर सकते हैं, इसका सोर्स कोड पढ़ सकते हैं, अपनी ज़रूरत के हिसाब से बदल सकते हैं और GPL-3.0 की शर्तों के तहत फिर से बाँट सकते हैं। इसमें कोई छिपी टेलीमेट्री, ट्रैकिंग या व्यावसायिक पाबंदी नहीं है।</value></data>
+  <data name="ThirdParty" xml:space="preserve"><value>इस्तेमाल किए गए तीसरे पक्ष के ओपन सोर्स घटक:</value></data>
+  <data name="ThirdPartyYtDlp" xml:space="preserve"><value>• yt-dlp: The Unlicense (पब्लिक डोमेन)</value></data>
+  <data name="ThirdPartyFfmpeg" xml:space="preserve"><value>• FFmpeg: GNU LGPL v2.1+ / GPL v3 (gyan.dev बिल्ड)</value></data>
+  <data name="ThirdPartyDotnet" xml:space="preserve"><value>• .NET 10 / WPF: MIT लाइसेंस (Microsoft Corporation)</value></data>
+  <data name="LogTitle" xml:space="preserve"><value>गतिविधि और गड़बड़ी लॉग</value></data>
+  <data name="LogSubtitle" xml:space="preserve"><value>इंजन का लाइव आउटपुट और जानकारी</value></data>
+  <data name="ClearLog" xml:space="preserve"><value>लॉग साफ़ करें</value></data>
+  <data name="GplTitle" xml:space="preserve"><value>GNU जनरल पब्लिक लाइसेंस संस्करण 3</value></data>
+  <data name="GplFooter" xml:space="preserve"><value>Free Software Foundation (FSF) — Copyright (C) 2007-2026 DVVdownloader</value></data>
+  <data name="StatusQueued" xml:space="preserve"><value>कतार में</value></data>
+  <data name="StatusAnalyzing" xml:space="preserve"><value>जाँच हो रही है…</value></data>
+  <data name="StatusDownloading" xml:space="preserve"><value>डाउनलोड हो रहा है</value></data>
+  <data name="StatusProcessing" xml:space="preserve"><value>प्रोसेस हो रहा है (FFmpeg)…</value></data>
+  <data name="StatusCompleted" xml:space="preserve"><value>पूरा हुआ</value></data>
+  <data name="StatusError" xml:space="preserve"><value>गड़बड़ी</value></data>
+  <data name="StatusCancelled" xml:space="preserve"><value>रद्द किया गया</value></data>
+  <data name="StatusPaused" xml:space="preserve"><value>रुका हुआ</value></data>
+  <data name="WaitingForLink" xml:space="preserve"><value>लिंक का इंतज़ार है</value></data>
+  <data name="PlatformUnknown" xml:space="preserve"><value>अज्ञात</value></data>
+  <data name="PlatformInvalid" xml:space="preserve"><value>गलत URL</value></data>
+  <data name="PlatformDirect" xml:space="preserve"><value>सीधा मीडिया</value></data>
+  <data name="PlatformWeb" xml:space="preserve"><value>वेब मीडिया</value></data>
+  <data name="EngineAvailable" xml:space="preserve"><value>उपलब्ध</value></data>
+  <data name="YtDlpMissing" xml:space="preserve"><value>नहीं मिला (tools फ़ोल्डर जाँचें)</value></data>
+  <data name="FfmpegMissing" xml:space="preserve"><value>नहीं मिला (वैकल्पिक)</value></data>
+  <data name="ErrYtDlpNotFound" xml:space="preserve"><value>डाउनलोड इंजन (yt-dlp.exe) नहीं मिला। पक्का करें कि yt-dlp.exe "tools" फ़ोल्डर में है, या सेटिंग्स में उसकी जगह बताएँ।</value></data>
+  <data name="ErrYtDlpNotFoundShort" xml:space="preserve"><value>डाउनलोड इंजन (yt-dlp.exe) नहीं मिला। "tools" फ़ोल्डर जाँचें।</value></data>
+  <data name="ErrEngineStart" xml:space="preserve"><value>डाउनलोड इंजन (yt-dlp) नहीं चल सका: {0}</value></data>
+  <data name="ErrMediaInfo" xml:space="preserve"><value>मीडिया की जानकारी नहीं मिल सकी।</value></data>
+  <data name="ErrDownloadFailed" xml:space="preserve"><value>डाउनलोड गड़बड़ी के साथ खत्म हुआ।</value></data>
+  <data name="ErrPinterestNoVideo" xml:space="preserve"><value>इस Pinterest पोस्ट में डाउनलोड करने लायक कोई वीडियो नहीं है (शायद यह सिर्फ़ एक तस्वीर है)।</value></data>
+  <data name="ErrInstagramNoVideo" xml:space="preserve"><value>इस Instagram पोस्ट में डाउनलोड करने लायक कोई वीडियो नहीं है, या पोस्ट निजी है।</value></data>
+  <data name="QualityBest" xml:space="preserve"><value>सबसे अच्छी क्वालिटी</value></data>
+  <data name="QualityMp3" xml:space="preserve"><value>MP3 ऑडियो</value></data>
+  <data name="QualityMp3Ext" xml:space="preserve"><value>MP3 ऑडियो ({0})</value></data>
+  <data name="QualityBestShort" xml:space="preserve"><value>सबसे अच्छा</value></data>
+  <data name="Quality720Original" xml:space="preserve"><value>720p HD (ओरिजिनल)</value></data>
+  <data name="QualityHlsAuto" xml:space="preserve"><value>HLS स्ट्रीम (अपने-आप MP4)</value></data>
+  <data name="QualityAuto" xml:space="preserve"><value>अपने-आप</value></data>
+  <data name="Quality1080Original" xml:space="preserve"><value>ओरिजिनल क्वालिटी (1080p MP4)</value></data>
+  <data name="QualityOriginal" xml:space="preserve"><value>ओरिजिनल क्वालिटी</value></data>
+  <data name="AudioKbps" xml:space="preserve"><value>ऑडियो ({0} kbps) - {1}</value></data>
+  <data name="AudioExt" xml:space="preserve"><value>ऑडियो ({0})</value></data>
+  <data name="SizeUnknown" xml:space="preserve"><value>साइज़ पता नहीं</value></data>
+  <data name="AnalyzingStatus" xml:space="preserve"><value>मीडिया स्रोत और फ़ॉर्मैट खोजे जा रहे हैं…</value></data>
+  <data name="AnalysisFailed" xml:space="preserve"><value>जाँच नाकाम रही: {0}</value></data>
+  <data name="FileMissingMessage" xml:space="preserve"><value>फ़ाइल नहीं मिली या शायद कहीं और ले जाई गई है।</value></data>
+  <data name="FileMissingTitle" xml:space="preserve"><value>फ़ाइल नहीं खुल सकी</value></data>
+  <data name="ChooseDownloadFolder" xml:space="preserve"><value>डाउनलोड फ़ोल्डर चुनें</value></data>
+  <data name="ClearHistoryConfirm" xml:space="preserve"><value>क्या आप सच में डाउनलोड इतिहास साफ़ करना चाहते हैं? (आपकी डाउनलोड की गई फ़ाइलें नहीं मिटेंगी।)</value></data>
+</root>

@@ -63,7 +63,7 @@ namespace DVVdownloader.Services
             }
             catch (Exception ex)
             {
-                LogService.Instance.Error($"Geçmiş okunurken hata oluştu: {ex.Message}", "HistoryService");
+                LogService.Instance.Error($"Failed to read history: {ex.Message}", "HistoryService");
             }
             return new List<HistoryItem>();
         }
@@ -85,7 +85,7 @@ namespace DVVdownloader.Services
                 }
                 catch (Exception ex)
                 {
-                    LogService.Instance.Error($"Geçmişe kayıt eklenirken hata: {ex.Message}", "HistoryService");
+                    LogService.Instance.Error($"Failed to add history entry: {ex.Message}", "HistoryService");
                 }
             }
         }
@@ -103,7 +103,7 @@ namespace DVVdownloader.Services
                 }
                 catch (Exception ex)
                 {
-                    LogService.Instance.Error($"Geçmiş temizlenirken hata: {ex.Message}", "HistoryService");
+                    LogService.Instance.Error($"Failed to clear history: {ex.Message}", "HistoryService");
                 }
             }
         }

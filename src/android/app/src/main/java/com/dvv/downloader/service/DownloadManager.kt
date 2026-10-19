@@ -1,6 +1,8 @@
 package com.dvv.downloader.service
 
 import android.content.Context
+import com.dvv.downloader.L10n
+import com.dvv.downloader.R
 import com.dvv.downloader.models.DownloadTask
 import com.dvv.downloader.models.HistoryItem
 import com.dvv.downloader.models.TaskStatus
@@ -12,7 +14,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 import java.io.File
-import java.text.SimpleDateFormat
+import java.text.DateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.concurrent.ConcurrentHashMap
@@ -43,7 +45,7 @@ object DownloadManager {
 
     fun cancelDownload(task: DownloadTask, repository: DownloadRepository) {
         task.status = TaskStatus.IPTAL
-        task.speed = "İptal Edildi"
+        task.speed = L10n.s(R.string.status_cancelled)
         repository.updateTask(task)
 
         val job = activeJobs.remove(task.id)
@@ -79,7 +81,7 @@ object DownloadManager {
                     .take(60)
 
                 val resolutionTag = if (task.isAudioOnly) {
-                    "Ses"
+                    "Audio"
                 } else {
                     task.resolution.ifBlank { task.qualityLabel }.replace(Regex("[^a-zA-Z0-9]"), "")
                 }
@@ -112,7 +114,7 @@ object DownloadManager {
                 if (success && task.status != TaskStatus.IPTAL) {
                     task.status = TaskStatus.TAMAMLANDI
                     task.progress = 100
-                    task.speed = "Tamamlandı"
+                    task.speed = L10n.s(R.string.status_completed)
                     repository.updateTask(task)
 
                     val fileSizeFormatted = String.format(
@@ -121,7 +123,7 @@ object DownloadManager {
                         targetFile.length() / (1024.0 * 1024.0)
                     )
 
-                    val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
+                    val dateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, Locale.getDefault())
                     val dateStr = dateFormat.format(Date())
 
                     repository.addHistory(
@@ -138,8 +140,8 @@ object DownloadManager {
             } catch (e: Exception) {
                 if (task.status != TaskStatus.IPTAL) {
                     task.status = TaskStatus.HATA
-                    task.errorMessage = e.message ?: "Bilinmeyen indirme hatası"
-                    task.speed = "Hata"
+                    task.errorMessage = e.message ?: L10n.s(R.string.err_unknown_download)
+                    task.speed = L10n.s(R.string.status_error)
                     repository.updateTask(task)
                 }
             } finally {

@@ -1,5 +1,7 @@
 package com.dvv.downloader.repository
 
+import com.dvv.downloader.L10n
+import com.dvv.downloader.R
 import com.dvv.downloader.models.DownloadTask
 import com.dvv.downloader.models.MediaFormatItem
 import com.dvv.downloader.models.MediaMetadata
@@ -33,9 +35,24 @@ object MediaEngine {
         Pattern.CASE_INSENSITIVE
     )
 
+    // Dilden bağımsız iç platform kimlikleri; ekranda platformLabel() ile çevrilir
+    const val PLATFORM_UNKNOWN = "Unknown"
+    const val PLATFORM_INVALID = "Invalid"
+    const val PLATFORM_DIRECT = "Direct"
+    const val PLATFORM_WEB = "Web"
+
+    /** Platform kimliğini kullanıcının dilinde gösterir; marka adları (YouTube vb.) olduğu gibi kalır. */
+    fun platformLabel(platform: String): String = when (platform) {
+        PLATFORM_UNKNOWN -> L10n.s(R.string.platform_unknown)
+        PLATFORM_INVALID -> L10n.s(R.string.platform_invalid)
+        PLATFORM_DIRECT -> L10n.s(R.string.platform_direct)
+        PLATFORM_WEB -> L10n.s(R.string.platform_web)
+        else -> platform
+    }
+
     fun detectPlatform(url: String): String {
         return try {
-            val host = URI(url).host?.lowercase() ?: return "Bilinmiyor"
+            val host = URI(url).host?.lowercase() ?: return PLATFORM_UNKNOWN
             when {
                 host.contains("youtube.com") || host.contains("youtu.be") -> "YouTube"
                 host.contains("tiktok.com") -> "TikTok"
@@ -46,11 +63,11 @@ object MediaEngine {
                 host.contains("twitch.tv") -> "Twitch"
                 url.endsWith(".mp4", true) || url.endsWith(".mkv", true) ||
                         url.endsWith(".webm", true) || url.endsWith(".mp3", true) ||
-                        url.endsWith(".m4a", true) -> "Doğrudan Medya"
-                else -> "Web Medyası"
+                        url.endsWith(".m4a", true) -> PLATFORM_DIRECT
+                else -> PLATFORM_WEB
             }
         } catch (_: Exception) {
-            "Geçersiz URL"
+            PLATFORM_INVALID
         }
     }
 
@@ -62,14 +79,14 @@ object MediaEngine {
             "TikTok" -> extractTikTok(url)
             "Instagram" -> extractInstagram(url)
             "Pinterest" -> extractPinterest(url)
-            "Doğrudan Medya" -> extractDirectMedia(url)
+            PLATFORM_DIRECT -> extractDirectMedia(url)
             else -> extractSocialOrWeb(url, platform)
         }
     }
 
     private suspend fun extractYouTube(url: String): MediaMetadata {
         if (!YOUTUBE_ID_REGEX.matcher(url).find()) {
-            throw IllegalArgumentException("Geçersiz YouTube bağlantısı veya video kimliği bulunamadı.")
+            throw IllegalArgumentException(L10n.s(R.string.err_invalid_youtube))
         }
         return extractViaYtDlp(url, "YouTube")
     }
@@ -115,7 +132,7 @@ object MediaEngine {
                     qualityLabel = if (fps > 30) "${label}p ${fps}fps" else "${label}p",
                     resolution = "${label}p",
                     ext = "mp4",
-                    formattedSize = if (bytes > 0) formatFileSize(bytes) else "Bilinmiyor",
+                    formattedSize = if (bytes > 0) formatFileSize(bytes) else L10n.s(R.string.size_unknown),
                     formatSelector = videoSelector(height)
                 )
             )
@@ -125,10 +142,10 @@ object MediaEngine {
             formats.add(
                 MediaFormatItem(
                     formatId = "ytdlp_best",
-                    qualityLabel = "En İyi Kalite",
-                    resolution = "Orijinal",
+                    qualityLabel = L10n.s(R.string.quality_best),
+                    resolution = "Original",
                     ext = "mp4",
-                    formattedSize = "Bilinmiyor",
+                    formattedSize = L10n.s(R.string.size_unknown),
                     formatSelector = "bv*+ba/b"
                 )
             )
@@ -137,10 +154,10 @@ object MediaEngine {
         formats.add(
             MediaFormatItem(
                 formatId = "ytdlp_audio",
-                qualityLabel = "MP3 Ses",
+                qualityLabel = L10n.s(R.string.quality_mp3),
                 resolution = "Audio",
                 ext = "mp3",
-                formattedSize = if (bestAudioBytes > 0) formatFileSize(bestAudioBytes) else "Ses Dosyası",
+                formattedSize = if (bestAudioBytes > 0) formatFileSize(bestAudioBytes) else L10n.s(R.string.size_audio_file),
                 isAudioOnly = true,
                 formatSelector = "ba/b"
             )
@@ -149,7 +166,7 @@ object MediaEngine {
         val durationSec = info.duration.toLong()
         return MediaMetadata(
             id = info.id ?: System.currentTimeMillis().toString(),
-            title = info.title?.ifBlank { null } ?: "$platform Medya",
+            title = info.title?.ifBlank { null } ?: L10n.s(R.string.media_fallback_title, platformLabel(platform)),
             uploader = info.uploader ?: platform,
             duration = if (durationSec > 0) formatDuration(durationSec) else "--:--",
             thumbnailUrl = info.thumbnail ?: "",
@@ -161,7 +178,7 @@ object MediaEngine {
 
     /** yt-dlp hata çıktısından kullanıcıya gösterilecek ERROR satırını ayıklar. */
     private fun cleanYtDlpError(e: Exception): String {
-        val text = e.message ?: return "Medya bilgileri alınamadı."
+        val text = e.message ?: return L10n.s(R.string.err_media_info)
         val errorLine = text.lines().lastOrNull { it.contains("ERROR:") }
         return (errorLine ?: text.lines().firstOrNull { it.isNotBlank() } ?: text)
             .substringAfter("ERROR: ")
@@ -215,7 +232,7 @@ object MediaEngine {
 
         dir.listFiles { f -> f.name.startsWith("$baseName.") && !f.name.endsWith(".part") && !f.name.endsWith(".ytdl") }
             ?.maxByOrNull { it.lastModified() }
-            ?: throw IllegalStateException("İndirme tamamlandı ancak dosya bulunamadı.")
+            ?: throw IllegalStateException(L10n.s(R.string.err_file_missing_after))
     }
 
     fun cancelYtDlp(taskId: String) {
@@ -233,19 +250,19 @@ object MediaEngine {
 
         val response = client.newCall(request).execute()
         if (!response.isSuccessful) {
-            throw IllegalStateException("TikTok sunucusuna bağlanılamadı: HTTP ${response.code}")
+            throw IllegalStateException(L10n.s(R.string.err_tiktok_connect, response.code))
         }
 
         val json = JSONObject(response.body?.string() ?: "")
         val code = json.optInt("code", -1)
         val data = json.optJSONObject("data")
-            ?: throw IllegalStateException("TikTok videosu bulunamadı veya gizli.")
+            ?: throw IllegalStateException(L10n.s(R.string.err_tiktok_not_found))
 
         if (code != 0) {
-            throw IllegalStateException(json.optString("msg", "TikTok videosu çözülemedi."))
+            throw IllegalStateException(json.optString("msg", L10n.s(R.string.err_tiktok_not_found)))
         }
 
-        val title = data.optString("title", "TikTok Video").ifBlank { "TikTok Video Paylaşımı" }
+        val title = data.optString("title", "TikTok Video").ifBlank { "TikTok Video" }
         val author = data.optJSONObject("author")?.optString("nickname", "TikTok") ?: "TikTok"
         val cover = data.optString("cover", "")
         val durationSec = data.optLong("duration", 0L)
@@ -254,14 +271,14 @@ object MediaEngine {
         val playUrl = data.optString("play", "")
         val musicUrl = data.optString("music", "")
         val sizeBytes = data.optLong("size", 0L)
-        val formattedSize = if (sizeBytes > 0) formatFileSize(sizeBytes) else "Orijinal Boyut"
+        val formattedSize = if (sizeBytes > 0) formatFileSize(sizeBytes) else L10n.s(R.string.size_original)
 
         val formats = mutableListOf<MediaFormatItem>()
         if (playUrl.isNotEmpty()) {
             formats.add(
                 MediaFormatItem(
                     formatId = "tiktok_hd",
-                    qualityLabel = "HD Video (Filigransız)",
+                    qualityLabel = L10n.s(R.string.quality_tiktok_hd),
                     resolution = "1080p",
                     ext = "mp4",
                     formattedSize = formattedSize,
@@ -275,10 +292,10 @@ object MediaEngine {
             formats.add(
                 MediaFormatItem(
                     formatId = "tiktok_audio",
-                    qualityLabel = "Orijinal Ses (MP3)",
+                    qualityLabel = L10n.s(R.string.quality_original_audio),
                     resolution = "Audio",
                     ext = "mp3",
-                    formattedSize = "Ses Dosyası",
+                    formattedSize = L10n.s(R.string.size_audio_file),
                     isAudioOnly = true,
                     directUrl = musicUrl
                 )
@@ -301,7 +318,7 @@ object MediaEngine {
         val fileName = url.substringAfterLast("/").substringBefore("?")
         val isAudio = url.endsWith(".mp3", true) || url.endsWith(".m4a", true)
 
-        var sizeFormatted = "Bilinmiyor"
+        var sizeFormatted = L10n.s(R.string.size_unknown)
         try {
             val headReq = Request.Builder()
                 .url(url)
@@ -319,8 +336,8 @@ object MediaEngine {
         val formats = listOf(
             MediaFormatItem(
                 formatId = "direct",
-                qualityLabel = if (isAudio) "Doğrudan Ses Akışı" else "Doğrudan Video Akışı",
-                resolution = if (isAudio) "Audio" else "Kaynak",
+                qualityLabel = if (isAudio) L10n.s(R.string.quality_direct_audio) else L10n.s(R.string.quality_direct_video),
+                resolution = if (isAudio) "Audio" else "Source",
                 ext = ext,
                 formattedSize = sizeFormatted,
                 isAudioOnly = isAudio,
@@ -330,12 +347,12 @@ object MediaEngine {
 
         return MediaMetadata(
             id = System.currentTimeMillis().toString(),
-            title = fileName.ifBlank { "Medya Dosyası" },
-            uploader = "Doğrudan İndirme",
+            title = fileName.ifBlank { L10n.s(R.string.media_file) },
+            uploader = L10n.s(R.string.uploader_direct),
             duration = "--:--",
             thumbnailUrl = "",
             webpageUrl = url,
-            platform = "Doğrudan Medya",
+            platform = PLATFORM_DIRECT,
             formats = formats
         )
     }
@@ -419,7 +436,7 @@ object MediaEngine {
 
         val resp = client.newCall(req).execute()
         if (!resp.isSuccessful) {
-            throw IllegalStateException("Pinterest sayfasına erişilemedi: HTTP ${resp.code}")
+            throw IllegalStateException(L10n.s(R.string.err_pinterest_page, resp.code))
         }
 
         val html = resp.body?.string() ?: ""
@@ -469,7 +486,7 @@ object MediaEngine {
             ?: candidates.firstOrNull() ?: ""
 
         if (directMp4.isBlank()) {
-            throw IllegalStateException("Pinterest gönderisinde video bulunamadı veya gönderi sadece resim.")
+            throw IllegalStateException(L10n.s(R.string.err_pinterest_no_video))
         }
 
         return MediaMetadata(
@@ -483,10 +500,10 @@ object MediaEngine {
             formats = listOf(
                 MediaFormatItem(
                     formatId = "pinterest_720p",
-                    qualityLabel = "720p HD (Orijinal)",
+                    qualityLabel = L10n.s(R.string.quality_720_original),
                     resolution = "720p",
                     ext = "mp4",
-                    formattedSize = "Orijinal Kalite",
+                    formattedSize = L10n.s(R.string.size_original_quality),
                     isAudioOnly = false,
                     directUrl = directMp4
                 )
@@ -509,7 +526,7 @@ object MediaEngine {
 
         val resp = client.newCall(req).execute()
         if (!resp.isSuccessful) {
-            throw IllegalStateException("Instagram sayfasına erişilemedi: HTTP ${resp.code}")
+            throw IllegalStateException(L10n.s(R.string.err_instagram_page, resp.code))
         }
 
         val html = resp.body?.string() ?: ""
@@ -526,7 +543,7 @@ object MediaEngine {
         }
 
         if (videoUrl.isBlank()) {
-            throw IllegalStateException("Instagram videosu bulunamadı veya gönderi gizli.")
+            throw IllegalStateException(L10n.s(R.string.err_instagram_no_video))
         }
 
         videoUrl = videoUrl.replace("\\u0026", "&").replace("\\/", "/")
@@ -562,10 +579,10 @@ object MediaEngine {
             formats = listOf(
                 MediaFormatItem(
                     formatId = "instagram_hd",
-                    qualityLabel = "1080p HD (Orijinal MP4)",
+                    qualityLabel = L10n.s(R.string.quality_1080_original),
                     resolution = "1080p",
                     ext = "mp4",
-                    formattedSize = "Orijinal Boyut",
+                    formattedSize = L10n.s(R.string.size_original),
                     isAudioOnly = false,
                     directUrl = videoUrl
                 )
@@ -582,7 +599,7 @@ object MediaEngine {
 
         val response = client.newCall(request).execute()
         if (!response.isSuccessful) {
-            throw IllegalStateException("$platform sayfasına ulaşılamadı: HTTP ${response.code}")
+            throw IllegalStateException(L10n.s(R.string.err_page_unreachable, platformLabel(platform), response.code))
         }
 
         val html = response.body?.string() ?: ""
@@ -604,19 +621,19 @@ object MediaEngine {
         // Başlık bul
         val titlePattern = Pattern.compile("<title>([^<]+)</title>", Pattern.CASE_INSENSITIVE)
         val tMatcher = titlePattern.matcher(html)
-        val pageTitle = if (tMatcher.find()) tMatcher.group(1)?.trim() ?: "$platform Medya" else "$platform Medya"
+        val pageTitle = if (tMatcher.find()) tMatcher.group(1)?.trim() ?: L10n.s(R.string.media_fallback_title, platformLabel(platform)) else L10n.s(R.string.media_fallback_title, platformLabel(platform))
 
         if (streamUrl.isEmpty()) {
-            throw IllegalStateException("$platform sayfasında indirilebilir açık medya akışı bulunamadı. Lütfen doğrudan medya URL'si girin veya YouTube/TikTok bağlantısı deneyin.")
+            throw IllegalStateException(L10n.s(R.string.err_no_stream, platformLabel(platform)))
         }
 
         val formats = listOf(
             MediaFormatItem(
                 formatId = "web_video",
-                qualityLabel = "En Yüksek Kalite",
-                resolution = "Orijinal",
+                qualityLabel = L10n.s(R.string.quality_highest),
+                resolution = "Original",
                 ext = "mp4",
-                formattedSize = "Kaynak Akış",
+                formattedSize = L10n.s(R.string.size_source_stream),
                 isAudioOnly = false,
                 directUrl = streamUrl
             )
@@ -657,15 +674,15 @@ object MediaEngine {
         val response = client.newCall(request).execute()
 
         if (!response.isSuccessful) {
-            throw IllegalStateException("Medya sunucusu hatası: HTTP ${response.code} (${response.message})")
+            throw IllegalStateException(L10n.s(R.string.err_server, response.code, response.message))
         }
 
         val contentType = response.header("Content-Type", "")?.lowercase() ?: ""
         if (contentType.contains("text/html")) {
-            throw IllegalStateException("Sunucu medya dosyası yerine web sayfası döndürdü. Bağlantı erişim kısıtlamalı veya süresi dolmuş olabilir.")
+            throw IllegalStateException(L10n.s(R.string.err_html_instead))
         }
 
-        val body = response.body ?: throw IllegalStateException("İndirilecek medya gövdesi boş.")
+        val body = response.body ?: throw IllegalStateException(L10n.s(R.string.err_empty_body))
         val totalLength = body.contentLength()
 
         var downloadedBytes = 0L
@@ -712,7 +729,7 @@ object MediaEngine {
             }
         }
 
-        onProgress(100, "Tamamlandı")
+        onProgress(100, L10n.s(R.string.status_completed))
         true
     }
 

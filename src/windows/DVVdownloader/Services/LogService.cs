@@ -23,10 +23,10 @@ namespace DVVdownloader.Services
         public string FormattedTime => Timestamp.ToString("HH:mm:ss.fff");
         public string LevelBadge => Level switch
         {
-            LogLevel.Info => "[BİLGİ]",
-            LogLevel.Warning => "[UYARI]",
-            LogLevel.Error => "[HATA]",
-            LogLevel.Engine => "[MOTOR]",
+            LogLevel.Info => "[INFO]",
+            LogLevel.Warning => "[WARN]",
+            LogLevel.Error => "[ERROR]",
+            LogLevel.Engine => "[ENGINE]",
             _ => "[LOG]"
         };
     }

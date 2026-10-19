@@ -10,6 +10,7 @@ import com.dvv.downloader.R
 import com.dvv.downloader.databinding.ItemQueueBinding
 import com.dvv.downloader.models.DownloadTask
 import com.dvv.downloader.models.TaskStatus
+import com.dvv.downloader.repository.MediaEngine
 
 class QueueAdapter(
     private var tasks: List<DownloadTask>,
@@ -35,13 +36,13 @@ class QueueAdapter(
         val context = holder.itemView.context
 
         holder.binding.tvTaskTitle.text = task.title
-        holder.binding.tvTaskPlatform.text = "${task.platform} • ${task.qualityLabel}"
+        holder.binding.tvTaskPlatform.text = "${MediaEngine.platformLabel(task.platform)} • ${task.qualityLabel}"
         holder.binding.tvTaskPercent.text = "${task.progress}%"
         holder.binding.pbTaskProgress.progress = task.progress
 
         // Hız ve Durum
         val speedText = if (task.status == TaskStatus.INDIRILIYOR) {
-            " • Hız: ${task.speed}"
+            context.getString(R.string.queue_speed, task.speed)
         } else {
             ""
         }
@@ -50,32 +51,32 @@ class QueueAdapter(
         // Durum Rozeti ve Renkleri
         when (task.status) {
             TaskStatus.KUYRUKTA -> {
-                holder.binding.tvTaskStatus.text = "Kuyrukta"
+                holder.binding.tvTaskStatus.text = context.getString(R.string.status_queued)
                 holder.binding.tvTaskStatus.setTextColor(ContextCompat.getColor(context, R.color.text_secondary))
             }
             TaskStatus.INDIRILIYOR -> {
-                holder.binding.tvTaskStatus.text = "İndiriliyor"
+                holder.binding.tvTaskStatus.text = context.getString(R.string.status_downloading)
                 holder.binding.tvTaskStatus.setTextColor(ContextCompat.getColor(context, R.color.primary_accent))
                 holder.binding.pbTaskProgress.progressTintList = ColorStateList.valueOf(
                     ContextCompat.getColor(context, R.color.primary_accent)
                 )
             }
             TaskStatus.TAMAMLANDI -> {
-                holder.binding.tvTaskStatus.text = "Tamamlandı"
+                holder.binding.tvTaskStatus.text = context.getString(R.string.status_completed)
                 holder.binding.tvTaskStatus.setTextColor(ContextCompat.getColor(context, R.color.success_color))
                 holder.binding.pbTaskProgress.progressTintList = ColorStateList.valueOf(
                     ContextCompat.getColor(context, R.color.success_color)
                 )
             }
             TaskStatus.HATA -> {
-                holder.binding.tvTaskStatus.text = "Hata"
+                holder.binding.tvTaskStatus.text = context.getString(R.string.status_error)
                 holder.binding.tvTaskStatus.setTextColor(ContextCompat.getColor(context, R.color.error_color))
                 holder.binding.pbTaskProgress.progressTintList = ColorStateList.valueOf(
                     ContextCompat.getColor(context, R.color.error_color)
                 )
             }
             TaskStatus.IPTAL -> {
-                holder.binding.tvTaskStatus.text = "İptal Edildi"
+                holder.binding.tvTaskStatus.text = context.getString(R.string.status_cancelled)
                 holder.binding.tvTaskStatus.setTextColor(ContextCompat.getColor(context, R.color.warning_color))
                 holder.binding.pbTaskProgress.progressTintList = ColorStateList.valueOf(
                     ContextCompat.getColor(context, R.color.warning_color)

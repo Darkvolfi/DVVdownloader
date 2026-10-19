@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tab_home">Главная</string>
+    <string name="tab_queue">Очередь</string>
+    <string name="tab_completed">Готово</string>
+    <string name="tab_settings">Настройки</string>
+    <string name="badge_local">ЛОКАЛЬНО</string>
+
+    <string name="home_title">Скачать медиа</string>
+    <string name="home_subtitle">Ссылки YouTube, Pinterest, TikTok, Instagram и прямые ссылки на видео</string>
+    <string name="url_input_hint">Вставьте ссылку сюда…</string>
+    <string name="label_source">Источник: </string>
+    <string name="source_waiting">Ожидание ссылки</string>
+    <string name="btn_analyze">Анализ</string>
+    <string name="btn_paste">Вставить</string>
+    <string name="analyzing_title">Анализ…</string>
+    <string name="analyzing_desc">Получаем форматы и данные потока, подождите</string>
+    <string name="format_select_title">Выберите формат и качество</string>
+    <string name="btn_download">Скачать</string>
+    <string name="format_audio">Аудио (%1$s)</string>
+    <string name="format_video">Видео (%1$s)</string>
+    <string name="toast_invalid_url">Введите корректную ссылку</string>
+    <string name="toast_clipboard_empty">Буфер обмена пуст</string>
+    <string name="toast_analyze_error">Ошибка анализа: %1$s</string>
+
+    <string name="queue_title">Активные загрузки</string>
+    <string name="queue_empty">Сейчас нет активных загрузок</string>
+    <string name="queue_speed">" • Скорость: %1$s"</string>
+    <string name="status_queued">В очереди</string>
+    <string name="status_downloading">Загрузка</string>
+    <string name="status_completed">Готово</string>
+    <string name="status_error">Ошибка</string>
+    <string name="status_cancelled">Отменено</string>
+    <string name="btn_retry">Повторить</string>
+    <string name="btn_cancel">Отмена</string>
+    <string name="btn_remove">Убрать</string>
+
+    <string name="completed_title">Завершённые загрузки</string>
+    <string name="completed_empty">Завершённых загрузок пока нет</string>
+    <string name="btn_clear">Очистить</string>
+    <string name="btn_share">Поделиться</string>
+    <string name="btn_play">Открыть</string>
+    <string name="share_chooser">Поделиться файлом</string>
+    <string name="toast_file_missing">Файл не найден или удалён</string>
+    <string name="toast_file_not_found">Файл не найден</string>
+    <string name="toast_no_app">Нет приложения, чтобы открыть этот файл</string>
+    <string name="toast_share_error">Ошибка отправки: %1$s</string>
+
+    <string name="settings_title">Настройки</string>
+    <string name="settings_language">Язык</string>
+    <string name="language_system">Язык системы</string>
+    <string name="settings_save_dir">Папка загрузок</string>
+    <string name="settings_concurrent">Одновременные загрузки</string>
+    <string name="settings_default_quality">Качество по умолчанию</string>
+    <string name="settings_app_info">О приложении</string>
+    <string name="settings_version">DVVdownloader v%1$s</string>
+    <string name="settings_app_desc">Нативное приложение на Kotlin. Загрузки выполняются через yt-dlp и FFmpeg.</string>
+    <string name="license_title">Лицензия с открытым кодом</string>
+    <string name="license_desc">DVVdownloader — свободная программа с открытым исходным кодом под лицензией GNU General Public License версии 3.</string>
+    <string name="license_btn_view">Подробнее о лицензии</string>
+    <string name="license_dialog_message">DVVdownloader — GNU GPL v3.0\n\nЭта программа является свободным программным обеспечением: вы можете распространять и/или изменять её на условиях GNU General Public License версии 3, опубликованной Free Software Foundation.\n\nПрограмма распространяется в надежде, что она будет полезной, но БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, даже без подразумеваемой гарантии ТОВАРНОЙ ПРИГОДНОСТИ или ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЁННОЙ ЦЕЛИ.\n\nCopyright (C) 2026 участники проекта DVVdownloader.</string>
+    <string name="btn_close">Закрыть</string>
+
+    <string name="notification_channel_name">Загрузки медиа</string>
+    <string name="notification_channel_desc">Ход активных загрузок</string>
+    <string name="notif_service_active">Служба загрузок работает</string>
+
+    <string name="platform_unknown">Неизвестно</string>
+    <string name="platform_invalid">Неверная ссылка</string>
+    <string name="platform_direct">Прямой файл</string>
+    <string name="platform_web">Веб-медиа</string>
+
+    <string name="quality_best">Лучшее качество</string>
+    <string name="quality_highest">Максимальное качество</string>
+    <string name="quality_mp3">Аудио MP3</string>
+    <string name="quality_tiktok_hd">HD-видео (без водяного знака)</string>
+    <string name="quality_original_audio">Оригинальный звук (MP3)</string>
+    <string name="quality_direct_audio">Прямой аудиопоток</string>
+    <string name="quality_direct_video">Прямой видеопоток</string>
+    <string name="quality_720_original">720p HD (оригинал)</string>
+    <string name="quality_1080_original">1080p HD (оригинальный MP4)</string>
+    <string name="size_unknown">Неизвестно</string>
+    <string name="size_audio_file">Аудиофайл</string>
+    <string name="size_original">Исходный размер</string>
+    <string name="size_original_quality">Исходное качество</string>
+    <string name="size_source_stream">Исходный поток</string>
+    <string name="media_fallback_title">Медиа %1$s</string>
+    <string name="media_file">Медиафайл</string>
+    <string name="uploader_direct">Прямая загрузка</string>
+
+    <string name="err_invalid_youtube">Неверная ссылка YouTube или не найден ID видео.</string>
+    <string name="err_media_info">Не удалось получить данные о медиа.</string>
+    <string name="err_file_missing_after">Загрузка завершена, но файл не найден.</string>
+    <string name="err_tiktok_connect">Не удалось подключиться к TikTok: HTTP %1$d</string>
+    <string name="err_tiktok_not_found">Видео TikTok не найдено или скрыто.</string>
+    <string name="err_pinterest_page">Не удалось открыть страницу Pinterest: HTTP %1$d</string>
+    <string name="err_pinterest_no_video">В этой публикации Pinterest нет видео (возможно, это изображение).</string>
+    <string name="err_instagram_page">Не удалось открыть страницу Instagram: HTTP %1$d</string>
+    <string name="err_instagram_no_video">Видео Instagram не найдено или публикация закрыта.</string>
+    <string name="err_page_unreachable">Страница %1$s недоступна: HTTP %2$d</string>
+    <string name="err_no_stream">На этой странице %1$s нет медиа для загрузки. Попробуйте прямую ссылку или ссылку YouTube.</string>
+    <string name="err_server">Ошибка медиасервера: HTTP %1$d (%2$s)</string>
+    <string name="err_html_instead">Сервер вернул веб-страницу вместо файла. Возможно, ссылка ограничена или устарела.</string>
+    <string name="err_empty_body">Сервер вернул пустой ответ.</string>
+    <string name="err_engine_not_started">Движок загрузки не запущен.</string>
+    <string name="err_engine_init">Не удалось запустить движок загрузки (yt-dlp): %1$s</string>
+    <string name="err_unknown_download">Неизвестная ошибка загрузки</string>
+</resources>

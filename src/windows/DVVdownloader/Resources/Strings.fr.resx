@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="WindowTitle" xml:space="preserve"><value>DVVdownloader — Téléchargeur de médias local</value></data>
+  <data name="VersionBadge" xml:space="preserve"><value>v1.1 Local</value></data>
+  <data name="TipMinimize" xml:space="preserve"><value>Réduire</value></data>
+  <data name="TipMaximize" xml:space="preserve"><value>Agrandir / Restaurer</value></data>
+  <data name="Close" xml:space="preserve"><value>Fermer</value></data>
+  <data name="NavDownload" xml:space="preserve"><value>Télécharger</value></data>
+  <data name="NavQueue" xml:space="preserve"><value>File d'attente</value></data>
+  <data name="NavCompleted" xml:space="preserve"><value>Terminés</value></data>
+  <data name="NavSettings" xml:space="preserve"><value>Réglages</value></data>
+  <data name="NavLog" xml:space="preserve"><value>Journal</value></data>
+  <data name="EngineStatus" xml:space="preserve"><value>ÉTAT DU MOTEUR</value></data>
+  <data name="HomeTitle" xml:space="preserve"><value>Téléchargements rapides et locaux</value></data>
+  <data name="HomeSubtitle" xml:space="preserve"><value>Téléchargez depuis YouTube, Pinterest et de nombreux autres sites, ou depuis un lien vidéo direct</value></data>
+  <data name="UrlPlaceholder" xml:space="preserve"><value>Collez un lien ici (https://...)</value></data>
+  <data name="TipPaste" xml:space="preserve"><value>Coller le lien du presse-papiers et l'analyser</value></data>
+  <data name="Paste" xml:space="preserve"><value>Coller</value></data>
+  <data name="Analyze" xml:space="preserve"><value>Analyser</value></data>
+  <data name="DetectedSource" xml:space="preserve"><value>Source détectée : </value></data>
+  <data name="ClearInput" xml:space="preserve"><value>Effacer</value></data>
+  <data name="AnalyzingHint" xml:space="preserve"><value>Cela peut prendre quelques secondes selon la source.</value></data>
+  <data name="AnalysisFailedTitle" xml:space="preserve"><value>Impossible d'obtenir les informations</value></data>
+  <data name="ModeVideo" xml:space="preserve"><value>🎬 Télécharger en vidéo (MP4)</value></data>
+  <data name="ModeAudio" xml:space="preserve"><value>🎵 Télécharger l'audio seul (MP3)</value></data>
+  <data name="AvailableResolutions" xml:space="preserve"><value>Résolutions disponibles :</value></data>
+  <data name="AudioQualityFormat" xml:space="preserve"><value>Qualité et format audio :</value></data>
+  <data name="AudioMp3High" xml:space="preserve"><value>MP3 haute qualité (meilleure qualité disponible)</value></data>
+  <data name="AudioMp3Desc" xml:space="preserve"><value>Le son est extrait et converti en MP3 avec FFmpeg.</value></data>
+  <data name="SaveFolder" xml:space="preserve"><value>Enregistrer dans : </value></data>
+  <data name="DownloadNow" xml:space="preserve"><value>Télécharger maintenant</value></data>
+  <data name="QueueTitle" xml:space="preserve"><value>File de téléchargement</value></data>
+  <data name="QueueSubtitle" xml:space="preserve"><value>Téléchargements en cours et en attente</value></data>
+  <data name="QueueEmptyTitle" xml:space="preserve"><value>La file d'attente est vide pour le moment.</value></data>
+  <data name="QueueEmptyHint" xml:space="preserve"><value>Collez un lien sur la page d'accueil pour lancer un téléchargement.</value></data>
+  <data name="GoToDownload" xml:space="preserve"><value>Aller à Télécharger</value></data>
+  <data name="SpeedPrefix" xml:space="preserve"><value>  |  Vitesse : </value></data>
+  <data name="EtaPrefix" xml:space="preserve"><value>  |  Restant : </value></data>
+  <data name="Cancel" xml:space="preserve"><value>Annuler</value></data>
+  <data name="Retry" xml:space="preserve"><value>Réessayer</value></data>
+  <data name="Remove" xml:space="preserve"><value>Retirer</value></data>
+  <data name="CompletedTitle" xml:space="preserve"><value>Téléchargements terminés</value></data>
+  <data name="CompletedSubtitle" xml:space="preserve"><value>Les médias que vous avez déjà téléchargés</value></data>
+  <data name="OpenDownloadFolder" xml:space="preserve"><value>Ouvrir le dossier de téléchargement</value></data>
+  <data name="ClearHistory" xml:space="preserve"><value>Effacer l'historique</value></data>
+  <data name="CompletedEmptyTitle" xml:space="preserve"><value>Aucun téléchargement terminé pour l'instant.</value></data>
+  <data name="CompletedEmptyHint" xml:space="preserve"><value>Vos fichiers téléchargés apparaîtront ici.</value></data>
+  <data name="Saved" xml:space="preserve"><value>Enregistré</value></data>
+  <data name="Play" xml:space="preserve"><value>▶ Lire</value></data>
+  <data name="ShowInFolder" xml:space="preserve"><value>📂 Afficher dans le dossier</value></data>
+  <data name="SettingsTitle" xml:space="preserve"><value>Réglages</value></data>
+  <data name="SettingsSubtitle" xml:space="preserve"><value>Langue, emplacement des téléchargements, chemins des moteurs et comportement</value></data>
+  <data name="LanguageTitle" xml:space="preserve"><value>Langue</value></data>
+  <data name="LanguageDesc" xml:space="preserve"><value>L'application utilise automatiquement la langue de Windows. Si elle n'est pas prise en charge, l'anglais est utilisé.</value></data>
+  <data name="LanguageSystem" xml:space="preserve"><value>Langue du système</value></data>
+  <data name="LanguageRestartMessage" xml:space="preserve"><value>La nouvelle langue sera appliquée au redémarrage de DVVdownloader. Redémarrer maintenant ?</value></data>
+  <data name="LanguageRestartTitle" xml:space="preserve"><value>Langue modifiée</value></data>
+  <data name="DownloadLocation" xml:space="preserve"><value>Emplacement des téléchargements</value></data>
+  <data name="DownloadLocationDesc" xml:space="preserve"><value>Le dossier où les fichiers sont enregistrés</value></data>
+  <data name="ChooseFolder" xml:space="preserve"><value>Choisir un dossier…</value></data>
+  <data name="EnginesTitle" xml:space="preserve"><value>Moteurs multimédias</value></data>
+  <data name="EnginesDesc" xml:space="preserve"><value>Exécutables locaux yt-dlp et FFmpeg</value></data>
+  <data name="CustomYtDlpPath" xml:space="preserve"><value>Chemin personnalisé de yt-dlp (facultatif) :</value></data>
+  <data name="CustomFfmpegPath" xml:space="preserve"><value>Chemin personnalisé de FFmpeg (facultatif) :</value></data>
+  <data name="SaveSettings" xml:space="preserve"><value>Enregistrer les réglages</value></data>
+  <data name="BehaviorTitle" xml:space="preserve"><value>Comportement et notifications</value></data>
+  <data name="BehaviorDesc" xml:space="preserve"><value>Ce qui se passe à la fin d'un téléchargement</value></data>
+  <data name="AutoOpenFolder" xml:space="preserve"><value>Ouvrir le dossier de téléchargement à la fin</value></data>
+  <data name="PlaySound" xml:space="preserve"><value>Jouer un son de notification</value></data>
+  <data name="LicenseTitle" xml:space="preserve"><value>Licence open source et mentions légales</value></data>
+  <data name="ViewLicense" xml:space="preserve"><value>Voir le texte de la licence</value></data>
+  <data name="LicenseSummary" xml:space="preserve"><value>DVVdownloader est un logiciel libre et open source sous licence publique générale GNU version 3 (GPL-3.0).</value></data>
+  <data name="LicenseDetail" xml:space="preserve"><value>Vous pouvez l'utiliser librement, étudier son code source, l'adapter à vos besoins et le redistribuer selon les termes de la GPL-3.0. Il ne contient aucune télémétrie cachée, aucun pistage ni aucune restriction commerciale.</value></data>
+  <data name="ThirdParty" xml:space="preserve"><value>Composants open source tiers :</value></data>
+  <data name="ThirdPartyYtDlp" xml:space="preserve"><value>• yt-dlp : The Unlicense (domaine public)</value></data>
+  <data name="ThirdPartyFfmpeg" xml:space="preserve"><value>• FFmpeg : GNU LGPL v2.1+ / GPL v3 (version gyan.dev)</value></data>
+  <data name="ThirdPartyDotnet" xml:space="preserve"><value>• .NET 10 / WPF : licence MIT (Microsoft Corporation)</value></data>
+  <data name="LogTitle" xml:space="preserve"><value>Journal d'activité et d'erreurs</value></data>
+  <data name="LogSubtitle" xml:space="preserve"><value>Sortie en direct et détails du moteur</value></data>
+  <data name="ClearLog" xml:space="preserve"><value>Effacer le journal</value></data>
+  <data name="GplTitle" xml:space="preserve"><value>Licence publique générale GNU version 3</value></data>
+  <data name="GplFooter" xml:space="preserve"><value>Free Software Foundation (FSF) — Copyright (C) 2007-2026 DVVdownloader</value></data>
+  <data name="StatusQueued" xml:space="preserve"><value>En attente</value></data>
+  <data name="StatusAnalyzing" xml:space="preserve"><value>Analyse…</value></data>
+  <data name="StatusDownloading" xml:space="preserve"><value>Téléchargement</value></data>
+  <data name="StatusProcessing" xml:space="preserve"><value>Traitement (FFmpeg)…</value></data>
+  <data name="StatusCompleted" xml:space="preserve"><value>Terminé</value></data>
+  <data name="StatusError" xml:space="preserve"><value>Erreur</value></data>
+  <data name="StatusCancelled" xml:space="preserve"><value>Annulé</value></data>
+  <data name="StatusPaused" xml:space="preserve"><value>En pause</value></data>
+  <data name="WaitingForLink" xml:space="preserve"><value>En attente d'un lien</value></data>
+  <data name="PlatformUnknown" xml:space="preserve"><value>Inconnu</value></data>
+  <data name="PlatformInvalid" xml:space="preserve"><value>URL non valide</value></data>
+  <data name="PlatformDirect" xml:space="preserve"><value>Fichier direct</value></data>
+  <data name="PlatformWeb" xml:space="preserve"><value>Média web</value></data>
+  <data name="EngineAvailable" xml:space="preserve"><value>Disponible</value></data>
+  <data name="YtDlpMissing" xml:space="preserve"><value>Introuvable (vérifiez le dossier tools)</value></data>
+  <data name="FfmpegMissing" xml:space="preserve"><value>Introuvable (facultatif)</value></data>
+  <data name="ErrYtDlpNotFound" xml:space="preserve"><value>Le moteur de téléchargement (yt-dlp.exe) est introuvable. Vérifiez que yt-dlp.exe se trouve dans le dossier « tools » ou indiquez son emplacement dans les Réglages.</value></data>
+  <data name="ErrYtDlpNotFoundShort" xml:space="preserve"><value>Le moteur de téléchargement (yt-dlp.exe) est introuvable. Vérifiez le dossier « tools ».</value></data>
+  <data name="ErrEngineStart" xml:space="preserve"><value>Impossible d'exécuter le moteur de téléchargement (yt-dlp) : {0}</value></data>
+  <data name="ErrMediaInfo" xml:space="preserve"><value>Impossible d'obtenir les informations du média.</value></data>
+  <data name="ErrDownloadFailed" xml:space="preserve"><value>Le téléchargement s'est terminé par une erreur.</value></data>
+  <data name="ErrPinterestNoVideo" xml:space="preserve"><value>Aucune vidéo téléchargeable dans cette publication Pinterest (c'est peut-être une image).</value></data>
+  <data name="ErrInstagramNoVideo" xml:space="preserve"><value>Aucune vidéo téléchargeable dans cette publication Instagram, ou elle est privée.</value></data>
+  <data name="QualityBest" xml:space="preserve"><value>Meilleure qualité</value></data>
+  <data name="QualityMp3" xml:space="preserve"><value>Audio MP3</value></data>
+  <data name="QualityMp3Ext" xml:space="preserve"><value>Audio MP3 ({0})</value></data>
+  <data name="QualityBestShort" xml:space="preserve"><value>Meilleure</value></data>
+  <data name="Quality720Original" xml:space="preserve"><value>720p HD (original)</value></data>
+  <data name="QualityHlsAuto" xml:space="preserve"><value>Flux HLS (MP4 automatique)</value></data>
+  <data name="QualityAuto" xml:space="preserve"><value>Automatique</value></data>
+  <data name="Quality1080Original" xml:space="preserve"><value>Qualité d'origine (1080p MP4)</value></data>
+  <data name="QualityOriginal" xml:space="preserve"><value>Qualité d'origine</value></data>
+  <data name="AudioKbps" xml:space="preserve"><value>Audio ({0} kbps) - {1}</value></data>
+  <data name="AudioExt" xml:space="preserve"><value>Audio ({0})</value></data>
+  <data name="SizeUnknown" xml:space="preserve"><value>Taille inconnue</value></data>
+  <data name="AnalyzingStatus" xml:space="preserve"><value>Recherche des sources et des formats…</value></data>
+  <data name="AnalysisFailed" xml:space="preserve"><value>L'analyse a échoué : {0}</value></data>
+  <data name="FileMissingMessage" xml:space="preserve"><value>Le fichier est introuvable ou a peut-être été déplacé.</value></data>
+  <data name="FileMissingTitle" xml:space="preserve"><value>Impossible d'ouvrir le fichier</value></data>
+  <data name="ChooseDownloadFolder" xml:space="preserve"><value>Choisir le dossier de téléchargement</value></data>
+  <data name="ClearHistoryConfirm" xml:space="preserve"><value>Voulez-vous vraiment effacer l'historique des téléchargements ? (Vos fichiers téléchargés ne seront pas supprimés.)</value></data>
+</root>

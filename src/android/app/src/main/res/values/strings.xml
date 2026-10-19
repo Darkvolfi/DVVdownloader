@@ -1,29 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Varsayılan dil İngilizce: cihaz dili desteklenmiyorsa bu dosya kullanılır -->
 <resources>
-    <string name="app_name">DVVdownloader</string>
-    <string name="tab_home">Ana Sayfa</string>
-    <string name="tab_queue">Kuyruk</string>
-    <string name="tab_completed">Tamamlananlar</string>
-    <string name="tab_settings">Ayarlar</string>
-    <string name="url_input_hint">Medya bağlantısını buraya yapıştırın...</string>
-    <string name="btn_analyze">Analiz Et</string>
-    <string name="btn_paste">Yapıştır</string>
-    <string name="analyzing_title">Medya Analiz Ediliyor...</string>
-    <string name="analyzing_desc">Formatlar ve akış bilgileri alınıyor, lütfen bekleyin</string>
-    <string name="format_select_title">Format ve Kalite Seçimi</string>
-    <string name="btn_download">İndir</string>
-    <string name="queue_title">Aktif İndirmeler</string>
-    <string name="queue_empty">Şu anda aktif bir indirme işlemi yok</string>
-    <string name="completed_title">Tamamlanan İndirmeler</string>
-    <string name="completed_empty">Henüz tamamlanan indirme bulunmuyor</string>
-    <string name="settings_title">Uygulama Ayarları</string>
-    <string name="settings_save_dir">İndirme Konumu</string>
-    <string name="settings_concurrent">Eşzamanlı İndirme Sayısı</string>
-    <string name="settings_default_quality">Varsayılan Kalite</string>
-    <string name="notification_channel_name">Medya İndirmeleri</string>
-    <string name="notification_channel_desc">Aktif medya indirme işlemlerinin ilerleme bildirimleri</string>
-    <string name="license_title">Açık Kaynak Lisansı</string>
-    <string name="license_badge">GNU GPL v3.0</string>
-    <string name="license_desc">DVVdownloader, GNU Genel Kamu Lisansı Sürüm 3 altında lisanslanmış özgür ve açık kaynaklı bir yazılımdır.</string>
-    <string name="license_btn_view">Lisans Detayları</string>
+    <string name="app_name" translatable="false">DVVdownloader</string>
+    <string name="license_badge" translatable="false">GNU GPL v3.0</string>
+
+    <!-- Navigation -->
+    <string name="tab_home">Home</string>
+    <string name="tab_queue">Queue</string>
+    <string name="tab_completed">Completed</string>
+    <string name="tab_settings">Settings</string>
+    <string name="badge_local">LOCAL</string>
+
+    <!-- Home -->
+    <string name="home_title">Download Media</string>
+    <string name="home_subtitle">YouTube, Pinterest, TikTok, Instagram and direct video links</string>
+    <string name="url_input_hint">Paste a media link here…</string>
+    <string name="label_source">Source: </string>
+    <string name="source_waiting">Waiting for a link</string>
+    <string name="btn_analyze">Analyze</string>
+    <string name="btn_paste">Paste</string>
+    <string name="analyzing_title">Analyzing media…</string>
+    <string name="analyzing_desc">Fetching formats and stream info, please wait</string>
+    <string name="format_select_title">Choose format and quality</string>
+    <string name="btn_download">Download</string>
+    <string name="format_audio">Audio (%1$s)</string>
+    <string name="format_video">Video (%1$s)</string>
+    <string name="toast_invalid_url">Please enter a valid URL</string>
+    <string name="toast_clipboard_empty">Clipboard is empty</string>
+    <string name="toast_analyze_error">Analysis error: %1$s</string>
+
+    <!-- Queue -->
+    <string name="queue_title">Active Downloads</string>
+    <string name="queue_empty">No active downloads right now</string>
+    <string name="queue_speed">" • Speed: %1$s"</string>
+    <string name="status_queued">Queued</string>
+    <string name="status_downloading">Downloading</string>
+    <string name="status_completed">Completed</string>
+    <string name="status_error">Error</string>
+    <string name="status_cancelled">Cancelled</string>
+    <string name="btn_retry">Retry</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_remove">Remove</string>
+
+    <!-- Completed -->
+    <string name="completed_title">Completed Downloads</string>
+    <string name="completed_empty">No completed downloads yet</string>
+    <string name="btn_clear">Clear</string>
+    <string name="btn_share">Share</string>
+    <string name="btn_play">Play</string>
+    <string name="share_chooser">Share media</string>
+    <string name="toast_file_missing">File not found or deleted</string>
+    <string name="toast_file_not_found">File not found</string>
+    <string name="toast_no_app">No app found to open this file</string>
+    <string name="toast_share_error">Share error: %1$s</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_language">Language</string>
+    <string name="language_system">System default</string>
+    <string name="settings_save_dir">Download location</string>
+    <string name="settings_concurrent">Concurrent downloads</string>
+    <string name="settings_default_quality">Default quality</string>
+    <string name="settings_app_info">App info</string>
+    <string name="settings_version">DVVdownloader v%1$s</string>
+    <string name="settings_app_desc">A native Kotlin app. Downloads are powered by yt-dlp and FFmpeg.</string>
+    <string name="license_title">Open Source License</string>
+    <string name="license_desc">DVVdownloader is free and open-source software licensed under the GNU General Public License version 3.</string>
+    <string name="license_btn_view">License details</string>
+    <string name="license_dialog_message">DVVdownloader — GNU GPL v3.0\n\nThis program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License version 3, as published by the Free Software Foundation.\n\nThis program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\nCopyright (C) 2026 DVVdownloader contributors.</string>
+    <string name="btn_close">Close</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_name">Media downloads</string>
+    <string name="notification_channel_desc">Progress of active media downloads</string>
+    <string name="notif_service_active">Download service is running</string>
+
+    <!-- Platforms -->
+    <string name="platform_unknown">Unknown</string>
+    <string name="platform_invalid">Invalid URL</string>
+    <string name="platform_direct">Direct media</string>
+    <string name="platform_web">Web media</string>
+
+    <!-- Formats -->
+    <string name="quality_best">Best quality</string>
+    <string name="quality_highest">Highest quality</string>
+    <string name="quality_mp3">MP3 audio</string>
+    <string name="quality_tiktok_hd">HD video (no watermark)</string>
+    <string name="quality_original_audio">Original audio (MP3)</string>
+    <string name="quality_direct_audio">Direct audio stream</string>
+    <string name="quality_direct_video">Direct video stream</string>
+    <string name="quality_720_original">720p HD (original)</string>
+    <string name="quality_1080_original">1080p HD (original MP4)</string>
+    <string name="size_unknown">Unknown</string>
+    <string name="size_audio_file">Audio file</string>
+    <string name="size_original">Original size</string>
+    <string name="size_original_quality">Original quality</string>
+    <string name="size_source_stream">Source stream</string>
+    <string name="media_fallback_title">%1$s media</string>
+    <string name="media_file">Media file</string>
+    <string name="uploader_direct">Direct download</string>
+
+    <!-- Errors -->
+    <string name="err_invalid_youtube">Invalid YouTube link or video ID not found.</string>
+    <string name="err_media_info">Couldn\'t get media info.</string>
+    <string name="err_file_missing_after">The download finished but the file wasn\'t found.</string>
+    <string name="err_tiktok_connect">Couldn\'t connect to TikTok: HTTP %1$d</string>
+    <string name="err_tiktok_not_found">TikTok video not found or private.</string>
+    <string name="err_pinterest_page">Couldn\'t open the Pinterest page: HTTP %1$d</string>
+    <string name="err_pinterest_no_video">No video found in this Pinterest post (it may be an image).</string>
+    <string name="err_instagram_page">Couldn\'t open the Instagram page: HTTP %1$d</string>
+    <string name="err_instagram_no_video">Instagram video not found or the post is private.</string>
+    <string name="err_page_unreachable">Couldn\'t reach the %1$s page: HTTP %2$d</string>
+    <string name="err_no_stream">No downloadable media found on this %1$s page. Try a direct media link or a YouTube link.</string>
+    <string name="err_server">Media server error: HTTP %1$d (%2$s)</string>
+    <string name="err_html_instead">The server returned a web page instead of a media file. The link may be restricted or expired.</string>
+    <string name="err_empty_body">The media response was empty.</string>
+    <string name="err_engine_not_started">The download engine wasn\'t started.</string>
+    <string name="err_engine_init">Couldn\'t start the download engine (yt-dlp): %1$s</string>
+    <string name="err_unknown_download">Unknown download error</string>
 </resources>

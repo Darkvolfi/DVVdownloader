@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.dvv.downloader.databinding.ItemHistoryBinding
 import com.dvv.downloader.models.HistoryItem
+import com.dvv.downloader.repository.MediaEngine
 
 class HistoryAdapter(
     private var items: List<HistoryItem>,
@@ -27,7 +28,7 @@ class HistoryAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
         holder.binding.tvHistoryTitle.text = item.title
-        holder.binding.tvHistoryPlatform.text = item.platform
+        holder.binding.tvHistoryPlatform.text = MediaEngine.platformLabel(item.platform)
         holder.binding.tvHistorySize.text = item.fileSizeFormatted
         holder.binding.tvHistoryDate.text = item.dateFormatted
 

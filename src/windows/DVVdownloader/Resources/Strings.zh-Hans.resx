@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="WindowTitle" xml:space="preserve"><value>DVVdownloader — 本地媒体下载器</value></data>
+  <data name="VersionBadge" xml:space="preserve"><value>v1.1 本地</value></data>
+  <data name="TipMinimize" xml:space="preserve"><value>最小化</value></data>
+  <data name="TipMaximize" xml:space="preserve"><value>最大化 / 还原</value></data>
+  <data name="Close" xml:space="preserve"><value>关闭</value></data>
+  <data name="NavDownload" xml:space="preserve"><value>下载媒体</value></data>
+  <data name="NavQueue" xml:space="preserve"><value>队列</value></data>
+  <data name="NavCompleted" xml:space="preserve"><value>已完成</value></data>
+  <data name="NavSettings" xml:space="preserve"><value>设置</value></data>
+  <data name="NavLog" xml:space="preserve"><value>活动日志</value></data>
+  <data name="EngineStatus" xml:space="preserve"><value>引擎状态</value></data>
+  <data name="HomeTitle" xml:space="preserve"><value>快速的本地媒体下载</value></data>
+  <data name="HomeSubtitle" xml:space="preserve"><value>从 YouTube、Pinterest 等众多网站或任意视频直链下载</value></data>
+  <data name="UrlPlaceholder" xml:space="preserve"><value>在此粘贴媒体链接 (https://...)</value></data>
+  <data name="TipPaste" xml:space="preserve"><value>从剪贴板粘贴链接并解析</value></data>
+  <data name="Paste" xml:space="preserve"><value>粘贴</value></data>
+  <data name="Analyze" xml:space="preserve"><value>解析</value></data>
+  <data name="DetectedSource" xml:space="preserve"><value>识别到的来源： </value></data>
+  <data name="ClearInput" xml:space="preserve"><value>清空</value></data>
+  <data name="AnalyzingHint" xml:space="preserve"><value>根据来源不同，这可能需要几秒钟。</value></data>
+  <data name="AnalysisFailedTitle" xml:space="preserve"><value>无法获取媒体信息</value></data>
+  <data name="ModeVideo" xml:space="preserve"><value>🎬 下载为视频 (MP4)</value></data>
+  <data name="ModeAudio" xml:space="preserve"><value>🎵 仅下载音频 (MP3)</value></data>
+  <data name="AvailableResolutions" xml:space="preserve"><value>可用分辨率：</value></data>
+  <data name="AudioQualityFormat" xml:space="preserve"><value>音质和格式：</value></data>
+  <data name="AudioMp3High" xml:space="preserve"><value>高品质 MP3（可用的最佳音质）</value></data>
+  <data name="AudioMp3Desc" xml:space="preserve"><value>使用 FFmpeg 提取音频并转换为 MP3。</value></data>
+  <data name="SaveFolder" xml:space="preserve"><value>保存到： </value></data>
+  <data name="DownloadNow" xml:space="preserve"><value>立即下载</value></data>
+  <data name="QueueTitle" xml:space="preserve"><value>下载队列</value></data>
+  <data name="QueueSubtitle" xml:space="preserve"><value>正在下载和等待中的任务</value></data>
+  <data name="QueueEmptyTitle" xml:space="preserve"><value>队列当前为空。</value></data>
+  <data name="QueueEmptyHint" xml:space="preserve"><value>在首页粘贴媒体链接即可开始下载。</value></data>
+  <data name="GoToDownload" xml:space="preserve"><value>前往下载媒体</value></data>
+  <data name="SpeedPrefix" xml:space="preserve"><value>  |  速度： </value></data>
+  <data name="EtaPrefix" xml:space="preserve"><value>  |  剩余： </value></data>
+  <data name="Cancel" xml:space="preserve"><value>取消</value></data>
+  <data name="Retry" xml:space="preserve"><value>重试</value></data>
+  <data name="Remove" xml:space="preserve"><value>移除</value></data>
+  <data name="CompletedTitle" xml:space="preserve"><value>已完成的下载</value></data>
+  <data name="CompletedSubtitle" xml:space="preserve"><value>你之前下载过的媒体</value></data>
+  <data name="OpenDownloadFolder" xml:space="preserve"><value>打开下载文件夹</value></data>
+  <data name="ClearHistory" xml:space="preserve"><value>清除历史</value></data>
+  <data name="CompletedEmptyTitle" xml:space="preserve"><value>还没有已完成的下载。</value></data>
+  <data name="CompletedEmptyHint" xml:space="preserve"><value>下载的文件会显示在这里。</value></data>
+  <data name="Saved" xml:space="preserve"><value>已保存</value></data>
+  <data name="Play" xml:space="preserve"><value>▶ 播放</value></data>
+  <data name="ShowInFolder" xml:space="preserve"><value>📂 在文件夹中显示</value></data>
+  <data name="SettingsTitle" xml:space="preserve"><value>设置</value></data>
+  <data name="SettingsSubtitle" xml:space="preserve"><value>语言、下载位置、引擎路径和行为</value></data>
+  <data name="LanguageTitle" xml:space="preserve"><value>语言</value></data>
+  <data name="LanguageDesc" xml:space="preserve"><value>应用会自动使用 Windows 的语言。如果不支持该语言，将使用英语。</value></data>
+  <data name="LanguageSystem" xml:space="preserve"><value>跟随系统</value></data>
+  <data name="LanguageRestartMessage" xml:space="preserve"><value>新语言将在重启 DVVdownloader 后生效。现在重启吗？</value></data>
+  <data name="LanguageRestartTitle" xml:space="preserve"><value>语言已更改</value></data>
+  <data name="DownloadLocation" xml:space="preserve"><value>下载位置</value></data>
+  <data name="DownloadLocationDesc" xml:space="preserve"><value>保存媒体文件的文件夹</value></data>
+  <data name="ChooseFolder" xml:space="preserve"><value>选择文件夹…</value></data>
+  <data name="EnginesTitle" xml:space="preserve"><value>媒体引擎</value></data>
+  <data name="EnginesDesc" xml:space="preserve"><value>本地 yt-dlp 和 FFmpeg 可执行文件</value></data>
+  <data name="CustomYtDlpPath" xml:space="preserve"><value>自定义 yt-dlp 路径（可选）：</value></data>
+  <data name="CustomFfmpegPath" xml:space="preserve"><value>自定义 FFmpeg 路径（可选）：</value></data>
+  <data name="SaveSettings" xml:space="preserve"><value>保存设置</value></data>
+  <data name="BehaviorTitle" xml:space="preserve"><value>行为和通知</value></data>
+  <data name="BehaviorDesc" xml:space="preserve"><value>下载完成后的操作</value></data>
+  <data name="AutoOpenFolder" xml:space="preserve"><value>下载完成后自动打开下载文件夹</value></data>
+  <data name="PlaySound" xml:space="preserve"><value>播放提示音</value></data>
+  <data name="LicenseTitle" xml:space="preserve"><value>开源许可和法律信息</value></data>
+  <data name="ViewLicense" xml:space="preserve"><value>查看许可证全文</value></data>
+  <data name="LicenseSummary" xml:space="preserve"><value>DVVdownloader 是基于 GNU 通用公共许可证第 3 版 (GPL-3.0) 发布的自由开源软件。</value></data>
+  <data name="LicenseDetail" xml:space="preserve"><value>你可以自由使用、研究源代码、按需修改，并在 GPL-3.0 的条款下重新分发。软件不包含任何隐藏的遥测、跟踪或商业限制。</value></data>
+  <data name="ThirdParty" xml:space="preserve"><value>使用的第三方开源组件：</value></data>
+  <data name="ThirdPartyYtDlp" xml:space="preserve"><value>• yt-dlp：The Unlicense（公有领域）</value></data>
+  <data name="ThirdPartyFfmpeg" xml:space="preserve"><value>• FFmpeg：GNU LGPL v2.1+ / GPL v3（gyan.dev 构建）</value></data>
+  <data name="ThirdPartyDotnet" xml:space="preserve"><value>• .NET 10 / WPF：MIT 许可证（Microsoft Corporation）</value></data>
+  <data name="LogTitle" xml:space="preserve"><value>活动和错误日志</value></data>
+  <data name="LogSubtitle" xml:space="preserve"><value>引擎实时输出和详细信息</value></data>
+  <data name="ClearLog" xml:space="preserve"><value>清空日志</value></data>
+  <data name="GplTitle" xml:space="preserve"><value>GNU 通用公共许可证第 3 版</value></data>
+  <data name="GplFooter" xml:space="preserve"><value>Free Software Foundation (FSF) — Copyright (C) 2007-2026 DVVdownloader</value></data>
+  <data name="StatusQueued" xml:space="preserve"><value>排队中</value></data>
+  <data name="StatusAnalyzing" xml:space="preserve"><value>正在解析…</value></data>
+  <data name="StatusDownloading" xml:space="preserve"><value>下载中</value></data>
+  <data name="StatusProcessing" xml:space="preserve"><value>正在处理 (FFmpeg)…</value></data>
+  <data name="StatusCompleted" xml:space="preserve"><value>已完成</value></data>
+  <data name="StatusError" xml:space="preserve"><value>出错</value></data>
+  <data name="StatusCancelled" xml:space="preserve"><value>已取消</value></data>
+  <data name="StatusPaused" xml:space="preserve"><value>已暂停</value></data>
+  <data name="WaitingForLink" xml:space="preserve"><value>等待链接</value></data>
+  <data name="PlatformUnknown" xml:space="preserve"><value>未知</value></data>
+  <data name="PlatformInvalid" xml:space="preserve"><value>无效链接</value></data>
+  <data name="PlatformDirect" xml:space="preserve"><value>直链媒体</value></data>
+  <data name="PlatformWeb" xml:space="preserve"><value>网页媒体</value></data>
+  <data name="EngineAvailable" xml:space="preserve"><value>可用</value></data>
+  <data name="YtDlpMissing" xml:space="preserve"><value>未找到（请检查 tools 文件夹）</value></data>
+  <data name="FfmpegMissing" xml:space="preserve"><value>未找到（可选）</value></data>
+  <data name="ErrYtDlpNotFound" xml:space="preserve"><value>找不到下载引擎 (yt-dlp.exe)。请确认 yt-dlp.exe 位于“tools”文件夹中，或在设置中指定它的位置。</value></data>
+  <data name="ErrYtDlpNotFoundShort" xml:space="preserve"><value>找不到下载引擎 (yt-dlp.exe)。请检查“tools”文件夹。</value></data>
+  <data name="ErrEngineStart" xml:space="preserve"><value>无法运行下载引擎 (yt-dlp)：{0}</value></data>
+  <data name="ErrMediaInfo" xml:space="preserve"><value>无法获取媒体信息。</value></data>
+  <data name="ErrDownloadFailed" xml:space="preserve"><value>下载因错误而结束。</value></data>
+  <data name="ErrPinterestNoVideo" xml:space="preserve"><value>这条 Pinterest 帖子中没有可下载的视频（可能只是图片）。</value></data>
+  <data name="ErrInstagramNoVideo" xml:space="preserve"><value>这条 Instagram 帖子中没有可下载的视频，或该帖子为私密。</value></data>
+  <data name="QualityBest" xml:space="preserve"><value>最佳画质</value></data>
+  <data name="QualityMp3" xml:space="preserve"><value>MP3 音频</value></data>
+  <data name="QualityMp3Ext" xml:space="preserve"><value>MP3 音频 ({0})</value></data>
+  <data name="QualityBestShort" xml:space="preserve"><value>最佳</value></data>
+  <data name="Quality720Original" xml:space="preserve"><value>720p 高清（原始）</value></data>
+  <data name="QualityHlsAuto" xml:space="preserve"><value>HLS 流（自动 MP4）</value></data>
+  <data name="QualityAuto" xml:space="preserve"><value>自动</value></data>
+  <data name="Quality1080Original" xml:space="preserve"><value>原始画质（1080p MP4）</value></data>
+  <data name="QualityOriginal" xml:space="preserve"><value>原始画质</value></data>
+  <data name="AudioKbps" xml:space="preserve"><value>音频 ({0} kbps) - {1}</value></data>
+  <data name="AudioExt" xml:space="preserve"><value>音频 ({0})</value></data>
+  <data name="SizeUnknown" xml:space="preserve"><value>大小未知</value></data>
+  <data name="AnalyzingStatus" xml:space="preserve"><value>正在搜索媒体来源和格式…</value></data>
+  <data name="AnalysisFailed" xml:space="preserve"><value>解析失败：{0}</value></data>
+  <data name="FileMissingMessage" xml:space="preserve"><value>找不到文件，或文件可能已被移动。</value></data>
+  <data name="FileMissingTitle" xml:space="preserve"><value>无法打开文件</value></data>
+  <data name="ChooseDownloadFolder" xml:space="preserve"><value>选择下载文件夹</value></data>
+  <data name="ClearHistoryConfirm" xml:space="preserve"><value>确定要清除下载历史吗？（已下载的文件不会被删除。）</value></data>
+</root>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Endonezce: Android kaynaklarında eski "in" kodu kullanılır (id ile eşleşir) -->
+<resources>
+    <string name="tab_home">Beranda</string>
+    <string name="tab_queue">Antrean</string>
+    <string name="tab_completed">Selesai</string>
+    <string name="tab_settings">Setelan</string>
+    <string name="badge_local">LOKAL</string>
+
+    <string name="home_title">Unduh Media</string>
+    <string name="home_subtitle">Tautan YouTube, Pinterest, TikTok, Instagram, dan video langsung</string>
+    <string name="url_input_hint">Tempel tautan media di sini…</string>
+    <string name="label_source">Sumber: </string>
+    <string name="source_waiting">Menunggu tautan</string>
+    <string name="btn_analyze">Analisis</string>
+    <string name="btn_paste">Tempel</string>
+    <string name="analyzing_title">Menganalisis…</string>
+    <string name="analyzing_desc">Mengambil format dan info stream, mohon tunggu</string>
+    <string name="format_select_title">Pilih format dan kualitas</string>
+    <string name="btn_download">Unduh</string>
+    <string name="format_audio">Audio (%1$s)</string>
+    <string name="format_video">Video (%1$s)</string>
+    <string name="toast_invalid_url">Masukkan URL yang valid</string>
+    <string name="toast_clipboard_empty">Papan klip kosong</string>
+    <string name="toast_analyze_error">Gagal menganalisis: %1$s</string>
+
+    <string name="queue_title">Unduhan Aktif</string>
+    <string name="queue_empty">Tidak ada unduhan aktif saat ini</string>
+    <string name="queue_speed">" • Kecepatan: %1$s"</string>
+    <string name="status_queued">Dalam antrean</string>
+    <string name="status_downloading">Mengunduh</string>
+    <string name="status_completed">Selesai</string>
+    <string name="status_error">Gagal</string>
+    <string name="status_cancelled">Dibatalkan</string>
+    <string name="btn_retry">Coba lagi</string>
+    <string name="btn_cancel">Batal</string>
+    <string name="btn_remove">Hapus</string>
+
+    <string name="completed_title">Unduhan Selesai</string>
+    <string name="completed_empty">Belum ada unduhan yang selesai</string>
+    <string name="btn_clear">Bersihkan</string>
+    <string name="btn_share">Bagikan</string>
+    <string name="btn_play">Putar</string>
+    <string name="share_chooser">Bagikan media</string>
+    <string name="toast_file_missing">File tidak ditemukan atau sudah dihapus</string>
+    <string name="toast_file_not_found">File tidak ditemukan</string>
+    <string name="toast_no_app">Tidak ada aplikasi untuk membuka file ini</string>
+    <string name="toast_share_error">Gagal membagikan: %1$s</string>
+
+    <string name="settings_title">Setelan</string>
+    <string name="settings_language">Bahasa</string>
+    <string name="language_system">Bahasa sistem</string>
+    <string name="settings_save_dir">Lokasi unduhan</string>
+    <string name="settings_concurrent">Unduhan bersamaan</string>
+    <string name="settings_default_quality">Kualitas default</string>
+    <string name="settings_app_info">Info aplikasi</string>
+    <string name="settings_version">DVVdownloader v%1$s</string>
+    <string name="settings_app_desc">Aplikasi Kotlin native. Unduhan menggunakan yt-dlp dan FFmpeg.</string>
+    <string name="license_title">Lisensi Sumber Terbuka</string>
+    <string name="license_desc">DVVdownloader adalah perangkat lunak bebas dan sumber terbuka di bawah GNU General Public License versi 3.</string>
+    <string name="license_btn_view">Detail lisensi</string>
+    <string name="license_dialog_message">DVVdownloader — GNU GPL v3.0\n\nProgram ini adalah perangkat lunak bebas: Anda boleh mendistribusikan ulang dan/atau mengubahnya berdasarkan ketentuan GNU General Public License versi 3 yang diterbitkan oleh Free Software Foundation.\n\nProgram ini didistribusikan dengan harapan dapat bermanfaat, tetapi TANPA JAMINAN APA PUN, bahkan tanpa jaminan tersirat atas KELAYAKAN DIPERDAGANGKAN atau KESESUAIAN UNTUK TUJUAN TERTENTU.\n\nHak Cipta (C) 2026 kontributor DVVdownloader.</string>
+    <string name="btn_close">Tutup</string>
+
+    <string name="notification_channel_name">Unduhan media</string>
+    <string name="notification_channel_desc">Progres unduhan yang sedang berjalan</string>
+    <string name="notif_service_active">Layanan unduhan sedang berjalan</string>
+
+    <string name="platform_unknown">Tidak diketahui</string>
+    <string name="platform_invalid">URL tidak valid</string>
+    <string name="platform_direct">Media langsung</string>
+    <string name="platform_web">Media web</string>
+
+    <string name="quality_best">Kualitas terbaik</string>
+    <string name="quality_highest">Kualitas tertinggi</string>
+    <string name="quality_mp3">Audio MP3</string>
+    <string name="quality_tiktok_hd">Video HD (tanpa watermark)</string>
+    <string name="quality_original_audio">Audio asli (MP3)</string>
+    <string name="quality_direct_audio">Stream audio langsung</string>
+    <string name="quality_direct_video">Stream video langsung</string>
+    <string name="quality_720_original">720p HD (asli)</string>
+    <string name="quality_1080_original">1080p HD (MP4 asli)</string>
+    <string name="size_unknown">Tidak diketahui</string>
+    <string name="size_audio_file">File audio</string>
+    <string name="size_original">Ukuran asli</string>
+    <string name="size_original_quality">Kualitas asli</string>
+    <string name="size_source_stream">Stream sumber</string>
+    <string name="media_fallback_title">Media %1$s</string>
+    <string name="media_file">File media</string>
+    <string name="uploader_direct">Unduhan langsung</string>
+
+    <string name="err_invalid_youtube">Tautan YouTube tidak valid atau ID video tidak ditemukan.</string>
+    <string name="err_media_info">Tidak dapat mengambil info media.</string>
+    <string name="err_file_missing_after">Unduhan selesai, tetapi file tidak ditemukan.</string>
+    <string name="err_tiktok_connect">Tidak dapat terhubung ke TikTok: HTTP %1$d</string>
+    <string name="err_tiktok_not_found">Video TikTok tidak ditemukan atau bersifat pribadi.</string>
+    <string name="err_pinterest_page">Tidak dapat membuka halaman Pinterest: HTTP %1$d</string>
+    <string name="err_pinterest_no_video">Tidak ada video di postingan Pinterest ini (mungkin hanya gambar).</string>
+    <string name="err_instagram_page">Tidak dapat membuka halaman Instagram: HTTP %1$d</string>
+    <string name="err_instagram_no_video">Video Instagram tidak ditemukan atau postingan bersifat pribadi.</string>
+    <string name="err_page_unreachable">Halaman %1$s tidak dapat dijangkau: HTTP %2$d</string>
+    <string name="err_no_stream">Tidak ada media yang bisa diunduh di halaman %1$s ini. Coba tautan langsung atau tautan YouTube.</string>
+    <string name="err_server">Kesalahan server media: HTTP %1$d (%2$s)</string>
+    <string name="err_html_instead">Server mengembalikan halaman web, bukan file media. Tautan mungkin dibatasi atau kedaluwarsa.</string>
+    <string name="err_empty_body">Respons server kosong.</string>
+    <string name="err_engine_not_started">Mesin unduhan belum dijalankan.</string>
+    <string name="err_engine_init">Tidak dapat menjalankan mesin unduhan (yt-dlp): %1$s</string>
+    <string name="err_unknown_download">Kesalahan unduhan yang tidak diketahui</string>
+</resources>

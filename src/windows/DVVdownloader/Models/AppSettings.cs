@@ -6,7 +6,9 @@ namespace DVVdownloader.Models
     public class AppSettings
     {
         public string DownloadDirectory { get; set; } = GetDefaultDownloadDirectory();
-        public string DefaultQuality { get; set; } = "En İyi";
+        public string DefaultQuality { get; set; } = "best";
+        // Boş = sistem dili; aksi halde "tr", "de" gibi bir dil kodu
+        public string Language { get; set; } = string.Empty;
         public string DefaultAudioFormat { get; set; } = "mp3";
         public int MaxConcurrentDownloads { get; set; } = 3;
         public string CustomYtDlpPath { get; set; } = string.Empty;

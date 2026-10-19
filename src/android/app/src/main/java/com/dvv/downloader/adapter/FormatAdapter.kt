@@ -29,9 +29,9 @@ class FormatAdapter(
 
         holder.binding.tvFormatQuality.text = item.qualityLabel
         holder.binding.tvFormatExt.text = if (item.isAudioOnly) {
-            "Ses Akışı (${item.ext.uppercase()})"
+            context.getString(R.string.format_audio, item.ext.uppercase())
         } else {
-            "Video (${item.ext.uppercase()})"
+            context.getString(R.string.format_video, item.ext.uppercase())
         }
         holder.binding.tvFormatSize.text = item.formattedSize
         holder.binding.rbSelected.isChecked = isSelected

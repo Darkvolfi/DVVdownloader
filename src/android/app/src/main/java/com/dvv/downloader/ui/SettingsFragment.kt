@@ -4,13 +4,34 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
+import com.dvv.downloader.R
 import com.dvv.downloader.databinding.FragmentSettingsBinding
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
+
+    // Dil etiketi -> kendi dilindeki adı. Boş etiket = sistem dili (cihaz dili desteklenmiyorsa İngilizce).
+    private val languages = listOf(
+        "" to null,
+        "en" to "English",
+        "tr" to "Türkçe",
+        "de" to "Deutsch",
+        "es" to "Español",
+        "fr" to "Français",
+        "pt" to "Português",
+        "ru" to "Русский",
+        "ar" to "العربية",
+        "id" to "Bahasa Indonesia",
+        "hi" to "हिन्दी",
+        "ja" to "日本語",
+        "zh-CN" to "简体中文"
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,20 +46,51 @@ class SettingsFragment : Fragment() {
         val dir = requireContext().getExternalFilesDir(null) ?: requireContext().filesDir
         binding.tvDownloadPath.text = dir.absolutePath
 
+        val versionName = requireContext().packageManager
+            .getPackageInfo(requireContext().packageName, 0).versionName ?: ""
+        binding.tvAppVersion.text = getString(R.string.settings_version, versionName)
+
+        binding.tvLanguage.text = languageName(currentLanguageIndex())
+        binding.cardLanguage.setOnClickListener { showLanguageDialog() }
+
         binding.btnViewLicense.setOnClickListener {
-            com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
+            MaterialAlertDialogBuilder(requireContext())
                 .setTitle("GNU General Public License v3.0")
-                .setMessage(
-                    "DVVdownloader — GNU GPL v3.0\n\n" +
-                    "Bu yazılım özgür bir yazılımdır; Free Software Foundation tarafından yayımlanan " +
-                    "GNU Genel Kamu Lisansı sürüm 3 hükümleri kapsamında yeniden dağıtabilir ve/veya değiştirebilirsiniz.\n\n" +
-                    "Bu program faydalı olması umuduyla dağıtılmaktadır; ancak HİÇBİR GARANTİ VERİLMEZ; " +
-                    "hatta PAZARLANABİLİRLİK veya BELİRLİ BİR AMACA UYGUNLUK garantisi dahi verilmez.\n\n" +
-                    "Telif Hakkı (C) 2026 DVVdownloader Katkıda Bulunanları."
-                )
-                .setPositiveButton("Kapat", null)
+                .setMessage(R.string.license_dialog_message)
+                .setPositiveButton(R.string.btn_close, null)
                 .show()
         }
+    }
+
+    private fun languageName(index: Int): String =
+        languages[index].second ?: getString(R.string.language_system)
+
+    private fun currentLanguageIndex(): Int {
+        val selected = AppCompatDelegate.getApplicationLocales()
+        if (selected.isEmpty) return 0
+        val tag = selected[0]?.toLanguageTag() ?: return 0
+        // "in" eski Endonezce kodudur; "zh-Hans-CN" gibi etiketler dil+bölge ile eşleştirilir
+        val normalized = if (tag == "in" || tag.startsWith("in-")) "id" + tag.removePrefix("in") else tag
+        return languages.indexOfFirst { it.first.equals(normalized, true) }
+            .takeIf { it >= 0 }
+            ?: languages.indexOfFirst { it.first.isNotEmpty() && normalized.startsWith(it.first.substringBefore('-'), true) }
+                .coerceAtLeast(0)
+    }
+
+    private fun showLanguageDialog() {
+        val names = languages.indices.map { languageName(it) }.toTypedArray()
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(R.string.settings_language)
+            .setSingleChoiceItems(names, currentLanguageIndex()) { dialog, which ->
+                dialog.dismiss()
+                val tag = languages[which].first
+                // Activity yeniden oluşturulur ve tüm ekranlar seçilen dilde açılır
+                AppCompatDelegate.setApplicationLocales(
+                    if (tag.isEmpty()) LocaleListCompat.getEmptyLocaleList()
+                    else LocaleListCompat.forLanguageTags(tag)
+                )
+            }
+            .show()
     }
 
     override fun onDestroyView() {

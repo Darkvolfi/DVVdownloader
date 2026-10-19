@@ -40,7 +40,7 @@ namespace DVVdownloader.Services
             }
             catch (Exception ex)
             {
-                LogService.Instance.Error($"Ayarlar yüklenirken hata oluştu: {ex.Message}", "SettingsService");
+                LogService.Instance.Error($"Failed to load settings: {ex.Message}", "SettingsService");
             }
 
             var defaultSettings = new AppSettings();
@@ -55,11 +55,11 @@ namespace DVVdownloader.Services
                 CurrentSettings = settings;
                 string json = JsonSerializer.Serialize(settings, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(_settingsPath, json);
-                LogService.Instance.Info("Uygulama ayarları başarıyla kaydedildi.", "SettingsService");
+                LogService.Instance.Info("Settings saved.", "SettingsService");
             }
             catch (Exception ex)
             {
-                LogService.Instance.Error($"Ayarlar kaydedilirken hata oluştu: {ex.Message}", "SettingsService");
+                LogService.Instance.Error($"Failed to save settings: {ex.Message}", "SettingsService");
             }
         }
     }

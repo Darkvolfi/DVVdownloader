@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tab_home">होम</string>
+    <string name="tab_queue">कतार</string>
+    <string name="tab_completed">पूरे हुए</string>
+    <string name="tab_settings">सेटिंग्स</string>
+    <string name="badge_local">लोकल</string>
+
+    <string name="home_title">मीडिया डाउनलोड करें</string>
+    <string name="home_subtitle">YouTube, Pinterest, TikTok, Instagram और सीधे वीडियो लिंक</string>
+    <string name="url_input_hint">मीडिया लिंक यहाँ पेस्ट करें…</string>
+    <string name="label_source">स्रोत: </string>
+    <string name="source_waiting">लिंक का इंतज़ार है</string>
+    <string name="btn_analyze">जाँचें</string>
+    <string name="btn_paste">पेस्ट करें</string>
+    <string name="analyzing_title">मीडिया की जाँच हो रही है…</string>
+    <string name="analyzing_desc">फ़ॉर्मैट और स्ट्रीम की जानकारी ली जा रही है, कृपया रुकें</string>
+    <string name="format_select_title">फ़ॉर्मैट और क्वालिटी चुनें</string>
+    <string name="btn_download">डाउनलोड करें</string>
+    <string name="format_audio">ऑडियो (%1$s)</string>
+    <string name="format_video">वीडियो (%1$s)</string>
+    <string name="toast_invalid_url">कृपया सही URL डालें</string>
+    <string name="toast_clipboard_empty">क्लिपबोर्ड खाली है</string>
+    <string name="toast_analyze_error">जाँच में गड़बड़ी: %1$s</string>
+
+    <string name="queue_title">चल रहे डाउनलोड</string>
+    <string name="queue_empty">अभी कोई डाउनलोड नहीं चल रहा है</string>
+    <string name="queue_speed">" • स्पीड: %1$s"</string>
+    <string name="status_queued">कतार में</string>
+    <string name="status_downloading">डाउनलोड हो रहा है</string>
+    <string name="status_completed">पूरा हुआ</string>
+    <string name="status_error">गड़बड़ी</string>
+    <string name="status_cancelled">रद्द किया गया</string>
+    <string name="btn_retry">फिर कोशिश करें</string>
+    <string name="btn_cancel">रद्द करें</string>
+    <string name="btn_remove">हटाएँ</string>
+
+    <string name="completed_title">पूरे हुए डाउनलोड</string>
+    <string name="completed_empty">अभी तक कोई डाउनलोड पूरा नहीं हुआ है</string>
+    <string name="btn_clear">साफ़ करें</string>
+    <string name="btn_share">शेयर करें</string>
+    <string name="btn_play">चलाएँ</string>
+    <string name="share_chooser">मीडिया शेयर करें</string>
+    <string name="toast_file_missing">फ़ाइल नहीं मिली या मिटा दी गई है</string>
+    <string name="toast_file_not_found">फ़ाइल नहीं मिली</string>
+    <string name="toast_no_app">इस फ़ाइल को खोलने के लिए कोई ऐप नहीं मिला</string>
+    <string name="toast_share_error">शेयर करने में गड़बड़ी: %1$s</string>
+
+    <string name="settings_title">सेटिंग्स</string>
+    <string name="settings_language">भाषा</string>
+    <string name="language_system">सिस्टम की भाषा</string>
+    <string name="settings_save_dir">डाउनलोड की जगह</string>
+    <string name="settings_concurrent">एक साथ डाउनलोड</string>
+    <string name="settings_default_quality">डिफ़ॉल्ट क्वालिटी</string>
+    <string name="settings_app_info">ऐप की जानकारी</string>
+    <string name="settings_version">DVVdownloader v%1$s</string>
+    <string name="settings_app_desc">Kotlin में बना नेटिव ऐप। डाउनलोड yt-dlp और FFmpeg से होते हैं।</string>
+    <string name="license_title">ओपन सोर्स लाइसेंस</string>
+    <string name="license_desc">DVVdownloader एक मुफ़्त और ओपन सोर्स सॉफ़्टवेयर है, जो GNU जनरल पब्लिक लाइसेंस संस्करण 3 के तहत उपलब्ध है।</string>
+    <string name="license_btn_view">लाइसेंस की जानकारी</string>
+    <string name="license_dialog_message">DVVdownloader — GNU GPL v3.0\n\nयह प्रोग्राम मुफ़्त सॉफ़्टवेयर है: आप Free Software Foundation द्वारा प्रकाशित GNU जनरल पब्लिक लाइसेंस संस्करण 3 की शर्तों के तहत इसे फिर से बाँट सकते हैं और/या बदल सकते हैं।\n\nयह प्रोग्राम इस उम्मीद में बाँटा जाता है कि यह उपयोगी होगा, लेकिन बिना किसी वारंटी के, यहाँ तक कि बिक्री योग्यता या किसी खास उद्देश्य के लिए उपयुक्तता की निहित वारंटी के बिना भी।\n\nकॉपीराइट (C) 2026 DVVdownloader योगदानकर्ता।</string>
+    <string name="btn_close">बंद करें</string>
+
+    <string name="notification_channel_name">मीडिया डाउनलोड</string>
+    <string name="notification_channel_desc">चल रहे डाउनलोड की प्रगति</string>
+    <string name="notif_service_active">डाउनलोड सेवा चल रही है</string>
+
+    <string name="platform_unknown">अज्ञात</string>
+    <string name="platform_invalid">गलत URL</string>
+    <string name="platform_direct">सीधा मीडिया</string>
+    <string name="platform_web">वेब मीडिया</string>
+
+    <string name="quality_best">सबसे अच्छी क्वालिटी</string>
+    <string name="quality_highest">सबसे ऊँची क्वालिटी</string>
+    <string name="quality_mp3">MP3 ऑडियो</string>
+    <string name="quality_tiktok_hd">HD वीडियो (बिना वॉटरमार्क)</string>
+    <string name="quality_original_audio">ओरिजिनल ऑडियो (MP3)</string>
+    <string name="quality_direct_audio">सीधी ऑडियो स्ट्रीम</string>
+    <string name="quality_direct_video">सीधी वीडियो स्ट्रीम</string>
+    <string name="quality_720_original">720p HD (ओरिजिनल)</string>
+    <string name="quality_1080_original">1080p HD (ओरिजिनल MP4)</string>
+    <string name="size_unknown">अज्ञात</string>
+    <string name="size_audio_file">ऑडियो फ़ाइल</string>
+    <string name="size_original">ओरिजिनल साइज़</string>
+    <string name="size_original_quality">ओरिजिनल क्वालिटी</string>
+    <string name="size_source_stream">स्रोत स्ट्रीम</string>
+    <string name="media_fallback_title">%1$s मीडिया</string>
+    <string name="media_file">मीडिया फ़ाइल</string>
+    <string name="uploader_direct">सीधा डाउनलोड</string>
+
+    <string name="err_invalid_youtube">YouTube लिंक गलत है या वीडियो ID नहीं मिली।</string>
+    <string name="err_media_info">मीडिया की जानकारी नहीं मिल सकी।</string>
+    <string name="err_file_missing_after">डाउनलोड पूरा हुआ, लेकिन फ़ाइल नहीं मिली।</string>
+    <string name="err_tiktok_connect">TikTok से कनेक्ट नहीं हो सका: HTTP %1$d</string>
+    <string name="err_tiktok_not_found">TikTok वीडियो नहीं मिला या निजी है।</string>
+    <string name="err_pinterest_page">Pinterest पेज नहीं खुल सका: HTTP %1$d</string>
+    <string name="err_pinterest_no_video">इस Pinterest पोस्ट में कोई वीडियो नहीं है (शायद यह सिर्फ़ एक तस्वीर है)।</string>
+    <string name="err_instagram_page">Instagram पेज नहीं खुल सका: HTTP %1$d</string>
+    <string name="err_instagram_no_video">Instagram वीडियो नहीं मिला या पोस्ट निजी है।</string>
+    <string name="err_page_unreachable">%1$s पेज तक नहीं पहुँच सके: HTTP %2$d</string>
+    <string name="err_no_stream">इस %1$s पेज पर डाउनलोड करने लायक कोई मीडिया नहीं मिला। सीधा मीडिया लिंक या YouTube लिंक आज़माएँ।</string>
+    <string name="err_server">मीडिया सर्वर में गड़बड़ी: HTTP %1$d (%2$s)</string>
+    <string name="err_html_instead">सर्वर ने मीडिया फ़ाइल की जगह एक वेब पेज लौटाया। लिंक प्रतिबंधित या एक्सपायर हो सकता है।</string>
+    <string name="err_empty_body">सर्वर का जवाब खाली था।</string>
+    <string name="err_engine_not_started">डाउनलोड इंजन शुरू नहीं हुआ।</string>
+    <string name="err_engine_init">डाउनलोड इंजन (yt-dlp) शुरू नहीं हो सका: %1$s</string>
+    <string name="err_unknown_download">डाउनलोड में अज्ञात गड़बड़ी</string>
+</resources>

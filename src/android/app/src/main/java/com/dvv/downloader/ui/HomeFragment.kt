@@ -51,7 +51,7 @@ class HomeFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val url = s?.toString()?.trim() ?: ""
-                binding.tvDetectedPlatform.text = MediaEngine.detectPlatform(url)
+                binding.tvDetectedPlatform.text = if (url.isEmpty()) getString(R.string.source_waiting) else MediaEngine.platformLabel(MediaEngine.detectPlatform(url))
             }
             override fun afterTextChanged(s: Editable?) {}
         })
@@ -65,7 +65,7 @@ class HomeFragment : Fragment() {
             if (url.isNotEmpty()) {
                 analyzeUrl(url)
             } else {
-                Toast.makeText(requireContext(), "Lütfen geçerli bir URL girin", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.toast_invalid_url), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -99,7 +99,7 @@ class HomeFragment : Fragment() {
                 analyzeUrl(text)
             }
         } else {
-            Toast.makeText(requireContext(), "Pano boş", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.toast_clipboard_empty), Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -114,7 +114,7 @@ class HomeFragment : Fragment() {
                 currentMetadata = metadata
 
                 binding.tvMediaTitle.text = metadata.title
-                binding.tvMediaAuthor.text = "${metadata.uploader} • ${metadata.platform}"
+                binding.tvMediaAuthor.text = "${metadata.uploader} • ${MediaEngine.platformLabel(metadata.platform)}"
 
                 selectedFormat = metadata.formats.firstOrNull()
                 binding.rvFormats.adapter = FormatAdapter(metadata.formats) { item ->
@@ -123,7 +123,7 @@ class HomeFragment : Fragment() {
 
                 binding.cardPreview.visibility = View.VISIBLE
             } catch (e: Exception) {
-                Toast.makeText(requireContext(), "Analiz hatası: ${e.message}", Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), getString(R.string.toast_analyze_error, e.message ?: ""), Toast.LENGTH_LONG).show()
             } finally {
                 binding.cardLoading.visibility = View.GONE
                 binding.btnAnalyze.isEnabled = true

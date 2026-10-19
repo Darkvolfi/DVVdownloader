@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tab_home">ホーム</string>
+    <string name="tab_queue">キュー</string>
+    <string name="tab_completed">完了</string>
+    <string name="tab_settings">設定</string>
+    <string name="badge_local">ローカル</string>
+
+    <string name="home_title">メディアをダウンロード</string>
+    <string name="home_subtitle">YouTube・Pinterest・TikTok・Instagram・動画の直接リンクに対応</string>
+    <string name="url_input_hint">ここにリンクを貼り付け…</string>
+    <string name="label_source">ソース：</string>
+    <string name="source_waiting">リンクを待っています</string>
+    <string name="btn_analyze">解析</string>
+    <string name="btn_paste">貼り付け</string>
+    <string name="analyzing_title">解析中…</string>
+    <string name="analyzing_desc">形式とストリーム情報を取得しています。しばらくお待ちください</string>
+    <string name="format_select_title">形式と画質を選択</string>
+    <string name="btn_download">ダウンロード</string>
+    <string name="format_audio">音声（%1$s）</string>
+    <string name="format_video">動画（%1$s）</string>
+    <string name="toast_invalid_url">有効なURLを入力してください</string>
+    <string name="toast_clipboard_empty">クリップボードが空です</string>
+    <string name="toast_analyze_error">解析エラー：%1$s</string>
+
+    <string name="queue_title">ダウンロード中</string>
+    <string name="queue_empty">現在ダウンロード中のファイルはありません</string>
+    <string name="queue_speed">"・速度：%1$s"</string>
+    <string name="status_queued">待機中</string>
+    <string name="status_downloading">ダウンロード中</string>
+    <string name="status_completed">完了</string>
+    <string name="status_error">エラー</string>
+    <string name="status_cancelled">キャンセル済み</string>
+    <string name="btn_retry">再試行</string>
+    <string name="btn_cancel">キャンセル</string>
+    <string name="btn_remove">削除</string>
+
+    <string name="completed_title">完了したダウンロード</string>
+    <string name="completed_empty">完了したダウンロードはまだありません</string>
+    <string name="btn_clear">クリア</string>
+    <string name="btn_share">共有</string>
+    <string name="btn_play">再生</string>
+    <string name="share_chooser">メディアを共有</string>
+    <string name="toast_file_missing">ファイルが見つからないか、削除されています</string>
+    <string name="toast_file_not_found">ファイルが見つかりません</string>
+    <string name="toast_no_app">このファイルを開けるアプリがありません</string>
+    <string name="toast_share_error">共有エラー：%1$s</string>
+
+    <string name="settings_title">設定</string>
+    <string name="settings_language">言語</string>
+    <string name="language_system">システムの言語</string>
+    <string name="settings_save_dir">保存先</string>
+    <string name="settings_concurrent">同時ダウンロード数</string>
+    <string name="settings_default_quality">既定の画質</string>
+    <string name="settings_app_info">アプリ情報</string>
+    <string name="settings_version">DVVdownloader v%1$s</string>
+    <string name="settings_app_desc">Kotlin製のネイティブアプリです。ダウンロードには yt-dlp と FFmpeg を使用しています。</string>
+    <string name="license_title">オープンソースライセンス</string>
+    <string name="license_desc">DVVdownloader は GNU 一般公衆利用許諾書 第3版のもとで公開されている、自由でオープンソースのソフトウェアです。</string>
+    <string name="license_btn_view">ライセンスの詳細</string>
+    <string name="license_dialog_message">DVVdownloader — GNU GPL v3.0\n\nこのプログラムはフリーソフトウェアです。Free Software Foundation が公表した GNU 一般公衆利用許諾書 第3版の条件のもとで、再頒布および改変を行うことができます。\n\nこのプログラムは有用であることを願って頒布されますが、商品性や特定目的への適合性の黙示的な保証を含め、いかなる保証もありません。\n\nCopyright (C) 2026 DVVdownloader コントリビューター</string>
+    <string name="btn_close">閉じる</string>
+
+    <string name="notification_channel_name">メディアのダウンロード</string>
+    <string name="notification_channel_desc">ダウンロード中のファイルの進行状況</string>
+    <string name="notif_service_active">ダウンロードサービスが動作中です</string>
+
+    <string name="platform_unknown">不明</string>
+    <string name="platform_invalid">無効なURL</string>
+    <string name="platform_direct">直接リンク</string>
+    <string name="platform_web">Webメディア</string>
+
+    <string name="quality_best">最高画質</string>
+    <string name="quality_highest">最高品質</string>
+    <string name="quality_mp3">MP3音声</string>
+    <string name="quality_tiktok_hd">HD動画（透かしなし）</string>
+    <string name="quality_original_audio">オリジナル音声（MP3）</string>
+    <string name="quality_direct_audio">音声ストリーム（直接）</string>
+    <string name="quality_direct_video">動画ストリーム（直接）</string>
+    <string name="quality_720_original">720p HD（オリジナル）</string>
+    <string name="quality_1080_original">1080p HD（オリジナルMP4）</string>
+    <string name="size_unknown">不明</string>
+    <string name="size_audio_file">音声ファイル</string>
+    <string name="size_original">元のサイズ</string>
+    <string name="size_original_quality">元の画質</string>
+    <string name="size_source_stream">元のストリーム</string>
+    <string name="media_fallback_title">%1$s のメディア</string>
+    <string name="media_file">メディアファイル</string>
+    <string name="uploader_direct">直接ダウンロード</string>
+
+    <string name="err_invalid_youtube">YouTube のリンクが無効か、動画IDが見つかりません。</string>
+    <string name="err_media_info">メディア情報を取得できませんでした。</string>
+    <string name="err_file_missing_after">ダウンロードは完了しましたが、ファイルが見つかりません。</string>
+    <string name="err_tiktok_connect">TikTok に接続できませんでした：HTTP %1$d</string>
+    <string name="err_tiktok_not_found">TikTok の動画が見つからないか、非公開です。</string>
+    <string name="err_pinterest_page">Pinterest のページを開けませんでした：HTTP %1$d</string>
+    <string name="err_pinterest_no_video">この Pinterest の投稿には動画がありません（画像のみの可能性があります）。</string>
+    <string name="err_instagram_page">Instagram のページを開けませんでした：HTTP %1$d</string>
+    <string name="err_instagram_no_video">Instagram の動画が見つからないか、投稿が非公開です。</string>
+    <string name="err_page_unreachable">%1$s のページにアクセスできません：HTTP %2$d</string>
+    <string name="err_no_stream">この %1$s のページにはダウンロードできるメディアがありません。直接リンクか YouTube のリンクをお試しください。</string>
+    <string name="err_server">メディアサーバーのエラー：HTTP %1$d（%2$s）</string>
+    <string name="err_html_instead">サーバーがメディアファイルではなくWebページを返しました。リンクが制限されているか、期限切れの可能性があります。</string>
+    <string name="err_empty_body">サーバーの応答が空でした。</string>
+    <string name="err_engine_not_started">ダウンロードエンジンが起動していません。</string>
+    <string name="err_engine_init">ダウンロードエンジン（yt-dlp）を起動できませんでした：%1$s</string>
+    <string name="err_unknown_download">不明なダウンロードエラー</string>
+</resources>

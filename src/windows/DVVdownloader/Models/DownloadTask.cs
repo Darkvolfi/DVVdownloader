@@ -2,6 +2,8 @@ using System;
 using System.Text.Json.Serialization;
 using DVVdownloader.Common;
 
+using DVVdownloader.Localization;
+
 namespace DVVdownloader.Models
 {
     public enum DownloadStatus
@@ -22,15 +24,15 @@ namespace DVVdownloader.Models
         private string _downloadSpeed = "--";
         private string _eta = "--";
         private DownloadStatus _status = DownloadStatus.Kuyrukta;
-        private string _statusText = "Kuyrukta bekliyor";
+        private string _statusText = Loc.Get("StatusQueued");
         private string _errorMessage = string.Empty;
 
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Url { get; set; } = string.Empty;
-        public string Title { get; set; } = "Medya";
-        public string Platform { get; set; } = "Genel";
+        public string Title { get; set; } = "Media";
+        public string Platform { get; set; } = string.Empty;
         public string ThumbnailUrl { get; set; } = string.Empty;
-        public string SelectedQuality { get; set; } = "En İyi";
+        public string SelectedQuality { get; set; } = string.Empty;
         public string SelectedFormatId { get; set; } = "best";
         public int SelectedHeight { get; set; } = 1080;
         public bool IsAudioOnly { get; set; }
@@ -71,14 +73,14 @@ namespace DVVdownloader.Models
                 {
                     StatusText = _status switch
                     {
-                        DownloadStatus.Kuyrukta => "Kuyrukta",
-                        DownloadStatus.BilgilerAliniyor => "Analiz ediliyor...",
-                        DownloadStatus.Indiriliyor => "İndiriliyor",
-                        DownloadStatus.Birlestiriliyor => "İşleniyor (FFmpeg)...",
-                        DownloadStatus.Tamamlandi => "Tamamlandı",
-                        DownloadStatus.Hata => "Hata oluştu",
-                        DownloadStatus.IptalEdildi => "İptal edildi",
-                        DownloadStatus.Duraklatildi => "Duraklatıldı",
+                        DownloadStatus.Kuyrukta => Loc.Get("StatusQueued"),
+                        DownloadStatus.BilgilerAliniyor => Loc.Get("StatusAnalyzing"),
+                        DownloadStatus.Indiriliyor => Loc.Get("StatusDownloading"),
+                        DownloadStatus.Birlestiriliyor => Loc.Get("StatusProcessing"),
+                        DownloadStatus.Tamamlandi => Loc.Get("StatusCompleted"),
+                        DownloadStatus.Hata => Loc.Get("StatusError"),
+                        DownloadStatus.IptalEdildi => Loc.Get("StatusCancelled"),
+                        DownloadStatus.Duraklatildi => Loc.Get("StatusPaused"),
                         _ => _status.ToString()
                     };
                     OnPropertyChanged(nameof(CanCancel));
