@@ -7,7 +7,7 @@
     <string name="badge_local">本地</string>
 
     <string name="home_title">下载媒体</string>
-    <string name="home_subtitle">支持 YouTube、Pinterest、TikTok、Instagram 和视频直链</string>
+    <string name="home_subtitle">从 YouTube、Pinterest 等众多网站或任意视频直链下载</string>
     <string name="url_input_hint">在此粘贴媒体链接…</string>
     <string name="label_source">来源：</string>
     <string name="source_waiting">等待链接</string>

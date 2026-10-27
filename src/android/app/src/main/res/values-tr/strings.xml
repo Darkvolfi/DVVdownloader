@@ -9,7 +9,7 @@
 
     <!-- Home -->
     <string name="home_title">Medya İndir</string>
-    <string name="home_subtitle">YouTube, Pinterest, TikTok, Instagram ve doğrudan video bağlantıları</string>
+    <string name="home_subtitle">YouTube, Pinterest ve birçok siteden ya da doğrudan video bağlantılarından tek tıkla indirin</string>
     <string name="url_input_hint">Medya bağlantısını buraya yapıştırın…</string>
     <string name="label_source">Kaynak: </string>
     <string name="source_waiting">Bağlantı bekleniyor</string>

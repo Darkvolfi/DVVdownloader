@@ -7,7 +7,7 @@
     <string name="badge_local">محلي</string>
 
     <string name="home_title">تنزيل الوسائط</string>
-    <string name="home_subtitle">روابط YouTube وPinterest وTikTok وInstagram وروابط الفيديو المباشرة</string>
+    <string name="home_subtitle">نزّل من YouTube وPinterest وكثير من المواقع الأخرى، أو من أي رابط فيديو مباشر</string>
     <string name="url_input_hint">الصق رابط الوسائط هنا…</string>
     <string name="label_source">المصدر: </string>
     <string name="source_waiting">في انتظار رابط</string>

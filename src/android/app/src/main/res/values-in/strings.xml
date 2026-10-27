@@ -8,7 +8,7 @@
     <string name="badge_local">LOKAL</string>
 
     <string name="home_title">Unduh Media</string>
-    <string name="home_subtitle">Tautan YouTube, Pinterest, TikTok, Instagram, dan video langsung</string>
+    <string name="home_subtitle">Unduh dari YouTube, Pinterest, dan banyak situs lain, atau dari tautan video langsung</string>
     <string name="url_input_hint">Tempel tautan media di sini…</string>
     <string name="label_source">Sumber: </string>
     <string name="source_waiting">Menunggu tautan</string>

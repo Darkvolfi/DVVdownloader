@@ -7,7 +7,7 @@
     <string name="badge_local">ローカル</string>
 
     <string name="home_title">メディアをダウンロード</string>
-    <string name="home_subtitle">YouTube・Pinterest・TikTok・Instagram・動画の直接リンクに対応</string>
+    <string name="home_subtitle">YouTube や Pinterest など多くのサイト、または動画の直接リンクからダウンロードできます</string>
     <string name="url_input_hint">ここにリンクを貼り付け…</string>
     <string name="label_source">ソース：</string>
     <string name="source_waiting">リンクを待っています</string>

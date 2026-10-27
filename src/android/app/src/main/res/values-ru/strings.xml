@@ -7,7 +7,7 @@
     <string name="badge_local">ЛОКАЛЬНО</string>
 
     <string name="home_title">Скачать медиа</string>
-    <string name="home_subtitle">Ссылки YouTube, Pinterest, TikTok, Instagram и прямые ссылки на видео</string>
+    <string name="home_subtitle">Скачивайте с YouTube, Pinterest и многих других сайтов или по прямой ссылке на видео</string>
     <string name="url_input_hint">Вставьте ссылку сюда…</string>
     <string name="label_source">Источник: </string>
     <string name="source_waiting">Ожидание ссылки</string>

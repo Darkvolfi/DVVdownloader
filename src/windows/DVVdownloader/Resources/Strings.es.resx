@@ -5,7 +5,7 @@
   <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
   <data name="WindowTitle" xml:space="preserve"><value>DVVdownloader — Descargador de medios local</value></data>
-  <data name="VersionBadge" xml:space="preserve"><value>v1.2 Local</value></data>
+  <data name="VersionBadge" xml:space="preserve"><value>v1.3 Local</value></data>
   <data name="TipMinimize" xml:space="preserve"><value>Minimizar</value></data>
   <data name="TipMaximize" xml:space="preserve"><value>Maximizar / Restaurar</value></data>
   <data name="Close" xml:space="preserve"><value>Cerrar</value></data>

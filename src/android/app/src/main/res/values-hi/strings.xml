@@ -7,7 +7,7 @@
     <string name="badge_local">लोकल</string>
 
     <string name="home_title">मीडिया डाउनलोड करें</string>
-    <string name="home_subtitle">YouTube, Pinterest, TikTok, Instagram और सीधे वीडियो लिंक</string>
+    <string name="home_subtitle">YouTube, Pinterest और कई दूसरी साइटों से, या किसी भी सीधे वीडियो लिंक से डाउनलोड करें</string>
     <string name="url_input_hint">मीडिया लिंक यहाँ पेस्ट करें…</string>
     <string name="label_source">स्रोत: </string>
     <string name="source_waiting">लिंक का इंतज़ार है</string>

@@ -61,6 +61,10 @@ object MediaEngine {
                 host.contains("pinterest.com") || host.contains("pin.it") -> "Pinterest"
                 host.contains("facebook.com") || host.contains("fb.watch") -> "Facebook"
                 host.contains("twitch.tv") -> "Twitch"
+                host.contains("vimeo.com") -> "Vimeo"
+                host.contains("soundcloud.com") -> "SoundCloud"
+                host.contains("reddit.com") -> "Reddit"
+                host.contains("dailymotion.com") || host.contains("dai.ly") -> "Dailymotion"
                 url.endsWith(".mp4", true) || url.endsWith(".mkv", true) ||
                         url.endsWith(".webm", true) || url.endsWith(".mp3", true) ||
                         url.endsWith(".m4a", true) -> PLATFORM_DIRECT
@@ -76,11 +80,23 @@ object MediaEngine {
 
         when (platform) {
             "YouTube" -> extractYouTube(url)
-            "TikTok" -> extractTikTok(url)
-            "Instagram" -> extractInstagram(url)
             "Pinterest" -> extractPinterest(url)
             PLATFORM_DIRECT -> extractDirectMedia(url)
-            else -> extractSocialOrWeb(url, platform)
+            // Windows sürümü gibi diğer tüm siteler önce yt-dlp ile çözülür; olmazsa eski ayrıştırıcılar denenir
+            else -> try {
+                extractViaYtDlp(url, platform)
+            } catch (e: Exception) {
+                try {
+                    when (platform) {
+                        "TikTok" -> extractTikTok(url)
+                        "Instagram" -> extractInstagram(url)
+                        else -> extractSocialOrWeb(url, platform)
+                    }
+                } catch (_: Exception) {
+                    // yt-dlp'nin hata mesajı genellikle daha açıklayıcıdır
+                    throw e
+                }
+            }
         }
     }
 
@@ -138,7 +154,9 @@ object MediaEngine {
             )
         }
 
-        if (formats.isEmpty()) {
+        // Yalnızca ses sunan kaynaklarda (ör. SoundCloud) video seçeneği gösterilmez
+        val audioOnlySource = all.isNotEmpty() && all.all { it.vcodec == "none" }
+        if (formats.isEmpty() && !audioOnlySource) {
             formats.add(
                 MediaFormatItem(
                     formatId = "ytdlp_best",
@@ -163,15 +181,20 @@ object MediaEngine {
             )
         )
 
+        // Tanınmayan sitelerde platform adı yt-dlp'nin çözücüsünden alınır (ör. "Dailymotion")
+        val sitePlatform = if (platform == PLATFORM_WEB) {
+            info.extractorKey?.takeIf { it.isNotBlank() && !it.equals("Generic", true) } ?: platform
+        } else platform
+
         val durationSec = info.duration.toLong()
         return MediaMetadata(
             id = info.id ?: System.currentTimeMillis().toString(),
-            title = info.title?.ifBlank { null } ?: L10n.s(R.string.media_fallback_title, platformLabel(platform)),
-            uploader = info.uploader ?: platform,
+            title = info.title?.ifBlank { null } ?: L10n.s(R.string.media_fallback_title, platformLabel(sitePlatform)),
+            uploader = info.uploader ?: platformLabel(sitePlatform),
             duration = if (durationSec > 0) formatDuration(durationSec) else "--:--",
             thumbnailUrl = info.thumbnail ?: "",
             webpageUrl = info.webpageUrl?.ifBlank { null } ?: url,
-            platform = platform,
+            platform = sitePlatform,
             formats = formats
         )
     }

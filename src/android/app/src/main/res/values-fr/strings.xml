@@ -7,7 +7,7 @@
     <string name="badge_local">LOCAL</string>
 
     <string name="home_title">Télécharger des médias</string>
-    <string name="home_subtitle">Liens YouTube, Pinterest, TikTok, Instagram et vidéos directes</string>
+    <string name="home_subtitle">Téléchargez depuis YouTube, Pinterest et de nombreux autres sites, ou depuis un lien vidéo direct</string>
     <string name="url_input_hint">Collez un lien ici…</string>
     <string name="label_source">Source : </string>
     <string name="source_waiting">En attente d\'un lien</string>

@@ -13,7 +13,7 @@
 
     <!-- Home -->
     <string name="home_title">Download Media</string>
-    <string name="home_subtitle">YouTube, Pinterest, TikTok, Instagram and direct video links</string>
+    <string name="home_subtitle">Download from YouTube, Pinterest and many other sites, or any direct video link</string>
     <string name="url_input_hint">Paste a media link here…</string>
     <string name="label_source">Source: </string>
     <string name="source_waiting">Waiting for a link</string>
