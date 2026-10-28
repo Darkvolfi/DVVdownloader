@@ -636,6 +636,60 @@ namespace DVVdownloader.Services
             return meta;
         }
 
+        private static readonly Regex FnaCdnRegex = new(@"https://[A-Za-z0-9.-]+\.fna\.fbcdn\.net/", RegexOptions.Compiled);
+
+        /// <summary>
+        /// Türkiye'deki bazı servis sağlayıcılar *.fna.fbcdn.net adreslerini engelliyor; indirme bağlantı hatasıyla takılıyor.
+        /// Instagram/Facebook'ta yt-dlp'nin bilgi JSON'u alınır, bu adresler scontent.cdninstagram.com'a çevrilip geçici dosyaya yazılır.
+        /// Çevrilecek adres yoksa ya da bir şey ters giderse null döner ve normal indirme yapılır.
+        /// </summary>
+        private static async Task<string?> WriteCdnRewrittenInfoAsync(string ytDlpPath, string url, CancellationToken ct)
+        {
+            string platform = PlatformDetector.DetectPlatform(url);
+            if (platform is not ("Instagram" or "Facebook")) return null;
+
+            var psi = new ProcessStartInfo
+            {
+                FileName = ytDlpPath,
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                CreateNoWindow = true,
+                StandardOutputEncoding = System.Text.Encoding.UTF8,
+                StandardErrorEncoding = System.Text.Encoding.UTF8
+            };
+            psi.ArgumentList.Add("--dump-single-json");
+            psi.ArgumentList.Add("--no-warnings");
+            psi.ArgumentList.Add("--no-playlist");
+            psi.ArgumentList.Add("--socket-timeout");
+            psi.ArgumentList.Add("20");
+            psi.ArgumentList.Add(url);
+
+            try
+            {
+                using var process = Process.Start(psi)!;
+                using var registration = ct.Register(() => { try { process.Kill(entireProcessTree: true); } catch { } });
+                var stderrTask = process.StandardError.ReadToEndAsync();
+                string json = await process.StandardOutput.ReadToEndAsync();
+                await stderrTask;
+                await process.WaitForExitAsync(ct);
+                if (process.ExitCode != 0 || !FnaCdnRegex.IsMatch(json)) return null;
+
+                string path = Path.Combine(Path.GetTempPath(), $"dvv-{Guid.NewGuid():N}.info.json");
+                await File.WriteAllTextAsync(path, FnaCdnRegex.Replace(json, "https://scontent.cdninstagram.com/"), ct);
+                return path;
+            }
+            catch (OperationCanceledException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                LogService.Instance.Warning($"CDN rewrite skipped: {ex.Message}", "YtDlpEngine");
+                return null;
+            }
+        }
+
         public async Task DownloadAsync(
             DownloadTask task,
             Action<double, string, string> onProgress,
@@ -789,7 +843,18 @@ namespace DVVdownloader.Services
                 psi.ArgumentList.Add("Referer:https://www.pinterest.com/");
             }
 
-            psi.ArgumentList.Add(downloadTarget);
+            string? infoJsonPath = downloadTarget == task.Url
+                ? await WriteCdnRewrittenInfoAsync(ytDlpPath, task.Url, ct)
+                : null;
+            if (infoJsonPath != null)
+            {
+                psi.ArgumentList.Add("--load-info-json");
+                psi.ArgumentList.Add(infoJsonPath);
+            }
+            else
+            {
+                psi.ArgumentList.Add(downloadTarget);
+            }
 
             using var process = new Process { StartInfo = psi };
             try
@@ -860,7 +925,14 @@ namespace DVVdownloader.Services
 
             string stderr = await process.StandardError.ReadToEndAsync();
             await readOutputTask;
-            await process.WaitForExitAsync(ct);
+            try
+            {
+                await process.WaitForExitAsync(ct);
+            }
+            finally
+            {
+                if (infoJsonPath != null) try { File.Delete(infoJsonPath); } catch { }
+            }
 
             if (ct.IsCancellationRequested)
             {

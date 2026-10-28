@@ -109,8 +109,14 @@ object MediaEngine {
 
     private fun isNoCodec(codec: String?): Boolean = codec.isNullOrBlank() || codec == "none"
 
-    private fun formatBytes(f: VideoFormat?): Long =
-        f?.let { if (it.fileSize > 0) it.fileSize else it.fileSizeApproximate } ?: 0L
+    // HLS/DASH akışlarında (Dailymotion, Pinterest, Instagram…) boyut yok; Windows gibi bit hızı × süre ile tahmin edilir
+    private fun formatBytes(f: VideoFormat?, durationSec: Int): Long = when {
+        f == null -> 0L
+        f.fileSize > 0 -> f.fileSize
+        f.fileSizeApproximate > 0 -> f.fileSizeApproximate
+        f.tbr > 0 && durationSec > 0 -> f.tbr.toLong() * 1000 / 8 * durationSec
+        else -> 0L
+    }
 
     // Windows sürümüyle aynı seçim: istenen yüksekliğe kadar en iyi görüntü + en iyi ses, yoksa birleşik akış
     private fun videoSelector(height: Int) = "bv*[height<=$height]+ba/b[height<=$height]/b"
@@ -129,15 +135,18 @@ object MediaEngine {
         }
 
         val all = info.formats ?: arrayListOf()
+        val dur = info.duration
         val bestAudioBytes = all.filter { isNoCodec(it.vcodec) && !isNoCodec(it.acodec) }
-            .maxOfOrNull { formatBytes(it) } ?: 0L
+            .maxOfOrNull { formatBytes(it, dur) } ?: 0L
         val videoByHeight = all.filter { !isNoCodec(it.vcodec) && it.height > 0 }.groupBy { it.height }
 
         val formats = mutableListOf<MediaFormatItem>()
         for (height in videoByHeight.keys.sortedDescending()) {
             val group = videoByHeight.getValue(height)
-            val best = group.maxByOrNull { formatBytes(it) }
-            val bytes = formatBytes(best) + if (isNoCodec(best?.acodec)) bestAudioBytes else 0L
+            val best = group.maxByOrNull { formatBytes(it, dur) }
+            val videoBytes = formatBytes(best, dur)
+            // Görüntü boyutu bilinmiyorsa yalnızca ses boyutu gösterilmez (yanıltıcı küçük sayı çıkıyordu)
+            val bytes = if (videoBytes > 0) videoBytes + if (isNoCodec(best?.acodec)) bestAudioBytes else 0L else 0L
             // Dikey videolarda (ör. 1080x1920) etiket kısa kenara göre verilir
             val width = group.maxOf { it.width }
             val label = if (width in 1 until height) width else height
@@ -216,7 +225,17 @@ object MediaEngine {
     ): File = withContext(Dispatchers.IO) {
         YtDlpRuntime.awaitReady()
 
-        val request = YoutubeDLRequest(task.url).apply {
+        val infoFile = File(dir, "$baseName-info.json")
+        val rewritten = try {
+            writeCdnRewrittenInfo(task, infoFile)
+        } catch (e: YoutubeDL.CanceledException) {
+            throw e
+        } catch (e: Exception) {
+            throw IllegalStateException(cleanYtDlpError(e))
+        }
+
+        val request = YoutubeDLRequest(if (rewritten) emptyList() else listOf(task.url)).apply {
+            if (rewritten) addOption("--load-info-json", infoFile.absolutePath)
             addOption("--no-playlist")
             addOption("--no-mtime")
             addOption("--force-overwrites")
@@ -248,6 +267,8 @@ object MediaEngine {
             throw e
         } catch (e: Exception) {
             throw IllegalStateException(cleanYtDlpError(e))
+        } finally {
+            infoFile.delete()
         }
 
         val expected = File(dir, "$baseName.${if (task.isAudioOnly) "mp3" else "mp4"}")
@@ -256,6 +277,29 @@ object MediaEngine {
         dir.listFiles { f -> f.name.startsWith("$baseName.") && !f.name.endsWith(".part") && !f.name.endsWith(".ytdl") }
             ?.maxByOrNull { it.lastModified() }
             ?: throw IllegalStateException(L10n.s(R.string.err_file_missing_after))
+    }
+
+    private val FNA_CDN_REGEX = Regex("""https://[A-Za-z0-9.-]+\.fna\.fbcdn\.net/""")
+
+    /**
+     * Türkiye'deki bazı servis sağlayıcılar Meta'nın *.fna.fbcdn.net adreslerini engelliyor; indirme %0'da takılıyor.
+     * Instagram/Facebook'ta yt-dlp'nin bilgi JSON'u alınır, bu adresler scontent.cdninstagram.com'a çevrilip dosyaya yazılır.
+     * Çevrilecek adres yoksa false döner ve normal indirme yapılır.
+     */
+    private fun writeCdnRewrittenInfo(task: DownloadTask, infoFile: File): Boolean {
+        val platform = detectPlatform(task.url)
+        if (platform != "Instagram" && platform != "Facebook") return false
+
+        val request = YoutubeDLRequest(task.url).apply {
+            addOption("--no-playlist")
+            addOption("--socket-timeout", 20)
+            addOption("--dump-single-json")
+        }
+        val json = YoutubeDL.getInstance().execute(request, task.id).out
+        if (!FNA_CDN_REGEX.containsMatchIn(json)) return false
+
+        infoFile.writeText(json.replace(FNA_CDN_REGEX, "https://scontent.cdninstagram.com/"))
+        return true
     }
 
     fun cancelYtDlp(taskId: String) {
