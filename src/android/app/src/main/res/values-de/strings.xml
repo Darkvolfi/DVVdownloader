@@ -107,4 +107,6 @@
     <string name="err_unknown_download">Unbekannter Downloadfehler</string>
     <string name="support_title">Support &amp; Kontakt</string>
     <string name="support_desc">Fragen, Fehlermeldungen oder Urheberrechtsanliegen? Schreib uns:</string>
+    <string name="settings_change_folder">Ordner ändern</string>
+    <string name="settings_reset_folder">Downloads verwenden</string>
 </resources>

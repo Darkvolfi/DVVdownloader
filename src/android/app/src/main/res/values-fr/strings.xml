@@ -107,4 +107,6 @@
     <string name="err_unknown_download">Erreur de téléchargement inconnue</string>
     <string name="support_title">Assistance et contact</string>
     <string name="support_desc">Questions, bugs ou réclamations de droits d\'auteur ? Écrivez-nous :</string>
+    <string name="settings_change_folder">Changer de dossier</string>
+    <string name="settings_reset_folder">Utiliser Téléchargements</string>
 </resources>

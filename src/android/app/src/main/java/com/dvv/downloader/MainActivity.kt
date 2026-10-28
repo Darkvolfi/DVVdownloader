@@ -1,8 +1,13 @@
 package com.dvv.downloader
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updateLayoutParams
@@ -40,6 +45,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         setupNavigation()
+
+        // Android 8–9'da İndirilenler klasörüne yazmak için depolama izni gerekir (10+ için gerekmez)
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.Q &&
+            ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
+        }
 
         if (savedInstanceState == null) {
             loadFragment(homeFragment)

@@ -107,4 +107,6 @@
     <string name="err_unknown_download">خطأ غير معروف في التنزيل</string>
     <string name="support_title">الدعم والتواصل</string>
     <string name="support_desc">لديك سؤال أو بلاغ عن خطأ أو شكوى تتعلق بحقوق النشر؟ راسلنا على:</string>
+    <string name="settings_change_folder">تغيير المجلد</string>
+    <string name="settings_reset_folder">استخدام مجلد التنزيلات</string>
 </resources>

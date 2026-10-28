@@ -2,4 +2,6 @@
 <paths>
     <external-files-path name="external_files" path="." />
     <files-path name="internal_files" path="." />
+    <!-- Android 8–9: İndirilenler/DVVdownloader'a doğrudan yazılan dosyalar -->
+    <external-path name="public_downloads" path="Download/DVVdownloader/" />
 </paths>

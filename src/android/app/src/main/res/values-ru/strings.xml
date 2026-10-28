@@ -107,4 +107,6 @@
     <string name="err_unknown_download">Неизвестная ошибка загрузки</string>
     <string name="support_title">Поддержка и связь</string>
     <string name="support_desc">Вопросы, сообщения об ошибках или претензии по авторским правам? Напишите нам:</string>
+    <string name="settings_change_folder">Изменить папку</string>
+    <string name="settings_reset_folder">Папка «Загрузки»</string>
 </resources>

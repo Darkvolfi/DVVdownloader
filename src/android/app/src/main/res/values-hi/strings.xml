@@ -107,4 +107,6 @@
     <string name="err_unknown_download">डाउनलोड में अज्ञात गड़बड़ी</string>
     <string name="support_title">सहायता और संपर्क</string>
     <string name="support_desc">सवाल, गड़बड़ी की रिपोर्ट या कॉपीराइट से जुड़ी शिकायत? हमें लिखें:</string>
+    <string name="settings_change_folder">फ़ोल्डर बदलें</string>
+    <string name="settings_reset_folder">Downloads फ़ोल्डर इस्तेमाल करें</string>
 </resources>

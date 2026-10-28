@@ -7,6 +7,7 @@ import com.dvv.downloader.models.DownloadTask
 import com.dvv.downloader.models.HistoryItem
 import com.dvv.downloader.models.TaskStatus
 import com.dvv.downloader.repository.DownloadRepository
+import com.dvv.downloader.repository.DownloadStorage
 import com.dvv.downloader.repository.MediaEngine
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -112,16 +113,20 @@ object DownloadManager {
                 }
 
                 if (success && task.status != TaskStatus.IPTAL) {
-                    task.status = TaskStatus.TAMAMLANDI
-                    task.progress = 100
-                    task.speed = L10n.s(R.string.status_completed)
-                    repository.updateTask(task)
-
                     val fileSizeFormatted = String.format(
                         Locale.getDefault(),
                         "%.1f MB",
                         targetFile.length() / (1024.0 * 1024.0)
                     )
+
+                    // Uygulama klasöründen İndirilenler'e (ya da kullanıcının seçtiği klasöre) taşı
+                    val savedLocation = DownloadStorage.publish(context, targetFile)
+                    task.localFilePath = savedLocation
+
+                    task.status = TaskStatus.TAMAMLANDI
+                    task.progress = 100
+                    task.speed = L10n.s(R.string.status_completed)
+                    repository.updateTask(task)
 
                     val dateFormat = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, Locale.getDefault())
                     val dateStr = dateFormat.format(Date())
@@ -131,7 +136,7 @@ object DownloadManager {
                             id = task.id,
                             title = "${task.title} [${resolutionTag}]",
                             platform = task.platform,
-                            filePath = targetFile.absolutePath,
+                            filePath = savedLocation,
                             fileSizeFormatted = fileSizeFormatted,
                             dateFormatted = dateStr
                         )

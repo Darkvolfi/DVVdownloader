@@ -56,22 +56,37 @@ class CompletedFragment : Fragment() {
         }
     }
 
-    private fun openFile(item: HistoryItem) {
+    /**
+     * Geçmişteki konum ya bir content:// adresi (İndirilenler / seçilen klasör) ya da dosya yoludur
+     * (eski sürümlerin kayıtları, Android 8–9). Dosya yoksa null döner.
+     */
+    private fun resolveUri(item: HistoryItem): Uri? {
+        if (item.filePath.startsWith("content://")) {
+            val uri = Uri.parse(item.filePath)
+            return try {
+                requireContext().contentResolver.openFileDescriptor(uri, "r")?.use { uri }
+            } catch (_: Exception) {
+                null
+            }
+        }
         val file = File(item.filePath)
-        if (!file.exists()) {
+        if (!file.exists()) return null
+        return FileProvider.getUriForFile(requireContext(), "${requireContext().packageName}.fileprovider", file)
+    }
+
+    private fun mimeOf(item: HistoryItem): String =
+        if (item.title.contains("[Audio]") || item.filePath.endsWith(".mp3", true) || item.filePath.endsWith(".m4a", true)) "audio/*" else "video/*"
+
+    private fun openFile(item: HistoryItem) {
+        val uri = resolveUri(item)
+        if (uri == null) {
             Toast.makeText(requireContext(), getString(R.string.toast_file_missing), Toast.LENGTH_SHORT).show()
             return
         }
 
         try {
-            val uri: Uri = FileProvider.getUriForFile(
-                requireContext(),
-                "${requireContext().packageName}.fileprovider",
-                file
-            )
             val intent = Intent(Intent.ACTION_VIEW).apply {
-                val mime = if (file.extension.equals("mp3", true) || file.extension.equals("m4a", true)) "audio/*" else "video/*"
-                setDataAndType(uri, mime)
+                setDataAndType(uri, mimeOf(item))
                 addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             }
             startActivity(intent)
@@ -81,21 +96,15 @@ class CompletedFragment : Fragment() {
     }
 
     private fun shareFile(item: HistoryItem) {
-        val file = File(item.filePath)
-        if (!file.exists()) {
+        val uri = resolveUri(item)
+        if (uri == null) {
             Toast.makeText(requireContext(), getString(R.string.toast_file_not_found), Toast.LENGTH_SHORT).show()
             return
         }
 
         try {
-            val uri: Uri = FileProvider.getUriForFile(
-                requireContext(),
-                "${requireContext().packageName}.fileprovider",
-                file
-            )
             val intent = Intent(Intent.ACTION_SEND).apply {
-                val mime = if (file.extension.equals("mp3", true) || file.extension.equals("m4a", true)) "audio/*" else "video/*"
-                type = mime
+                type = mimeOf(item)
                 putExtra(Intent.EXTRA_STREAM, uri)
                 addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             }

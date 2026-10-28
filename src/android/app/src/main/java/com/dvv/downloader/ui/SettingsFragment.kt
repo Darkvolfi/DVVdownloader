@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
 import com.dvv.downloader.R
 import com.dvv.downloader.databinding.FragmentSettingsBinding
+import com.dvv.downloader.repository.DownloadStorage
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class SettingsFragment : Fragment() {
@@ -33,6 +35,20 @@ class SettingsFragment : Fragment() {
         "zh-CN" to "简体中文"
     )
 
+    // Sistem klasör seçicisi; seçilen klasöre kalıcı yazma izni alınır
+    private val pickFolder = registerForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
+        if (uri != null) {
+            DownloadStorage.setCustomFolder(requireContext(), uri)
+            refreshDownloadLocation()
+        }
+    }
+
+    private fun refreshDownloadLocation() {
+        binding.tvDownloadPath.text = DownloadStorage.locationLabel(requireContext())
+        binding.btnResetFolder.visibility =
+            if (DownloadStorage.customFolder(requireContext()) != null) View.VISIBLE else View.GONE
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,8 +59,12 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val dir = requireContext().getExternalFilesDir(null) ?: requireContext().filesDir
-        binding.tvDownloadPath.text = dir.absolutePath
+        refreshDownloadLocation()
+        binding.btnChangeFolder.setOnClickListener { pickFolder.launch(null) }
+        binding.btnResetFolder.setOnClickListener {
+            DownloadStorage.setCustomFolder(requireContext(), null)
+            refreshDownloadLocation()
+        }
 
         val versionName = requireContext().packageManager
             .getPackageInfo(requireContext().packageName, 0).versionName ?: ""

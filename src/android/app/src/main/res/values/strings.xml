@@ -121,4 +121,6 @@
     <string name="support_email" translatable="false">support@darkvolfi.com</string>
     <string name="support_title">Support &amp; contact</string>
     <string name="support_desc">Questions, bug reports or copyright concerns? Email us:</string>
+    <string name="settings_change_folder">Change folder</string>
+    <string name="settings_reset_folder">Use Downloads</string>
 </resources>

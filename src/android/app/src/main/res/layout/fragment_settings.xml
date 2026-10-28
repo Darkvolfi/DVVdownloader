@@ -87,10 +87,35 @@
                     android:id="@+id/tvDownloadPath"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="/storage/emulated/0/Android/data/com.dvv.downloader/files"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="12sp"
+                    tools:text="Download/DVVdownloader"
+                    android:textColor="@color/primary_accent"
+                    android:textSize="13sp"
                     android:layout_marginTop="4dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnChangeFolder"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_change_folder"
+                        android:textColor="@color/primary_accent"
+                        app:strokeColor="@color/primary_accent" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnResetFolder"
+                        style="@style/Widget.Material3.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/settings_reset_folder"
+                        android:textColor="@color/text_secondary" />
+                </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

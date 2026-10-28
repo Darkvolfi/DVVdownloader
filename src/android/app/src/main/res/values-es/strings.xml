@@ -107,4 +107,6 @@
     <string name="err_unknown_download">Error de descarga desconocido</string>
     <string name="support_title">Soporte y contacto</string>
     <string name="support_desc">¿Preguntas, errores o reclamaciones de derechos de autor? Escríbenos:</string>
+    <string name="settings_change_folder">Cambiar carpeta</string>
+    <string name="settings_reset_folder">Usar Descargas</string>
 </resources>
